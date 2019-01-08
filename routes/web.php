@@ -11,8 +11,8 @@
 |
 */
 
-Route::view('/', 'parish.welcome');
+Route::view('/', 'welcome');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ParishController@index')->name('parish.index');

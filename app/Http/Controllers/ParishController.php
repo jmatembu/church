@@ -14,7 +14,8 @@ class ParishController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('parish.index');
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('parish.layout.app')
-
+@section('title', 'Parish Site')
 @section('content')
     <!-- Banner --> 
     <section class="main-banner-section">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>@yield('pageTitle') - {{ config('app.name') }}</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
     <!--OWL Carousel slider-->
