@@ -32,6 +32,9 @@ class UsersTableSeeder extends Seeder
         // Rest of the laity
         factory(App\User::class, 100)->create();
         // Known users
-        factory(App\User::class)->create(['email' => 'jmatembu@gmail.com']);
+        factory(App\User::class)->create([
+            'email' => 'jmatembu@gmail.com',
+            'current_parish' => App\Parish::get()->random()->id
+        ]);
     }
 }
