@@ -1,5 +1,6 @@
 @extends('parish.layout.app')
-@section('title', 'Parish Site')
+@section('title', $parish->name)
+@section('parishName', $parish->name)
 @section('content')
     <!-- Banner --> 
     <section class="main-banner-section">
@@ -33,14 +34,14 @@
                 <div class="col-md-6">
                     <div class="box_wrap next_event">
                         <p class="subtitle">Next Event</p>
-                        <h4><a href="#">Which is the same as saying</a></h4>
+                        <h4><a href="#">{{ $nextEvent->title }}</a></h4>
                         <div class="event_info">
                             <div class="event_date">
-                                <span>20</span> Aug'18
+                                <span>{{ $nextEvent->starts_at->format('d') }}</span> {{ $nextEvent->starts_at->format('M y') }}
                             </div>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i> Sunday  (8:00 - 9:00 am)</li>
-                                <li><i class="fa fa-map-marker"></i> 56 Thatcher Avenue River Forest Chicago, IL United States</li>
+                                <li><i class="fa fa-clock-o"></i> {{  $nextEvent->starts_at->diffForHumans() }}</li>
+                                <li><i class="fa fa-paperclip"></i> {{ str_limit($nextEvent->description, 100) }}</li>
                             </ul>
                         </div>
                         <a href="#" class="btn">Join Now <i class="fa fa-caret-right"></i> </a>
@@ -93,7 +94,7 @@
         <div class="container">
             <div class="about_us">
                 <div class="section-header text-center">
-                    <h2>We are a Church That Believes in <u>Jesus</u></h2>
+                    <h2>About <u>{{ $parish->name }}</u></h2>
                 </div>
                 <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).  If you are going to use a passage of Lorem Ipsum.</p>
                 <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined. chunks as necessary.</p>
@@ -104,9 +105,11 @@
         </div>
     </section>
      <!-- /About -->
-     
+    
+    
+    
     <!-- Causes -->
-    <section id="causes" class="section-padding gray_bg">
+    {{-- <section id="causes" class="section-padding gray_bg">
         <div class="container">
             <div class="owl-carousel">
                 <div class="item">
@@ -141,13 +144,14 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
      <!-- /Causes -->
 
     <!-- Latest-Events-Sermons -->
     <section class="section-padding latest_event_sermons m-0">
         <div class="container">
             <div class="row">
+                @if($latestEvents->count())
                 <div class="col-md-6 col-lg-5">
                     <div class="heading">
                         <h3>Latest Events</h3>
@@ -155,46 +159,24 @@
                     </div>
                     <div class="event_list">
                         <ul>
+                            @foreach($latestEvents as $event)
                             <li>
                                 <div class="event_info">
                                     <div class="event_date">
-                                        <span>20</span> Aug'18
+                                        <span>{{ $event->starts_at->format('d') }}</span> {{ $event->starts_at->format('M y') }}
                                     </div>
-                                    <h6><a href="#">Which is the same as saying</a></h6>
+                                    <h6><a href="#">{{ $event->title }}</a></h6>
                                     <ul>
-                                        <li><i class="fa fa-clock-o"></i> Sunday  (8:00 am -9:00 am)</li>
-                                        <li><i class="fa fa-map-marker"></i> 56 Thatcher Avenue River Forest</li>
+                                        <li><i class="fa fa-clock-o"></i> {{ $event->starts_at->diffForHumans() }}</li>
+                                        <li><i class="fa fa-paperclip"></i> {{ str_limit($event->description, 50) }}</li>
                                     </ul>
                                 </div>
                             </li>
-                            <li>
-                                <div class="event_info">
-                                    <div class="event_date">
-                                        <span>16</span> Aug'18
-                                    </div>
-                                    <h6><a href="#">If you are going to use</a></h6>
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i> Sunday  (8:00 am -9:00 am)</li>
-                                        <li><i class="fa fa-map-marker"></i> 56 Thatcher Avenue River Forest</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="event_info">
-                                    <div class="event_date">
-                                        <span>27</span> Aug'18
-                                    </div>
-                                    <h6><a href="#">Nor again is there anyone</a></h6>
-                                    <ul>
-                                        <li><i class="fa fa-clock-o"></i> Sunday  (8:00 am -9:00 am)</li>
-                                        <li><i class="fa fa-map-marker"></i> 56 Thatcher Avenue River Forest</li>
-                                    </ul>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
-                
+                @endif
                 <div class="col-md-6 col-lg-5 offset-lg-2">
                     <div class="heading">
                         <h3>Latest Sermons</h3>
@@ -307,6 +289,7 @@
     <!-- /Latest-Events-Sermons -->
 
     <!-- Latest-Blog -->
+    @if($news->count())
     <section class="latest_blog section-padding">
         <div class="container">
             <div class="blog">
@@ -314,38 +297,78 @@
                     <h2>Latest News</h2>
                 </div>
                 <div class="row">
+                    @foreach($news as $post)
                     <article class="col-md-6 col-12">
                         <div class="blog_wrap">
                             <div class="blog_img">
                                 <a href="#"><img src="assets/images/post_1.jpg" alt="image"></a>
                             </div>
                             <div class="blog_info">
-                                <div class="post_date"><a href="#">Aug 12, 2018</a></div>
-                                <h5><a href="#">On the other hand</a></h5>
-                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. 
-                                All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
-                                <a href="#" class="btn">Details <i class="fa fa-caret-right"></i> </a>
+                                <div class="post_date"><a href="#">{{ $post->start_publishing_at->format('M d, Y') }}</a></div>
+                                <h5><a href="#">{{ $post->title }}</a></h5>
+                                <p>{{ str_limit(strip_tags($post->body), 150) }}</p>
+                                <a href="#" class="btn">Read more... <i class="fa fa-caret-right"></i> </a>
                             </div>
                         </div>
                     </article>
-                
-                    <article class="col-md-6 col-12">
-                        <div class="blog_wrap">
-                            <div class="blog_img">
-                                <a href="#"><img src="assets/images/post_2.jpg" alt="image"></a>
-                            </div>
-                            <div class="blog_info">
-                                <div class="post_date"><a href="#">Aug 12, 2018</a></div>
-                                <h5><a href="#">On the other hand</a></h5>
-                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. 
-                                All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
-                                <a href="#" class="btn">Details <i class="fa fa-caret-right"></i> </a>
-                            </div>
-                        </div>
-                    </article>
+                    @endforeach
                 </div>    
             </div>
         </div>       
     </section>
+    @endif
     <!-- Latest-Blog -->
+
+    <!-- Services -->
+    <section class="sa-schedules-wrap pd-default">
+        <div class="container">
+            <div class="sa-schedules-section">
+                <div class="row">
+                    <div class="col-lg-5 col-12">
+                        <div class="sa-schedule">
+                            <div class="sa-schedules-heading">
+                                <h2>Service Times &amp; Schedules</h2>
+                                <p>Many desktop publishing packages and the web page editors now use lorem Ipsum as their default model text and a search fornt.</p>
+                            </div>
+
+                            <a class="btn dark-btn" href="#">Contact us</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <table class="table sa-schedules-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Schedule Day</th>
+                                    <th scope="col">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr>
+                                    <th scope="row">Saturday</th>
+                                    <td>2:00 PM - 5:45 PM</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sunday</th>
+                                    <td>4:00 PM - 9:45 PM</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Monday</th>
+                                    <td>9:00 PM - 5:45 PM</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuesday</th>
+                                    <td>2:00 PM - 5:45 PM</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Wednesday</th>
+                                    <td>2:00 PM - 5:45 PM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Services -->
 @endsection

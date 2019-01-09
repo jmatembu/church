@@ -624,6 +624,7 @@ label.error {
 	   -webkit-transition-duration:0.3s;
 	    -ms-transition-duration:0.3s;
   z-index: 22;
+  background-color: rgba(0,0,0,0.3);
 }
 #header.nav-stacked {
 	position:absolute;
@@ -1120,6 +1121,9 @@ ul.sub-menu ul.sub-menu {
 }
 #causes.causes-bg-1 {
 	background:url(../images/banner/8.jpg) no-repeat center / cover;	
+}
+#causes .owl-item {
+
 }
 .causes_info {
 	margin:0 auto;

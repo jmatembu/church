@@ -11,7 +11,7 @@
                         </select>
                     </div>
                 </div>
-                <p class="address">Uganda Catholic Martyrs Shrine, Namugongo</p>
+                <p class="address">@yield('parishName')</p>
             </div>
             <div class="col-md-7 col-12">
                 <div class="follow_us sa-follow-us">
