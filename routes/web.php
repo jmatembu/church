@@ -15,4 +15,5 @@ Route::view('/', 'welcome');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'ParishController@index')->name('parish.index');
+Route::get('/home', 'ParishController@index')->name('parish.index')->middleware('parish');
+Route::get('/users/account', 'AccountController@index')->name('users.account');
