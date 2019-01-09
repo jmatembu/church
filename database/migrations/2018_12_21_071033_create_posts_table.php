@@ -23,6 +23,8 @@ class CreatePostsTable extends Migration
             $table->string('postable_type');
             $table->timestamp('start_publishing_at')->useCurrent();
             $table->timestamp('stop_publishing_at')->nullable();
+            $table->jsonb('media')->nullable();
+            $table->unsignedInteger('author_id')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');

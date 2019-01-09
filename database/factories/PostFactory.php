@@ -14,3 +14,11 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'body' => $body,
     ];
 });
+
+$factory->state(App\Post::class, 'sermon', [
+        'media' => [
+            'audio' => 'http://www.lukeduncan.me/oslo.mp3',
+            'video' => '',
+            'pdf' => '',
+        ]
+]);
