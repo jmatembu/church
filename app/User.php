@@ -35,4 +35,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Staff::class);
     }
+
+    /**
+     * The parish of the user
+     */
+    public function getParishAttribute()
+    {
+        return Parish::find($this->current_parish);
+    }
 }

@@ -10,4 +10,9 @@ class Category extends Model
     {
         return $this->morphTo();
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

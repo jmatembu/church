@@ -13,21 +13,18 @@ class ParishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $currentParishId = request()->user()->current_parish;
-
-        $parish = Parish::find($currentParishId);
+        $parish = $request->user()->parish;
         
-        if ($parish) {
-            $latestEvents = $parish->events->sortByDesc('starts_at')->take(3);
-            $nextEvent = $latestEvents->first();
-            $news = $parish->posts()->latest()->take(2)->get();
-            return view('parish.index', compact('latestEvents', 'nextEvent', 'parish', 'news'));
-        }
-        // TODO: Use a middleware to redirect user to set their parish 
-        // Redirect the user to account settings to set their parish
-        # Code
+        $latestEvents = $parish->events->sortByDesc('starts_at')->take(3);
+        $nextEvent = $latestEvents->first();
+        $news = $parish->posts()->latest()->take(2)->get();
+        $latestSermons = $parish->categories()->whereName('Sermons')->first()->posts->sortByDesc('start_publishing_at')->take(5);
+        $latestSermon = $latestSermons->first();
+        $projects = $parish->projects()->latest()->take(2)->get();
+
+        return view('parish.index', compact('latestEvents', 'nextEvent', 'parish', 'news', 'latestSermons', 'latestSermon', 'projects'));
     }
 
     /**
