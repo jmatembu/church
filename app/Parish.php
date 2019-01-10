@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parish extends Model
 {
+    protected $casts = [
+        'contacts' => 'array'
+    ];
     /**
      * Get the owning diocese of the parish
      */

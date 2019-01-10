@@ -18,6 +18,7 @@ class CreateParishesTable extends Migration
             $table->string('name');
             $table->unsignedInteger('diocese_id');
             $table->text('description')->nullable();
+            $table->jsonb('contacts')->nullable();
             $table->timestamps();
 
             $table->foreign('diocese_id')->references('id')->on('dioceses')->onDelete('cascade');

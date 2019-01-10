@@ -40,10 +40,10 @@
         <div class="row">
             <div class="col-md-4 footer_widget">
                 <div class="widget_inner">
-                    <h5>Contact Us</h5>
-                    <p>9000 Regency Parkway, Suite 400 Cary, NC 27518</p>
-                    <p>E:  <a href="mailto:supportsaasapp@gmail.com">supportsaasapp@gmail.com</a></p>
-                    <p>P:  +000 1456 6978 111</p>
+                    <h5>Contact Info</h5>
+                    <p>{{ $contacts['address'] }}</p>
+                <p>E:  <a href="mailto:{{ $contacts['email'] }}">{{ $contacts['email'] }}</a></p>
+                    <p>P:  {{ $contacts['phone'][0] }}</p>
                 </div>
             </div>
             <div class="col-md-4 footer_widget">
@@ -87,7 +87,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <p>&copy; 2018 Sacredia All Rights Reserved</p>
+                    <p>&copy; {{ date('Y') }} @yield('parishName') All Rights Reserved</p>
                 </div>
                 <div class="col-md-4">
                     <div id="back-top" class="back-top"> 
