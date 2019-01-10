@@ -2,7 +2,7 @@
     <div class="container">
       <div class="navbar-header">
         <div class="logo"> 
-            <a href="index.html"><img src="assets/images/logo.png" alt="image"/></a> 
+            <a href="{{ url('/') }}"><img src="assets/images/logo.png" alt="image"/></a> 
         </div> <!-- /Logo -->
         <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
             <span class="icon-bar"></span> 

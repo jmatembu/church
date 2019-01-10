@@ -18,8 +18,6 @@
                     <ul>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                         <li><a href="#"><i class="fa fa-search"></i></a></li>
                         
                         @auth

@@ -718,6 +718,10 @@ header.sticky .header_top {
 	margin: 7px auto;
 	font-size: 14px;
 }
+.header_top p {
+	color: #ffffff;
+	font-size: 16px;
+}
 .header_top .select_language {
 	border-right: rgba(255, 255, 255, 0.12) solid 1px;
 	padding: 14px 25px 10px 0;
@@ -868,7 +872,7 @@ ul.sub-menu ul.sub-menu {
 	font-weight:700;
 }
 .intro_text p {
-	font-size:18px;
+	font-size:20px;
 	margin:0 auto 40px;
 	max-width:70%;
 	line-height:26px;
@@ -939,6 +943,8 @@ ul.sub-menu ul.sub-menu {
 .latest_event_sermons {
 	position: relative;
 	z-index: 1;
+	padding-bottom: 100px;
+    margin-top: -150px;
 }
 .next_sermons .sermons_inside {
 	text-align: left;
