@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="post_img">
-                    <img src="{{ asset('assets/images/events_detail.jpg') }}" alt="image">
+                    <img src="https://lorempixel.com/900/480/?21647" alt="image">
                     <div class="event_timer">
                         <div class="date">
                             <span>{{ $event->starts_at->format('d') }}</span>

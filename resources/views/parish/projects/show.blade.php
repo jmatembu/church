@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="post_img">
-                    <img src="{{ asset('assets/images/post_detail.jpg') }}" alt="image">
+                    <img src="https://lorempixel.com/900/480/?21647" alt="image">
                 </div>
                 <h2>{{ $project->title }}</h2>
                 <div class="post_meta">

@@ -14,10 +14,10 @@
                     <span>{{ $event->starts_at->format('d') }}</span> {{ $event->starts_at->format("M' Y") }}
                 </div>
                 <div class="event_img">
-                    <a href="#"><img src="{{ asset('assets/images/projects/2.jpg') }}" alt="image"></a>
+                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ $event->image_url }}" alt="image"></a>
                 </div>
                 <div class="event_info">
-                    <h4><a href="#">{{ title_case($event->title) }}</a></h4>
+                    <h4><a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">{{ title_case($event->title) }}</a></h4>
                     <p>{{ $event->description }}</p>
                     <ul>
                         <li><i class="fa fa-clock-o"></i> Date:  {{ $event->starts_at->toDayDateTimeString() }}</li>
