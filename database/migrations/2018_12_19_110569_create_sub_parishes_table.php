@@ -16,6 +16,7 @@ class CreateSubParishesTable extends Migration
         Schema::create('sub_parishes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->unsignedInteger('parish_id');
             $table->timestamps();

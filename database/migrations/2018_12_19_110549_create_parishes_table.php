@@ -16,6 +16,7 @@ class CreateParishesTable extends Migration
         Schema::create('parishes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->unsignedInteger('diocese_id');
             $table->text('description')->nullable();
             $table->jsonb('contacts')->nullable();
