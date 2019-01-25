@@ -15,7 +15,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
     ];
 });
 
-$factory->state(App\Post::class, 'sermon', [
+$factory->state(App\Post::class, 'homily', [
         'media' => [
             'audio' => 'http://www.lukeduncan.me/oslo.mp3',
             'video' => '',

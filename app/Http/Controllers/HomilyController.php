@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
-use App\Parish;
+use App\Homily;
 use Illuminate\Http\Request;
 
-class ParishController extends Controller
+class HomilyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $parish = $request->user()->parish;
-        
-        $latestEvents = $parish->events->sortByDesc('starts_at')->take(3);
-        $nextEvent = $latestEvents->first();
-        $news = $parish->posts()->latest()->take(2)->get();
-        $latestHomilies = $parish->categories()->whereName('Homilies')->first()->posts->sortByDesc('start_publishing_at')->take(5);
-        $latestHomily = $latestHomilies->first();
-        $projects = $parish->projects()->latest()->take(2)->get();
-
-        return view('parish.index', compact('latestEvents', 'nextEvent', 'parish', 'news', 'latestHomilies', 'latestHomily', 'projects'));
+        //
     }
 
     /**
@@ -51,10 +41,10 @@ class ParishController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Parish  $parish
+     * @param  \App\Homily  $homily
      * @return \Illuminate\Http\Response
      */
-    public function show(Parish $parish)
+    public function show(Homily $homily)
     {
         //
     }
@@ -62,10 +52,10 @@ class ParishController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Parish  $parish
+     * @param  \App\Homily  $homily
      * @return \Illuminate\Http\Response
      */
-    public function edit(Parish $parish)
+    public function edit(Homily $homily)
     {
         //
     }
@@ -74,10 +64,10 @@ class ParishController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Parish  $parish
+     * @param  \App\Homily  $homily
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parish $parish)
+    public function update(Request $request, Homily $homily)
     {
         //
     }
@@ -85,10 +75,10 @@ class ParishController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Parish  $parish
+     * @param  \App\Homily  $homily
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parish $parish)
+    public function destroy(Homily $homily)
     {
         //
     }

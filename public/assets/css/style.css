@@ -893,19 +893,19 @@ ul.sub-menu ul.sub-menu {
 
 
 /*=========================
-	Latest-Event-Sermons
+	Latest-Event-Homilies
 ==============================*/
-.latest_event_sermons .box_wrap {
+.latest_event_homilies .box_wrap {
 	padding: 45px 32px;
 	text-align: left;
 	margin: 0 auto;
 }
-.sa_latest_event_sermons .event_date {
+.sa_latest_event_homilies .event_date {
     border: 1px solid #ebebeb;
     padding: 20px 0 12px !important;
     border-radius: 4px;
 }
-.latest_event_sermons .subtitle {
+.latest_event_homilies .subtitle {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 600;
 	color: #838383;
@@ -916,21 +916,21 @@ ul.sub-menu ul.sub-menu {
 	font-size: 14px;
 	font-weight: 600;
 }
-.latest_event_sermons .event_info {
+.latest_event_homilies .event_info {
 	float: none;
 	width: 100%;
 	position: relative;
 	padding: 10px 0 15px 110px;
 }
- .latest_event_sermons h4 a, 
- .latest_event_sermons h6 a {
+ .latest_event_homilies h4 a, 
+ .latest_event_homilies h6 a {
 	color:#022147;
 }	
-.latest_event_sermons h4 a:hover, 
-.latest_event_sermons h6 a:hover {
+.latest_event_homilies h4 a:hover, 
+.latest_event_homilies h6 a:hover {
 	color:#deb668;	
 }
-.latest_event_sermons .event_date {
+.latest_event_homilies .event_date {
 	background: no-repeat;
 	position: absolute;
 	top: 10px;
@@ -940,20 +940,20 @@ ul.sub-menu ul.sub-menu {
 	color: #022147;
 	line-height: 22px;
 }
-.latest_event_sermons {
+.latest_event_homilies {
 	position: relative;
 	z-index: 1;
 	padding-bottom: 100px;
     margin-top: -150px;
 }
-.next_sermons .sermons_inside {
+.next_homilies .homilies_inside {
 	text-align: left;
 	padding: 20px 0;
 	float: none;
 	width: auto;
 	clear: both;
 }
-.next_sermons .sermons_inside ul li {
+.next_homilies .homilies_inside ul li {
 	margin: 0 15px 0 0;
 }
 .about_intro {
@@ -988,15 +988,15 @@ ul.sub-menu ul.sub-menu {
 .event_list h6 {
 	margin:0 auto 12px;
 }
-.latest_event_sermons .event_list .event_date {
+.latest_event_homilies .event_list .event_date {
 	top: 24px;
 }
-.latest_event_sermons .event_list .event_info {
+.latest_event_homilies .event_list .event_info {
 	padding: 25px 25px 25px 136px ;
 	border: #e8e7e7 solid 1px;
 	border-radius: 6px;
 }
-.latest_event_sermons .event_list .event_date {
+.latest_event_homilies .event_list .event_date {
 	width: 106px;
 	padding: 20px 0 10px;
 	border-right: #e8e7e7 solid 1px;
@@ -1025,16 +1025,16 @@ ul.sub-menu ul.sub-menu {
 }
 
 /*--------------
-	Sermons-List
+	Homilies-List
 ---------------------*/
-.panel-body .sermons_inside {
+.panel-body .homilies_inside {
 	text-align: left;
 	padding: 15px 0 50px;
 	padding-right: 0;
 	float: none;
 	width: 100%;
 }
-.panel-body .sermons_inside li {
+.panel-body .homilies_inside li {
 	margin:0 15px 0 0;
 }
 
@@ -1526,9 +1526,9 @@ ul.sub-menu ul.sub-menu {
 }
 
 /*===============
-	Sermons
+	Homilies
 ======================*/
-.sermons_wrap {
+.homilies_wrap {
 	padding: 30px;
 	border: #f2f2f2 solid 1px;
 	display: table;
@@ -1540,68 +1540,68 @@ ul.sub-menu ul.sub-menu {
 	  -o-transition-duration:0.3s;
 	  -webkit-transition-duration:0.3s;
 }
-.sermons_wrap:hover {
+.homilies_wrap:hover {
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 30px;
 }
-.sermons_img {
+.homilies_img {
 	float: left;
 	width: 21%;
 }
-.sermons_info_wrap {
+.homilies_info_wrap {
 	float: right;
 	width: 76%;
 	padding: 44px 0;
 	overflow:hidden;
 }
-.sermons_info, .sermons_inside {
+.homilies_info, .homilies_inside {
 	float:left;
 	width:50%;
 }
-.sermons_inside {
+.homilies_inside {
 	text-align: right;
 	padding-top: 18px;
 	padding-right: 15px;
 }
-ul.sermons_meta {
+ul.homilies_meta {
 	padding: 0;
 	list-style: none;
 	margin: 0 auto;
 	overflow: hidden;
 }
-.sermons_info h5 {
+.homilies_info h5 {
 	margin:0 auto 17px;	
 }
-.sermons_info h5 a {
+.homilies_info h5 a {
 	color:#022147;	
 }
-.sermons_meta li {
+.homilies_meta li {
 	float: left;
 	margin: 0 28px 0 0;
 }
-.sermons_meta li i {
+.homilies_meta li i {
 	color:#deb668;
 	margin:0 6px 0 0;	
 }
-.sermons_meta li a {
+.homilies_meta li a {
 	color: #555b62;
 	text-decoration: underline;
 }
-.sermons_meta li a:hover {
+.homilies_meta li a:hover {
 	color:#deb668;	
 }
-.sermons_inside ul {
+.homilies_inside ul {
 	padding:0;
 	margin:0 auto;	
 	list-style:none;
 }
-.sermons_inside ul li {
+.homilies_inside ul li {
 	display:inline-block;
 	vertical-align:middle;	
 	color:#aaadb0;
 	font-size:19px;
 	margin:0px 0 0 20px;
 }
-.sermons_inside ul li a {
+.homilies_inside ul li a {
 	display:block;
 	color:#aaadb0;
 	height:52px;
@@ -1622,14 +1622,14 @@ ul.sermons_meta {
 	font-size:22px;
 	margin-left:40px;	
 }
-.sermons_info ul li a:hover, 
-.sermons_info h5 a:hover, 
-.sermons_inside ul li a:hover, 
+.homilies_info ul li a:hover, 
+.homilies_info h5 a:hover, 
+.homilies_inside ul li a:hover, 
 .layout-switcher a.active, 
 .layout-switcher a:hover {
 	color:#deb668;
 }
-.sermons_inside ul li a:hover {
+.homilies_inside ul li a:hover {
 	border-color:#deb668;
 }
 .select_arrow {
@@ -1687,13 +1687,13 @@ ul.sermons_meta {
 /*===================
 	Sermon-Detail
 ==========================*/
-.sermons_list h6 a {
+.homilies_list h6 a {
 	color: #022147;
 }
-.sermons_list h6 a:hover {
+.homilies_list h6 a:hover {
 	color: #deb668;
 }
-.sidebar_title, .sermons_list {
+.sidebar_title, .homilies_list {
 	border-bottom: #f2f2f2 solid 1px;
 	padding: 25px;
 }
@@ -1703,7 +1703,7 @@ ul.sermons_meta {
 	color:#555b62;
 	font-weight:500;
 }
-.post_detail .sermons_inside {
+.post_detail .homilies_inside {
 	position: absolute;
 	text-align: center;
 	bottom: 0;
@@ -1712,19 +1712,19 @@ ul.sermons_meta {
 	width: 100%;
 	background: rgba(2, 33, 71, 0.8);
 }
-.post_detail .sermons_inside ul {
+.post_detail .homilies_inside ul {
 	margin:0 auto;
 }
-.post_detail .sermons_inside ul li {
+.post_detail .homilies_inside ul li {
 	float: left;
 	width: 25%;
 	margin: 0 auto;
 	border-right: rgba(255, 255, 255, 0.2) solid 1px;
 }
-.post_detail .sermons_inside ul li:last-child {
+.post_detail .homilies_inside ul li:last-child {
 	border:0;
 }
-.post_detail .sermons_inside ul li a {
+.post_detail .homilies_inside ul li a {
 	color: #fff;
 	display: block;
 	padding: 25px 20px;
@@ -1733,7 +1733,7 @@ ul.sermons_meta {
 	width: auto;
 	line-height: inherit;
 }
-.post_detail .sermons_inside ul li a:hover {
+.post_detail .homilies_inside ul li a:hover {
 	color:#deb668;	
 }
 
@@ -2510,13 +2510,13 @@ ul.sermons_meta {
 	Responsive-CSS
 =============================*/
 @media (min-width:991px) and (max-width:1200px) {
-.latest_event_sermons .box_wrap {
+.latest_event_homilies .box_wrap {
 	padding: 40px 20px;
 }	
 .player-controls.scrubber {
 	width: 65%;
 }
-.latest_event_sermons .event_list .event_info {
+.latest_event_homilies .event_list .event_info {
 	padding: 15px 15px 15px 126px;
 }
 .email_input {
@@ -2541,7 +2541,7 @@ ul.sermons_meta {
 .event_info h4 {
 	margin: 0px auto 14px;
 }
-.sermons_info_wrap {
+.homilies_info_wrap {
 	padding: 12px 0;
 }
 
@@ -2566,10 +2566,10 @@ ul.sermons_meta {
 .intro_text h1 {
 	font-size: 55px;
 }
-.latest_event_sermons .box_wrap {
+.latest_event_homilies .box_wrap {
 	padding: 20px;
 }
-.next_sermons .sermons_inside {
+.next_homilies .homilies_inside {
 	padding: 17px 0;
 }
 .audio-player #play-btn {
@@ -2592,10 +2592,10 @@ ul.sermons_meta {
 .about_us {
 	max-width: 530px;
 }
-.latest_event_sermons .event_list .event_date {
+.latest_event_homilies .event_list .event_date {
 	width: 82px;
 }
-.latest_event_sermons .event_list .event_info {
+.latest_event_homilies .event_list .event_info {
 	padding: 25px 25px 25px 100px;
 }
 .blog_info {
@@ -2734,34 +2734,34 @@ ul.sermons_meta {
 	margin: 0px auto 14px;
 	font-size: 22px;
 }
-.sermons_wrap {
+.homilies_wrap {
 	padding: 20px;
 }
-.sermons_img {
+.homilies_img {
 	float: left;
 	width: 36%;
 }
-.sermons_info_wrap {
+.homilies_info_wrap {
 	float: right;
 	width: 60%;
 	padding: 12px 0;
 }
-.sermons_info, .sermons_inside {
+.homilies_info, .homilies_inside {
 	float: none;
 	width: 100%;
 }
-.sermons_inside {
+.homilies_inside {
 	text-align: left;
 	padding: 18px 0 0 0;
 }
-.sermons_info h5 {
+.homilies_info h5 {
 	margin: 0 auto 10px;
 }
-.sermons_inside ul li {
+.homilies_inside ul li {
 	font-size: 17px;
 	margin: 0 10px 0 0;
 }
-.sermons_inside ul li a {
+.homilies_inside ul li a {
 	height: 50px;
 	width: 50px;
 	line-height: 43px;
@@ -2769,7 +2769,7 @@ ul.sermons_meta {
 h6 {
 	font-size:17px;
 }
-.sidebar_title, .sermons_list {
+.sidebar_title, .homilies_list {
 	padding: 20px;
 }
 .all_comments {
@@ -2872,7 +2872,7 @@ ul.sub-menu {
 	line-height: 25px;
 	padding: 10px 22px;
 }
-.latest_event_sermons .box_wrap {
+.latest_event_homilies .box_wrap {
 	padding: 25px 20px;
 	margin: 0 auto 30px;
 }
@@ -2918,7 +2918,7 @@ h3 {
 .heading {
 	margin: 0 auto 20px;
 }
-.panel-body .sermons_inside li {
+.panel-body .homilies_inside li {
 	margin: 0 5px 0 0;
 }
 .panel-title a {
@@ -3117,34 +3117,34 @@ blockquote p {
 }
 
 
-.sermons_wrap {
+.homilies_wrap {
 	padding: 20px;
 }
-.sermons_img {
+.homilies_img {
 	float: left;
 	width: 36%;
 }
-.sermons_info_wrap {
+.homilies_info_wrap {
 	float: right;
 	width: 60%;
 	padding:0;
 }
-.sermons_info, .sermons_inside {
+.homilies_info, .homilies_inside {
 	float: none;
 	width: 100%;
 }
-.sermons_inside {
+.homilies_inside {
 	text-align: left;
 	padding: 18px 0 0 0;
 }
-.sermons_info h5 {
+.homilies_info h5 {
 	margin: 0 auto 10px;
 }
-.sermons_inside ul li {
+.homilies_inside ul li {
 	font-size: 17px;
 	margin: 0 10px 0 0;
 }
-.sermons_inside ul li a {
+.homilies_inside ul li a {
 	height: 40px;
 	width: 40px;
 	line-height: 33px;
@@ -3187,12 +3187,12 @@ blockquote p {
 .countdown-period span {
 	font-size:10px;
 }
-.latest_event_sermons .event_info {
+.latest_event_homilies .event_info {
 	float: none;
 	width: 100%;
 	padding: 0;
 }
-.latest_event_sermons .event_date {
+.latest_event_homilies .event_date {
 	position: relative;
 	top: 0;
 	width: auto;
@@ -3205,27 +3205,27 @@ blockquote p {
 	font-size: 16px;
 	border-radius: 3px;
 }
-.latest_event_sermons .event_date span {
+.latest_event_homilies .event_date span {
 	display: inline-block;
 	font-size: 16px;
 	margin: 0 auto;
 }
-.latest_event_sermons .event_list .event_info {
+.latest_event_homilies .event_list .event_info {
 	padding: 25px;
 }
-.latest_event_sermons .event_list .event_date {
+.latest_event_homilies .event_list .event_date {
 	width: auto;
 	top: 0;
 	padding: 7px 15px;
 }
-.sermons_img, .sermons_info_wrap {
+.homilies_img, .homilies_info_wrap {
 	float: none;
 	width: 100%;
 }
-.sermons_img {
+.homilies_img {
 	margin:0 auto 20px;
 }
-.post_detail .sermons_inside ul li a {
+.post_detail .homilies_inside ul li a {
 	padding: 8px 20px;
 }
 
@@ -3984,7 +3984,7 @@ blockquote p {
 
 /*
 |---------------------------------------------
-| 2.sa-upcoming-sermons video
+| 2.sa-upcoming-homilies video
 |---------------------------------------------
 */
 .sa-video-block .video-blog {
@@ -4047,7 +4047,7 @@ blockquote p {
 .sa-video-block .popup-youtube i {
 	margin-left: 6px;
 }
-/***** sa-upcoming-sermons-responsive *****/
+/***** sa-upcoming-homilies-responsive *****/
 @media all and (max-width: 374px) {
 	.sa-video-block .popup-youtube {
 		height: 50px;
@@ -4661,7 +4661,7 @@ blockquote p {
 	.audio-player .player-controls progress {
 	    width: 62%;
 	}
-	.next_sermons .sermons_inside {
+	.next_homilies .homilies_inside {
 	    padding: 15px 0;
 	}
 }
@@ -4702,7 +4702,7 @@ blockquote p {
 .event_info.sa-event-info-2 .event-location ul li {
     margin: 4px auto;
 }
-/****** Latest Sermons *****/
+/****** Latest Homilies *****/
 .sa-collapse .panel-body .thumb {
 	margin-bottom: 23px;
 }

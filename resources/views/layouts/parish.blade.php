@@ -122,8 +122,8 @@
                             <ul class="sub-menu">
                                 <li><a href="event-shudule.html">Event Shudule</a></li>
                                 <li><a href="history-slide.html">history slide</a></li>
-                                <li><a href="sermon.html">Sermon</a></li>
-                                <li><a href="sermon-detail.html">Sermon detail</a></li>
+                                <li><a href="homily.html">Sermon</a></li>
+                                <li><a href="homily-detail.html">Sermon detail</a></li>
                                 <li><a href="prayer-wall.html">Prayer wall</a></li>
                                 <li><a href="donation.html">Donation</a></li>
                                 <li><a href="donation-cause-page.html">donation cause</a></li>
@@ -166,8 +166,8 @@
     </section>
     <!-- /End Banner --> 
 
-    <!-- Next-Events-Sermons -->
-    <section class="latest_event_sermons mg-top--50">
+    <!-- Next-Events-Homilies -->
+    <section class="latest_event_homilies mg-top--50">
     	<div class="container">
         	<div class="row">
             	<div class="col-md-6">
@@ -187,14 +187,14 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                	<div class="box_wrap next_sermons">
-                    	<p class="subtitle">Latest Sermons</p>
+                	<div class="box_wrap next_homilies">
+                    	<p class="subtitle">Latest Homilies</p>
                     	<h4><a href="#">We denounce with righteous</a></h4>
-                        <ul class="sermons_meta">
+                        <ul class="homilies_meta">
                             <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                             <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                         </ul>
-                        <div class="sermons_inside">
+                        <div class="homilies_inside">
                             <ul>
                                 <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                                 <li><a href="#"><i class="fa fa-file-pdf-o"></i></a></li>
@@ -226,7 +226,7 @@
             </div>
         </div>
     </section>
-    <!-- /Next-Events-Sermons -->
+    <!-- /Next-Events-Homilies -->
 
     <!-- About -->
     <section class="about_intro section-padding">
@@ -284,8 +284,8 @@
     </section>
      <!-- /Causes -->
 
-    <!-- Latest-Events-Sermons -->
-    <section class="section-padding latest_event_sermons m-0">
+    <!-- Latest-Events-Homilies -->
+    <section class="section-padding latest_event_homilies m-0">
     	<div class="container">
         	<div class="row">
     			<div class="col-md-6 col-lg-5">
@@ -337,7 +337,7 @@
                 
                 <div class="col-md-6 col-lg-5 offset-lg-2">
                 	<div class="heading">
-        	        	<h3>Latest Sermons</h3>
+        	        	<h3>Latest Homilies</h3>
     	                <a href="#" class="btn btn-sm pull-right">See All</a>
                     </div>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -350,11 +350,11 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingOne">
                               <div class="panel-body">
-                                <ul class="sermons_meta">
+                                <ul class="homilies_meta">
                                     <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                                     <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                                 </ul>
-                                <div class="sermons_inside">
+                                <div class="homilies_inside">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-music"></i></a></li>
                                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -375,11 +375,11 @@
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                               <div class="panel-body">
-                                <ul class="sermons_meta">
+                                <ul class="homilies_meta">
                                     <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                                     <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                                 </ul>
-                                <div class="sermons_inside">
+                                <div class="homilies_inside">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-music"></i></a></li>
                                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -399,11 +399,11 @@
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                               <div class="panel-body">
-                                <ul class="sermons_meta">
+                                <ul class="homilies_meta">
                                     <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                                     <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                                 </ul>
-                                <div class="sermons_inside">
+                                <div class="homilies_inside">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-music"></i></a></li>
                                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -423,11 +423,11 @@
                             </div>
                             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                               <div class="panel-body">
-                                <ul class="sermons_meta">
+                                <ul class="homilies_meta">
                                     <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                                     <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                                 </ul>
-                                <div class="sermons_inside">
+                                <div class="homilies_inside">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-music"></i></a></li>
                                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -444,7 +444,7 @@
             </div>
         </div>
     </section>
-    <!-- /Latest-Events-Sermons -->
+    <!-- /Latest-Events-Homilies -->
 
     <!-- Testimonials -->
     <section class="our_testimonials">

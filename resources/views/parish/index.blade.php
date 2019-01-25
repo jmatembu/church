@@ -27,8 +27,8 @@
     </section>
     <!-- /End Banner --> 
 
-    <!-- Next-Events-Sermons -->
-    <section class="latest_event_sermons">
+    <!-- Next-Events-Homilies -->
+    <section class="latest_event_homilies">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -48,14 +48,14 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="box_wrap next_sermons">
+                    <div class="box_wrap next_homilies">
                         <p class="subtitle">Latest Sermon</p>
-                        <h4><a href="#">{{ title_case($latestSermon->title) }}</a></h4>
-                        <ul class="sermons_meta">
+                        <h4><a href="#">{{ title_case($latestHomily->title) }}</a></h4>
+                        <ul class="homilies_meta">
                             <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
-                            <li><i class="fa fa-calendar-check-o"></i> {{ $latestSermon->start_publishing_at->diffForHumans() }}</li>
+                            <li><i class="fa fa-calendar-check-o"></i> {{ $latestHomily->start_publishing_at->diffForHumans() }}</li>
                         </ul>
-                        <div class="sermons_inside">
+                        <div class="homilies_inside">
                             <ul>
                                 <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                                 <li><a href="#"><i class="fa fa-file-pdf-o"></i></a></li>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="audio-wrapper" id="player-container">
                               <audio id="player" ontimeupdate="initProgressBar()">
-                                  <source src="{{ $latestSermon->media['audio'] }}" type="audio/mp3">
+                                  <source src="{{ $latestHomily->media['audio'] }}" type="audio/mp3">
                               </audio>
                             </div>
                             <div class="player-controls scrubber">
@@ -87,7 +87,7 @@
             </div>
         </div>
     </section>
-    <!-- /Next-Events-Sermons -->
+    <!-- /Next-Events-Homilies -->
 
     <!-- About -->
     <section class="sa-about-us-section">
@@ -150,8 +150,8 @@
     </section> --}}
      <!-- /Causes -->
 
-    <!-- Latest-Events-Sermons -->
-    <section class="section-padding latest_event_sermons m-0">
+    <!-- Latest-Events-Homilies -->
+    <section class="section-padding latest_event_homilies m-0">
         <div class="container">
             <div class="row">
                 @if($latestEvents->count())
@@ -180,28 +180,28 @@
                     </div>
                 </div>
                 @endif
-                @if($latestSermons->count())
+                @if($latestHomilies->count())
                 <div class="col-md-6 col-lg-5 offset-lg-2">
                     <div class="heading">
-                        <h3>Latest Sermons</h3>
+                        <h3>Latest Homilies</h3>
                         <a href="#" class="btn btn-sm pull-right">See All</a>
                     </div>
-                    <div class="panel-group" id="sermonAccordion" role="tablist" aria-multiselectable="true">
-                        @foreach($latestSermons as $sermon)
+                    <div class="panel-group" id="homilyAccordion" role="tablist" aria-multiselectable="true">
+                        @foreach($latestHomilies as $homily)
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="sermonHeading{{ $sermon->id }}">
+                            <div class="panel-heading" role="tab" id="homilyHeading{{ $homily->id }}">
                                 <h6 class="panel-title">
-                                <a class="{{ ! $loop->first ? 'collapsed' : '' }}" role="button" data-toggle="collapse" data-parent="#sermonAccordion" href="#sermonCollapse{{ $sermon->id }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="sermonCollapse{{ $sermon->id }}">
-                                    {{ title_case($sermon->title) }}</a>
+                                <a class="{{ ! $loop->first ? 'collapsed' : '' }}" role="button" data-toggle="collapse" data-parent="#homilyAccordion" href="#homilyCollapse{{ $homily->id }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="homilyCollapse{{ $homily->id }}">
+                                    {{ title_case($homily->title) }}</a>
                                 </h6>
                             </div>
-                            <div id="sermonCollapse{{ $sermon->id }}" class="panel-collapse collapse {{ $loop->first ? 'in show' : '' }}" role="tabpanel" aria-labelledby="sermonHeading{{ $sermon->id }}">
+                            <div id="homilyCollapse{{ $homily->id }}" class="panel-collapse collapse {{ $loop->first ? 'in show' : '' }}" role="tabpanel" aria-labelledby="homilyHeading{{ $homily->id }}">
                                 <div class="panel-body">
-                                <ul class="sermons_meta">
+                                <ul class="homilies_meta">
                                     <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
                                     <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
                                 </ul>
-                                <div class="sermons_inside">
+                                <div class="homilies_inside">
                                     <ul>
                                         <li><a href="#"><i class="fa fa-music"></i></a></li>
                                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
@@ -219,7 +219,7 @@
             </div>
         </div>
     </section>
-    <!-- /Latest-Events-Sermons -->
+    <!-- /Latest-Events-Homilies -->
 
     <!-- Projects -->
     @if($projects->count())
