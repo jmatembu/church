@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-4 top_widget">
                     <div class="footer_logo">
-                        <a href="#"><img src="assets/images/logo.png" alt="image"></a>
+                        <a href="#"><img src="{{ asset('assets/images/logo.png') }}" alt="image"></a>
                     </div>
                 </div>
                 <div class="col-md-4 top_widget">
@@ -50,14 +50,14 @@
                 <div class="widget_inner">
                     <div class="instagram_img">
                          <ul>
-                            <li><a href="#"><img src="assets/images/feed/charity/01.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/02.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/03.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/04.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/05.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/06.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/07.jpg" alt="image"></a></li>
-                            <li><a href="#"><img src="assets/images/feed/charity/08.jpg" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/01.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/02.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/03.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/04.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/05.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/06.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/07.jpg') }}" alt="image"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/08.jpg') }}" alt="image"></a></li>
                         </ul>
                         <a href="#" class="insta_url"><i class="fa fa-instagram"></i></a>
                     </div>

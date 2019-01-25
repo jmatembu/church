@@ -21,6 +21,20 @@ class ComposerServiceProvider extends ServiceProvider
                 $view->withContacts($contacts);
             }
         );
+
+        View::composer(
+            [
+                'parish.layout.partials.navigation',
+                'parish.projects.index',
+                'parish.projects.show',
+                'parish.events.index',
+                'parish.events.show'
+            ],
+            function ($view) {
+                $parish = request()->user()->parish;
+                $view->withParish($parish);
+            }
+        );
     }
 
     /**

@@ -135,10 +135,14 @@
 		Countdown
 	-------------------------------------------------------------------*/
 	// 2019[year] - 8[month] - 20[day]
+    let countdownElement = $('#countdown');
 
-	$('#countdown').countdown('2019/8/20', function(event) { 
-		$(this).html(event.strftime('<span class="countdown-period">%-D <span>Day%!D</span></span> <span class="countdown-period">%H <span>Hours</span></span> <span class="countdown-period">%M <span>Minutes</span></span> <span class="countdown-period">%S <span>Seconds</span></span>'));
-	});
+    if (countdownElement.length) {
+        countdownElement.countdown(countdownElement.data('start'), function(event) { 
+            $(this).html(event.strftime('<span class="countdown-period">%-D <span>Day%!D</span></span> <span class="countdown-period">%H <span>Hours</span></span> <span class="countdown-period">%M <span>Minutes</span></span> <span class="countdown-period">%S <span>Seconds</span></span>'));
+        });
+    }
+	
 
 	/*------------------------------------------------------------------
 		Countdown

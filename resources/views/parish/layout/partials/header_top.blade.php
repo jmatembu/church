@@ -4,7 +4,7 @@
             <div class="col-md-5 col-12">
                 <div class="select_language">
                     <div class="select-language-area">
-                        <img src="assets/images/icon/flag.png" alt="img">
+                        <img src="{{ asset('assets/images/icon/flag.png') }}" alt="img">
                         <select>
                             <option>English</option>
                             <option>Luganda</option>
@@ -21,7 +21,7 @@
                         <li><a href="#"><i class="fa fa-search"></i></a></li>
                         
                         @auth
-                        <li><a class="user" href="{{ route('parish.index') }}"><img src="assets/images/icon/user.png" alt="user"></a></li>
+                        <li><a class="user" href="{{ route('parish.index') }}"><img src="{{ asset('assets/images/icon/user.png') }}" alt="user"></a></li>
                         @endauth
 
                         @guest

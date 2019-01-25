@@ -2010,12 +2010,17 @@ ul.homilies_meta {
 }
 @media all and (min-width: 424px) {
 	.sa-sidebar.sa-responsive {
+	    /* margin-top: 40px; */
+	}
+}
+@media all and (max-width: 500px) {
+	.sa-sidebar.sa-responsive {
 	    margin-top: 40px;
 	}
 }
 @media all and (min-width: 320px) {
 	.sa-sidebar.sa-responsive {
-	    margin-top: 40px;
+	    /* margin-top: 40px; */
 	}
 }
 .recent_post li {
