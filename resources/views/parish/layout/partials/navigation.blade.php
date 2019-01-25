@@ -13,12 +13,12 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('parish.index') }}">Home</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="{{ route('parish.news.index', $parish) }}">News</a></li>
                 <li><a href="{{ route('parish.events.index', $parish) }}">Events</a></li>
                 <li><a href="{{ route('parish.projects.index', $parish) }}">Projects</a></li>
                 <li><a href="#">Prayer Requests</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('parish.contact.create', $parish) }}">Contact</a></li>
             </ul>
         </div>
     </div>

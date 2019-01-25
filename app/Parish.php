@@ -83,6 +83,41 @@ class Parish extends Model
     }
 
     /**
+     * Get all parish news
+     *
+     * @return \Illuminate\Support\Collection
+     */
+
+    public function news()
+    {
+        return $this->posts->filter(function ($post) {
+            return $post->category->name != 'Homilies' && now()->lt($post->start_publishing_at);
+        })->sortByDesc('start_publishing_at');
+    }
+
+    public function getNewsAttribute()
+    {
+        return $this->news();
+    }
+
+    /**
+     * Get all parish homilies
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function homilies()
+    {
+        return $this->posts->filter(function ($post) {
+            return $post->category->name == 'Homilies';
+        });
+    }
+
+    public function getHomiliesAttribute()
+    {
+        return $this->homilies();
+    }
+
+    /**
      * Get all of the parish categories
      */
     public function categories()
