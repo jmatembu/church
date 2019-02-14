@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Parish::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'description' => $faker->sentence,
+        'description' => $faker->realText(200),
         'contacts' => [
             'address' => $faker->address,
             'email' => $faker->safeEmail,

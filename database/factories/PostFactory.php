@@ -8,9 +8,9 @@ $factory->define(App\Post::class, function (Faker $faker) {
 	for ($i=0; $i < 5; $i++) {
 		$body = $body . '<p>' . $faker->realText(500, 4) . '</p>';
     }
-    
+
     return [
-        'title' => $faker->sentence(),
+        'title' => $faker->realText(100),
         'body' => $body,
         'media' => [
             'image' => $faker->imageUrl()

@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Diocese::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'description' => $faker->sentence
+        'description' => $faker->realText(200)
     ];
 });
 
@@ -24,7 +24,7 @@ $factory->afterCreating(App\Diocese::class, function ($diocese, $faker) {
 
         $categories->each(function ($category) use ($parish) {
             // Create category posts
-            $parish->posts()->saveMany(factory(App\Post::class, 20)->make(['category_id' => $category->id]));
+            $parish->posts()->saveMany(factory(App\Post::class, 10)->make(['category_id' => $category->id]));
         });
 
         $homilyCategory = $parish->categories()->save(factory(App\Category::class)->make(['name' => 'Homilies']));
