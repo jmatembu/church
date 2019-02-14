@@ -18,7 +18,7 @@ class HasParish
         if (empty($request->user()->current_parish)) {
             return redirect()
                     ->route('users.account')
-                    ->with('info', 'You need to set your default parish first');
+                    ->with('status', 'You need to set your default parish first');
         }
         return $next($request);
     }

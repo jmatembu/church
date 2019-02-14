@@ -4,15 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">Menu</div>
-
-                <div class="card-body">
-                    <div class="list-group">
-                        <a class="list-group-item" href="#">Hello</a>
-                    </div>
-                </div>
-            </div>
+            @include('parish.layout.partials.sidemenu')
         </div>
         <div class="col-md-9">
             <div class="card">

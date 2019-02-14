@@ -15,8 +15,13 @@ Route::view('/', 'welcome');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'ParishController@index')->name('parish.index')->middleware('parish');
-Route::get('/users/account', 'AccountController@index')->name('users.account');
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', 'ParishController@index')->name('parish.index')->middleware('parish');
+    Route::get('users/account', 'AccountController@index')->name('users.account');
+    Route::get('users/settings', 'UserSettingController@index')->name('users.settings.index');
+    Route::put('users/settings', 'UserSettingController@update')->name('users.settings.update');
+});
+
 
 Route::name('parish.')->prefix('parish')->group(function () {
     Route::get('/{parish}/news', 'PostController@index')->name('news.index');

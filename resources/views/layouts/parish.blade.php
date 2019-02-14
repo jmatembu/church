@@ -24,16 +24,16 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon-icon/apple-touch-icon-57-precomposed.png') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon-icon/favicon.png') }}">
     <!-- Google-Font-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->  
+    <![endif]-->
 </head>
-<body>  
+<body>
 
     <!-- Header -->
     <header id="header" class="nav-stacked sa-header" data-spy="affix" data-offset-top="1">
@@ -71,18 +71,18 @@
             </div>
         </div>
       <!-- /Header-top -->
-          
+
         <!-- Navigation -->
         <nav id="navigation_bar" class="navbar navbar-default sa-navbar">
             <div class="container">
               <div class="navbar-header">
-                <div class="logo"> 
-                    <a href="index.html"><img src="assets/images/logo.png" alt="image"/></a> 
+                <div class="logo">
+                    <a href="index.html"><img src="assets/images/logo.png" alt="image"/></a>
                 </div> <!-- /Logo -->
-                <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
-                    <span class="icon-bar"></span> 
-                    <span class="icon-bar"></span> 
-                    <span class="icon-bar"></span> 
+                <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
               </div>
                 <div class="collapse navbar-collapse" id="navigation">
@@ -122,8 +122,8 @@
                             <ul class="sub-menu">
                                 <li><a href="event-shudule.html">Event Shudule</a></li>
                                 <li><a href="history-slide.html">history slide</a></li>
-                                <li><a href="homily.html">Sermon</a></li>
-                                <li><a href="homily-detail.html">Sermon detail</a></li>
+                                <li><a href="homily.html">Homily</a></li>
+                                <li><a href="homily-detail.html">Homily detail</a></li>
                                 <li><a href="prayer-wall.html">Prayer wall</a></li>
                                 <li><a href="donation.html">Donation</a></li>
                                 <li><a href="donation-cause-page.html">donation cause</a></li>
@@ -137,11 +137,11 @@
                 </div>
             </div>
         </nav>
-        <!-- Navigation end --> 
+        <!-- Navigation end -->
     </header>
-    <!-- /Header --> 
+    <!-- /Header -->
 
-    <!-- Banner --> 
+    <!-- Banner -->
     <section class="main-banner-section">
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
@@ -150,7 +150,7 @@
                         <h1>God Gives Us Power</h1>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
                         <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div class="item section-padding">
@@ -159,12 +159,12 @@
                         <h1>God Gives Us Power</h1>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
                         <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- /End Banner --> 
+    <!-- /End Banner -->
 
     <!-- Next-Events-Homilies -->
     <section class="latest_event_homilies mg-top--50">
@@ -214,10 +214,10 @@
                             <div class="player-controls scrubber">
                                <small class="end-time">5:44</small>
                                <span id="seekObjContainer"> <progress id="seekObj" value="0" max="1"></progress>  </span>
-    						   <i class="fa fa-volume-up"></i>	                           
+    						   <i class="fa fa-volume-up"></i>
                             </div>
                             <div class="next_prev">
-                            	<i class="fa fa-angle-left"></i> 
+                            	<i class="fa fa-angle-left"></i>
                                 <i class="fa fa-angle-right"></i>
                             </div>
                           </div>
@@ -244,7 +244,7 @@
     	</div>
     </section>
      <!-- /About -->
-     
+
     <!-- Causes -->
     <section id="causes" class="section-padding gray_bg">
     	<div class="container">
@@ -334,7 +334,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-5 offset-lg-2">
                 	<div class="heading">
         	        	<h3>Latest Homilies</h3>
@@ -365,7 +365,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingTwo">
                               <h6 class="panel-title">
@@ -390,7 +390,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                               <h6 class="panel-title">
@@ -414,7 +414,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingFour">
                               <h6 class="panel-title">
@@ -438,7 +438,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
     		            </div>
                 </div>
             </div>
@@ -472,17 +472,17 @@
                     <div id="testimonials">
                         <div class="owl-carousel">
                             <div class="item">
-                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. . 
+                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. .
                                 It uses a dictionary of over 200 Latin words, combined with.</p>
                                 <h6>Bobby K. Parker</h6>
                             </div>
                             <div class="item">
-                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. . 
+                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. .
                                 It uses a dictionary of over 200 Latin words, combined with.</p>
                                 <h6>Bobby K. Parker</h6>
                             </div>
                             <div class="item">
-                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. . 
+                                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text. .
                                 It uses a dictionary of over 200 Latin words, combined with.</p>
                                 <h6>Bobby K. Parker</h6>
                             </div>
@@ -490,7 +490,7 @@
                     </div>
                 </div>
             </div>
-         </div>  
+         </div>
     </section>
     <!-- /Testimonials -->
 
@@ -510,13 +510,13 @@
                             <div class="blog_info">
                                 <div class="post_date"><a href="#">Aug 12, 2018</a></div>
                                 <h5><a href="#">On the other hand</a></h5>
-                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. 
+                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text.
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
                                 <a href="#" class="btn">Details <i class="fa fa-caret-right"></i> </a>
                             </div>
                         </div>
                     </article>
-                
+
                     <article class="col-md-6 col-12">
                         <div class="blog_wrap">
                             <div class="blog_img">
@@ -525,19 +525,19 @@
                             <div class="blog_info">
                                 <div class="post_date"><a href="#">Aug 12, 2018</a></div>
                                 <h5><a href="#">On the other hand</a></h5>
-                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. 
+                                <p>You need to be sure there isn't anything embarrassing hidden in the middle of text.
                                 All the Lorem Ipsum generators on the Internet tend to repeat predefined</p>
                                 <a href="#" class="btn">Details <i class="fa fa-caret-right"></i> </a>
                             </div>
                         </div>
                     </article>
-                </div>    
+                </div>
             </div>
-        </div>       
+        </div>
     </section>
     <!-- Latest-Blog -->
 
-    <!-- Footer --> 
+    <!-- Footer -->
     <footer id="footer">
     	<!-- Footer-Top -->
     	<div class="footer_top secondary-bg">
@@ -573,7 +573,7 @@
             </div>
         </div>
         <!-- /Footer-Top -->
-        
+
         <!-- Footer-Widgets -->
         <div class="container">
         	<div class="row">
@@ -620,7 +620,7 @@
             </div>
         </div>
         <!-- /Footer-Widgets -->
-        
+
         <!-- Footer-Bottom -->
         <div class="footer_bottom">
         	<div class="container">
@@ -629,15 +629,15 @@
                     	<p>&copy; 2018 Sacredia All Rights Reserved</p>
                     </div>
                     <div class="col-md-4">
-                        <div id="back-top" class="back-top"> 
-                            <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> 
+                        <div id="back-top" class="back-top">
+                            <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a>
                         </div>
                     </div>
                     <div class="col-md-4">
                     	<div class="footer_links">
                         	<a href="#">Home</a>
                             <a href="#">About Us</a>
-                            <a href="#">Sermon</a>
+                            <a href="#">Homily</a>
                             <a href="#">Events</a>
                         </div>
                     </div>
@@ -646,12 +646,12 @@
         </div>
         <!-- /Footer-Bottom -->
     </footer>
-    <!-- /Footer --> 
+    <!-- /Footer -->
 
-    <!-- Scripts --> 
+    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script> 
-    <script src="assets/js/jquery.magnific-popup.min.js"></script> 
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/audio_custome.js"></script>
     <script src="assets/js/jquery.countdown.min.js"></script>
@@ -659,7 +659,7 @@
     <script src="assets/js/masonry.pkgd.min.js"></script>
     <script src="https://npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 
-    <!--Custome-JS--> 
-    <script src="assets/js/interface.js"></script> 
+    <!--Custome-JS-->
+    <script src="assets/js/interface.js"></script>
 </body>
 </html>

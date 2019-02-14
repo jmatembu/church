@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return Parish::find($this->current_parish);
     }
+
+    public function isCurrentParish(Parish $parish) : bool
+    {
+        return $parish->id === $this->current_parish;
+    }
 }
