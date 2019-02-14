@@ -2,7 +2,7 @@
 @section('title', $parish->name)
 @section('parishName', $parish->name)
 @section('content')
-    <!-- Banner --> 
+    <!-- Banner -->
     <section class="main-banner-section">
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
@@ -11,7 +11,7 @@
                         <h1>God Gives Us Power</h1>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
                         <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div class="item section-padding">
@@ -20,12 +20,12 @@
                         <h1>God Gives Us Power</h1>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
                         <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- /End Banner --> 
+    <!-- /End Banner -->
 
     <!-- Next-Events-Homilies -->
     <section class="latest_event_homilies">
@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     <div class="box_wrap next_event">
                         <p class="subtitle">Next Event</p>
-                        <h4><a href="#">{{ title_case($nextEvent->title) }}</a></h4>
+                        <h4><a href="{{ route('parish.events.show', [$parish, $nextEvent]) }}">{{ title_case($nextEvent->title) }}</a></h4>
                         <div class="event_info">
                             <div class="event_date">
                                 <span>{{ $nextEvent->starts_at->format('d') }}</span> {{ $nextEvent->starts_at->format('M y') }}
@@ -44,12 +44,12 @@
                                 <li><i class="fa fa-paperclip"></i> {{ str_limit($nextEvent->description, 100) }}</li>
                             </ul>
                         </div>
-                        <a href="#" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
+                        <a href="{{ route('parish.events.show', [$parish, $nextEvent]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="box_wrap next_homilies">
-                        <p class="subtitle">Latest Sermon</p>
+                        <p class="subtitle">Latest Homily</p>
                         <h4><a href="#">{{ title_case($latestHomily->title) }}</a></h4>
                         <ul class="homilies_meta">
                             <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
@@ -75,10 +75,10 @@
                             <div class="player-controls scrubber">
                                <small class="end-time">5:44</small>
                                <span id="seekObjContainer"> <progress id="seekObj" value="0" max="1"></progress>  </span>
-                               <i class="fa fa-volume-up"></i>                             
+                               <i class="fa fa-volume-up"></i>
                             </div>
                             <div class="next_prev">
-                                <i class="fa fa-angle-left"></i> 
+                                <i class="fa fa-angle-left"></i>
                                 <i class="fa fa-angle-right"></i>
                             </div>
                           </div>
@@ -108,9 +108,9 @@
         </div>
     </section>
      <!-- /About -->
-    
-    
-    
+
+
+
     <!-- Causes -->
     {{-- <section id="causes" class="section-padding gray_bg">
         <div class="container">
@@ -158,7 +158,7 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="heading">
                         <h3>Latest Events</h3>
-                        <a href="#" class="btn btn-sm pull-right">See All</a>
+                        <a href="{{ route('parish.events.index', $parish) }}" class="btn btn-sm pull-right">See All</a>
                     </div>
                     <div class="event_list">
                         <ul>

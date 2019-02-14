@@ -1,4 +1,4 @@
-<!-- Footer --> 
+<!-- Footer -->
 <footer id="footer">
     <!-- Footer-Top -->
     <div class="footer_top secondary-bg">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <!-- /Footer-Top -->
-    
+
     <!-- Footer-Widgets -->
     <div class="container">
         <div class="row">
@@ -81,7 +81,7 @@
         </div>
     </div>
     <!-- /Footer-Widgets -->
-    
+
     <!-- Footer-Bottom -->
     <div class="footer_bottom">
         <div class="container">
@@ -90,15 +90,15 @@
                     <p>&copy; {{ date('Y') }} @yield('parishName') All Rights Reserved</p>
                 </div>
                 <div class="col-md-4">
-                    <div id="back-top" class="back-top"> 
-                        <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> 
+                    <div id="back-top" class="back-top">
+                        <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer_links">
                         <a href="#">Home</a>
                         <a href="#">About Us</a>
-                        <a href="#">Sermon</a>
+                        <a href="#">Homily</a>
                         <a href="#">Events</a>
                     </div>
                 </div>
@@ -107,4 +107,4 @@
     </div>
     <!-- /Footer-Bottom -->
 </footer>
-<!-- /Footer --> 
+<!-- /Footer -->

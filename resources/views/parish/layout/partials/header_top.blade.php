@@ -19,9 +19,9 @@
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-search"></i></a></li>
-                        
+
                         @auth
-                        <li><a class="user" href="{{ route('parish.index') }}"><img src="{{ asset('assets/images/icon/user.png') }}" alt="user"></a></li>
+                        <li><a class="user" href="{{ route('users.account') }}"><img src="{{ asset('assets/images/icon/user.png') }}" alt="user"></a></li>
                         @endauth
 
                         @guest
