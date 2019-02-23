@@ -18,10 +18,10 @@ class CreateSubParishesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description')->nullable();
-            $table->unsignedInteger('parish_id');
+            $table->unsignedInteger('parish_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('parish_id')->references('id')->on('parishes')->onDelete('cascade');
+            $table->foreign('parish_id')->references('id')->on('parishes')->onDelete('set null');
         });
     }
 

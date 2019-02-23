@@ -17,12 +17,12 @@ class CreateParishesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->unsignedInteger('diocese_id');
+            $table->unsignedInteger('diocese_id')->nullable()
             $table->text('description')->nullable();
             $table->jsonb('contacts')->nullable();
             $table->timestamps();
 
-            $table->foreign('diocese_id')->references('id')->on('dioceses')->onDelete('cascade');
+            $table->foreign('diocese_id')->references('id')->on('dioceses')->onDelete('set null');
         });
     }
 
