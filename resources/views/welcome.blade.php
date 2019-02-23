@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{ config('app.nam') }}
+                    {{ config('app.name') }}
                 </div>
             </div>
         </div>
