@@ -19,21 +19,21 @@
         
         <div class="contact_wrap">
             <div class="row">
-                <div class="col-md-6 secondary-bg">
+                <div class="col-md-5 secondary-bg">
                     <div class="contact_info">
                         <div class="box_heading">
                             <h4><span>We are here</span> Talk to Us</h4>
                         </div>
-                        <p>{{ $contacts['address'] }}</p>
-                        <p>Call us: <span>{{ $contacts['phone'][0] }}</span></p>
-                        <p>Mail us: <span>{{ $contacts['email'] }}</span></p>
+                        <p>{{ $parish->main_address }}</p>
+                        <p>Call us: <span>{{ $parish->main_phone }}</span></p>
+                        <p>Mail us: <span>{{ $parish->main_email }}</span></p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="form_wrap">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="Name" required>
+                                <input type="text" class="form-control" name="name" required>
                                 <span class="focus-input" data-placeholder="Your Name (required)"></span>
                             </div>
                             <div class="form-group">
@@ -41,8 +41,8 @@
                                 <span class="focus-input" data-placeholder="Your Email (required)"></span>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" cols="45" rows="3" class="form-control" required></textarea>
-                                <span class="focus-input" data-placeholder="Your Message"></span>
+                                <textarea name="body" cols="45" rows="6" class="form-control" required></textarea>
+                                <span class="focus-input" data-placeholder="Your Message (required)"></span>
                             </div>
                             <div class="form-group">
                                 <input class="btn dark-btn" value="Submit" type="submit">

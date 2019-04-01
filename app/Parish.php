@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Arr;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
@@ -11,8 +12,10 @@ class Parish extends Model
     use HasSlug;
 
     protected $casts = [
-        'contacts' => 'array'
+        'settings' => 'array'
     ];
+
+    protected $guarded = [];
 
     /**
      * Get the options for generating the slug.
@@ -82,6 +85,23 @@ class Parish extends Model
         return $this->morphMany('App\Post', 'postable');
     }
 
+    public function prayerRequests()
+    {
+        return $this->hasMany(PrayerRequest::class)->latest();
+    }
+
+    public function administrators()
+    {
+        return $this->staffs->filter(function ($staff) {
+            return strtolower($staff->role) === 'administrator';
+        });
+    }
+
+    public function getAdministratorsAttribute()
+    {
+        return $this->administrators();
+    }
+
     /**
      * Get all parish news
      *
@@ -123,5 +143,37 @@ class Parish extends Model
     public function categories()
     {
         return $this->morphMany('App\Category', 'categorable');
+    }
+
+    public function laity()
+    {
+        return $this->hasMany(User::class, 'current_parish')->whereCategory('Laity');
+    }
+
+    public function settings($key, $default = null)
+    {
+        return Arr::get($this->settings, $key, $default);
+    }
+
+    public function getContactsAttribute()
+    {
+        return $this->settings('contacts', []);
+    }
+
+    public function getMainAddressAttribute()
+    {
+        return Arr::get($this->contacts, 'address');
+    }
+
+    public function getMainEmailAttribute()
+    {
+        return Arr::get($this->contacts, 'email');
+    }
+
+    public function getMainPhoneAttribute()
+    {
+        $phoneNumbers = Arr::get($this->contacts, 'phone');
+
+        return $phoneNumbers[0];
     }
 }

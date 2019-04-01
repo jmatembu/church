@@ -17,33 +17,7 @@
                         <li><i class="fa fa-calendar-check-o"></i> {{ $project->created_at->format('d M, Y') }}</li>
                     </ul>
                 </div>
-                <p>{{ $project->description }}</p>
-                <blockquote>
-                    <p>Curabitur porta quam sit amet est semper congue. The web design industry has been undergoing tremendous changes to meet the demand  But in certain circumstances and owing to the claims of duty</p>
-                    <h6>- Frederick</h6>
-                </blockquote>
-                <ul>
-                    <li><i class="fa fa-check-circle"></i> Internet tend to repeat predefined chunks. </li>
-                    <li><i class="fa fa-check-circle"></i> Contrary to popular belief, Lorem Ipsum is not simply </li>
-                    <li><i class="fa fa-check-circle"></i> On the other hand, we denounce with righteous </li>
-                    <li><i class="fa fa-check-circle"></i> In a free hour, when our power of choice is untrammelled </li>
-                    <li><i class="fa fa-check-circle"></i> But in certain circumstances and owing. </li>
-                </ul>
-                
-                <!-- Tags-Share -->
-                <div class="tags_share">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="psot_share">
-                                <span><strong>Share:</strong></span>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {!! $project->description !!}
             </div>
             
             @include('parish.layout.partials.sidebar')

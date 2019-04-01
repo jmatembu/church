@@ -6,6 +6,7 @@
     <!-- News -->
     <section class="section-padding">
         <div class="container">
+            @if($news->count())
             <div class="row">
 
                 @foreach ($news as $post)
@@ -39,7 +40,9 @@
                 </div>
             </div>
             <!-- /Pagination -->
-            
+            @else
+            <p style="font-size: 2em;">Sorry we don't have any news at the moment.</p>
+            @endif
         </div>
     </section>
     <!-- /Projects -->

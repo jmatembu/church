@@ -58,6 +58,16 @@ class User extends Authenticatable
         return $this->hasOne(Staff::class);
     }
 
+    public function prayerRequests()
+    {
+        return $this->hasMany(PrayerRequest::class);
+    }
+
+    public function scopeLaity($query)
+    {
+        return $query->whereCategory('Laity');
+    }
+
     /**
      * The parish of the user
      */
@@ -69,5 +79,15 @@ class User extends Authenticatable
     public function isCurrentParish(Parish $parish) : bool
     {
         return $parish->id === $this->current_parish;
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function isParishAdministrator()
+    {
+        return $this->parish->administrators->contains($this->staff);
     }
 }

@@ -6,12 +6,14 @@ $factory->define(App\Parish::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'description' => $faker->realText(200),
-        'contacts' => [
-            'address' => $faker->address,
-            'email' => $faker->safeEmail,
-            'phone' => [
-                $faker->e164PhoneNumber,
-                $faker->e164PhoneNumber
+        'settings' => [
+            'contacts' => [
+                'address' => $faker->address,
+                'email' => $faker->safeEmail,
+                'phone' => [
+                    $faker->e164PhoneNumber,
+                    $faker->e164PhoneNumber
+                ]
             ]
         ]
     ];

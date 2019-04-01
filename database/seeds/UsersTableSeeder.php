@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,26 +12,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 5)->state('bishop')->create([
+        factory(App\User::class, 2)->state('bishop')->create([
                 'prefix' => 'Bp'
             ]);
 
-        factory(App\User::class, 50)->state('priest')->create([
+        factory(App\User::class, 10)->state('priest')->create([
                 'prefix' => 'Rev. Fr.'
             ])->each(function ($priest) {
                 $priest->clergy()->save(factory(App\Clergy::class)->state('priest')->make());
             });
-        // Create some staff from laity
-        factory(App\User::class, 10)->create()->each(function ($user) {
-                $parishes = App\Parish::pluck('id')->all();
-
-                $staff = factory(App\Staff::class)->make(['parish_id' => array_random($parishes, 1)[0]]);
-
-                $user->staff()->save($staff);
-            });
 
         // Rest of the laity
-        factory(App\User::class, 100)->create();
+        factory(App\User::class, 100)->state('laity')->create([
+            'current_parish' => Arr::random(App\Parish::pluck('id')->all()),
+        ]);
         // Known users
         factory(App\User::class)->create([
             'email' => 'jmatembu@gmail.com',

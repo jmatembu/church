@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Parish;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'current_parish' => ['required', 'exists:parishes,id']
         ]);
     }
 
@@ -69,6 +71,18 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'current_parish' => $data['current_parish']
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $parishes = Parish::all();
+
+        $parishesByDiocese = $parishes->groupBy(function ($parish) {
+            return $parish->diocese->name;
+        });
+
+        return view('auth.register', compact('parishesByDiocese'));
     }
 }

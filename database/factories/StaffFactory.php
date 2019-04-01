@@ -8,9 +8,9 @@ $factory->define(App\Staff::class, function (Faker $faker) {
     $roles = ['Catechist', 'Secretary', 'Administrator'];
 
     return [
-        'role' => array_random($roles, 1)[0],
-        'user_id' => array_random($laity, 1)[0],
-        'parish_id' => array_random($parishes, 1)[0]
+        'role' => array_random($roles),
+        'user_id' => array_random($laity),
+        'parish_id' => array_random($parishes)
     ];
 });
 

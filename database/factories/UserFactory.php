@@ -32,9 +32,20 @@ $factory->state(App\User::class, 'bishop', [
     'category' => 'Bishop',
 ]);
 
+$factory->state(App\User::class, 'laity', [
+    'category' => 'Laity',
+]);
+
 $factory->afterCreatingState(App\User::class, 'bishop', function ($user, $faker) {
     $user->clergy()->save(factory(App\Clergy::class)->state('bishop')->make());
     $diocese = factory(App\Diocese::class)->create([
                     'clergy_id' => $user->id
                 ]);
+});
+
+$factory->afterCreatingState(App\User::class, 'laity', function ($user) {
+    $user->prayerRequests()->save(factory(App\PrayerRequest::class)->make([
+        'parish_id' => $user->current_parish
+    ]));
+
 });

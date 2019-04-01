@@ -24,9 +24,6 @@
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,42 +35,23 @@
     <!-- Footer-Widgets -->
     <div class="container">
         <div class="row">
-            <div class="col-md-4 footer_widget">
+            <div class="col-md-6 footer_widget">
                 <div class="widget_inner">
                     <h5>Contact Info</h5>
-                    <p>{{ $contacts['address'] }}</p>
-                <p>E:  <a href="mailto:{{ $contacts['email'] }}">{{ $contacts['email'] }}</a></p>
-                    <p>P:  {{ $contacts['phone'][0] }}</p>
+                    <p>{{ $parish->main_address }}</p>
+                <p>E:  <a href="mailto:{{ $parish->main_email }}">{{ $parish->main_email }}</a></p>
+                    <p>P:  {{ $parish->main_phone }}</p>
                 </div>
             </div>
-            <div class="col-md-4 footer_widget">
-                <div class="widget_inner">
-                    <div class="instagram_img">
-                         <ul>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/01.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/02.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/03.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/04.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/05.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/06.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/07.jpg') }}" alt="image"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/images/feed/charity/08.jpg') }}" alt="image"></a></li>
-                        </ul>
-                        <a href="#" class="insta_url"><i class="fa fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 footer_widget">
+            <div class="col-md-6 footer_widget">
                 <div class="widget_inner">
                     <h5>Useful Links</h5>
                     <div class="footer_nav">
                         <ul>
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Account</a></li>
+                            <li><a href="#">My Account</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Cart</a></li>
                             <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Checkout</a></li>
                         </ul>
                     </div>
                 </div>

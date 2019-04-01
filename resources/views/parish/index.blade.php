@@ -14,15 +14,6 @@
                     </div>
                 </div>
             </div>
-            <div class="item section-padding">
-                <div class="container">
-                    <div class="intro_text white_text">
-                        <h1>God Gives Us Power</h1>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
-                        <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- /End Banner -->
@@ -223,7 +214,7 @@
 
     <!-- Projects -->
     @if($projects->count())
-    <section class="section-padding">
+    <section class="section-padding sa-schedules-wrap">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -256,55 +247,55 @@
     <!-- /Projects -->
 
     <!-- Services -->
-    <section class="sa-schedules-wrap pd-default">
-        <div class="container">
-            <div class="sa-schedules-section">
-                <div class="row">
-                    <div class="col-lg-5 col-12">
-                        <div class="sa-schedule">
-                            <div class="sa-schedules-heading">
-                                <h2>Service Times &amp; Schedules</h2>
-                                <p>Many desktop publishing packages and the web page editors now use lorem Ipsum as their default model text and a search fornt.</p>
-                            </div>
+    {{--<section class="sa-schedules-wrap pd-default">--}}
+        {{--<div class="container">--}}
+            {{--<div class="sa-schedules-section">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-lg-5 col-12">--}}
+                        {{--<div class="sa-schedule">--}}
+                            {{--<div class="sa-schedules-heading">--}}
+                                {{--<h2>Service Times &amp; Schedules</h2>--}}
+                                {{--<p>Many desktop publishing packages and the web page editors now use lorem Ipsum as their default model text and a search fornt.</p>--}}
+                            {{--</div>--}}
 
-                            <a class="btn dark-btn" href="#">Contact us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-12">
-                        <table class="table sa-schedules-table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Schedule Day</th>
-                                    <th scope="col">Time</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-body">
-                                <tr>
-                                    <th scope="row">Saturday</th>
-                                    <td>2:00 PM - 5:45 PM</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Sunday</th>
-                                    <td>4:00 PM - 9:45 PM</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Monday</th>
-                                    <td>9:00 PM - 5:45 PM</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Tuesday</th>
-                                    <td>2:00 PM - 5:45 PM</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Wednesday</th>
-                                    <td>2:00 PM - 5:45 PM</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                            {{--<a class="btn dark-btn" href="#">Contact us</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-lg-7 col-12">--}}
+                        {{--<table class="table sa-schedules-table">--}}
+                            {{--<thead class="thead-dark">--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="col">Schedule Day</th>--}}
+                                    {{--<th scope="col">Time</th>--}}
+                                {{--</tr>--}}
+                            {{--</thead>--}}
+                            {{--<tbody class="table-body">--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">Saturday</th>--}}
+                                    {{--<td>2:00 PM - 5:45 PM</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">Sunday</th>--}}
+                                    {{--<td>4:00 PM - 9:45 PM</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">Monday</th>--}}
+                                    {{--<td>9:00 PM - 5:45 PM</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">Tuesday</th>--}}
+                                    {{--<td>2:00 PM - 5:45 PM</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">Wednesday</th>--}}
+                                    {{--<td>2:00 PM - 5:45 PM</td>--}}
+                                {{--</tr>--}}
+                            {{--</tbody>--}}
+                        {{--</table>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- /Services -->
 @endsection

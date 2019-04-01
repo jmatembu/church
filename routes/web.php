@@ -20,6 +20,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users/account', 'AccountController@index')->name('users.account');
     Route::get('users/settings', 'UserSettingController@index')->name('users.settings.index');
     Route::put('users/settings', 'UserSettingController@update')->name('users.settings.update');
+    Route::get('users/prayer-requests', 'Account\PrayerRequestController@index')->name('users.prayerRequests.index');
+    Route::get('users/prayer-requests/create', 'Account\PrayerRequestController@create')->name('users.prayerRequests.create');
+    Route::post('users/prayer-requests', 'Account\PrayerRequestController@store')->name('users.prayerRequests.store');
 });
 
 
@@ -31,4 +34,18 @@ Route::name('parish.')->prefix('parish')->group(function () {
     Route::get('/{parish}/events', 'EventController@index')->name('events.index');
     Route::get('/{parish}/events/{event}', 'EventController@show')->name('events.show');
     Route::view('/{parish}/contact-us', 'parish.contact')->name('contact.create');
+    Route::get('/{parish}/prayer-requests', 'Parish\PrayerRequestController@index')->name('prayerRequests.index');
+
+    Route::name('admin.')
+            ->prefix('{parish}/admin')
+            ->namespace('Parish\Admin')
+            ->middleware(['isParishAdmin'])
+            ->group(function () {
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::get('/settings', 'SettingController@index')->name('settings.index');
+        Route::put('/settings', 'SettingController@contacts')->name('settings.contacts');
+        Route::resource('/news', 'NewsController@index');
+    });
 });
+
+
