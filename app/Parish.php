@@ -2,14 +2,14 @@
 
 namespace App;
 
-use Illuminate\Support\Arr;
+use App\Traits\PresentsParish;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 
 class Parish extends Model
 {
-    use HasSlug;
+    use HasSlug, PresentsParish;
 
     protected $casts = [
         'settings' => 'array'
@@ -148,32 +148,5 @@ class Parish extends Model
     public function laity()
     {
         return $this->hasMany(User::class, 'current_parish')->whereCategory('Laity');
-    }
-
-    public function settings($key, $default = null)
-    {
-        return Arr::get($this->settings, $key, $default);
-    }
-
-    public function getContactsAttribute()
-    {
-        return $this->settings('contacts', []);
-    }
-
-    public function getMainAddressAttribute()
-    {
-        return Arr::get($this->contacts, 'address');
-    }
-
-    public function getMainEmailAttribute()
-    {
-        return Arr::get($this->contacts, 'email');
-    }
-
-    public function getMainPhoneAttribute()
-    {
-        $phoneNumbers = Arr::get($this->contacts, 'phone');
-
-        return $phoneNumbers[0];
     }
 }

@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::name('parish.')->prefix('parish')->group(function () {
+Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish')->group(function () {
     Route::get('/{parish}/news', 'PostController@index')->name('news.index');
     Route::get('/{parish}/news/{post}', 'PostController@show')->name('news.show');
     Route::get('/{parish}/projects', 'ProjectController@index')->name('projects.index');
@@ -43,7 +43,8 @@ Route::name('parish.')->prefix('parish')->group(function () {
             ->group(function () {
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::get('/settings', 'SettingController@index')->name('settings.index');
-        Route::put('/settings', 'SettingController@contacts')->name('settings.contacts');
+        Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
+        Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
         Route::resource('/news', 'NewsController@index');
     });
 });

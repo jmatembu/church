@@ -3,14 +3,16 @@
 @section('parishName', $parish->name)
 @section('content')
     <!-- Banner -->
-    <section class="main-banner-section">
+    <section class="main-banner-section" style="background: url('{{ $parish->banner_background_image_path }}'); background-position: center; background-size: cover;">
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
                 <div class="container">
                     <div class="intro_text white_text">
-                        <h1>God Gives Us Power</h1>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
-                        <a href="#" class="btn btn-lg dark-btn">Explore Events</a>
+                        <h1>{{ $parish->banner_headline }}</h1>
+                        <p>{{ $parish->banner_description }}</p>
+                        @if($parish->hasBannerButton())
+                        <a href="{{ $parish->banner_button_link }}" class="btn btn-lg dark-btn">{{ $parish->banner_button_text }}</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -220,7 +222,7 @@
                 <div class="col-lg-7">
                     <div class="sa-section-title text-center">
                         <h2>Current Projects</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
+                        <p>We have various projects running at the parish, here are the major ones.</p>
                     </div>
                 </div>
             </div>
@@ -228,16 +230,16 @@
             @foreach($projects as $project)
             <div class="events_wrap">
                 <div class="event_img">
-                    <a href="#"><img src="assets/images/projects/2.jpg" alt="image"></a>
+                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ $project->image_path }}" alt="image"></a>
                 </div>
                 <div class="event_info">
-                    <h4><a href="#">{{ title_case($project->title) }}</a></h4>
-                    <p>{{ $project->description }}</p>
+                    <h4 class="mt-0"><a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">{{ title_case($project->title) }}</a></h4>
+                    {!! $project->brief_description !!}
                     <ul>
                         <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>
                         <li><i class="fa fa-dollar"></i> Bugdet: {{ $project->budget }}</li>
                     </ul>
-                    <a href="#" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
+                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
                 </div>
             </div>
             @endforeach

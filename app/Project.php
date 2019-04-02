@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -36,5 +37,10 @@ class Project extends Model
     public function projectable()
     {
         return $this->morphTo();
+    }
+
+    public function getBriefDescriptionAttribute()
+    {
+        return Str::limit($this->description, 200);
     }
 }
