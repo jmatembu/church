@@ -111,8 +111,8 @@ class Parish extends Model
     public function news()
     {
         return $this->posts->filter(function ($post) {
-            return $post->category->name != 'Homilies' && now()->lt($post->start_publishing_at);
-        })->sortByDesc('start_publishing_at');
+            return strtolower($post->category->name) === 'news';
+        })->sortByDesc('created_at')->values();
     }
 
     public function getNewsAttribute()
@@ -143,6 +143,11 @@ class Parish extends Model
     public function categories()
     {
         return $this->morphMany('App\Category', 'categorable');
+    }
+
+    public function newsCategory()
+    {
+        return $this->hasOne(Category::class, 'categorable_id')->whereIn('name', ['news', 'News', 'NEWS']);
     }
 
     public function laity()

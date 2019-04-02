@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
@@ -18,6 +20,8 @@ class Post extends Model
     protected $casts = [
         'media' => 'array'
     ];
+
+    protected $guarded = [];
 
     /**
      * Get the options for generating the slug.
@@ -54,6 +58,26 @@ class Post extends Model
 
     public function getSnippetAttribute()
     {
-        return strip_tags(str_limit($this->body, 150));
+        return strip_tags(Str::limit($this->body, 150));
+    }
+
+    public function media($key, $default = null)
+    {
+        return Arr::get($this->media, $key, $default);
+    }
+
+    public function getFeaturedImageAttribute()
+    {
+        return $this->media('image');
+    }
+
+    public function hasFeaturedImage()
+    {
+        return ! empty($this->featured_image);
+    }
+
+    public function getBriefTitleAttribute()
+    {
+        return Str::limit($this->title);
     }
 }

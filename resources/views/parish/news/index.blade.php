@@ -13,7 +13,13 @@
                 <div class="col-md-6">
                     <div class="blog_wrap margin-btm-60">
                         <div class="blog_img">
-                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}"><img src="{{ $post->media['image'] }}" alt="image"></a>
+                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">
+                                @if($post->hasFeaturedImage())
+                                    <img src="{{ asset($post->featured_image) }}" alt="image">
+                                @else
+                                    <img src="{{ $post->featured_image }}" alt="image">
+                                @endif
+                            </a>
                         </div>
                         <div class="blog_info">
                             <div class="post_date"><a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">{{ $post->start_publishing_at->format('d M, Y') }}</a></div>

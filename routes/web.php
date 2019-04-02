@@ -45,7 +45,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish')->group(
         Route::get('/settings', 'SettingController@index')->name('settings.index');
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
-        Route::resource('/news', 'NewsController@index');
+        Route::resource('/news', 'NewsController');
     });
 });
 
