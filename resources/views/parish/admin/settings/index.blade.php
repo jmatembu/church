@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('parish.layout.backend')
 
 <!-- @@section('styles')
     @@parent
@@ -6,15 +6,26 @@
 @@endsection -->
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-3">
-            @include('parish.layout.partials.admin-sidemenu')
+<section class="section">
+    <div class="row">
+        <div class="col-md-8">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+            </ol>
         </div>
-        <div class="col-md-9">
 
-            <div class="row justify-content-center">
-                <div class="col-md-8">
+{{--        <div class="col-md-4 text-right">--}}
+{{--            <a href="{{ route('members.index') }}" class="btn btn-light"><i class="fe fe-chevron-left"></i> All Members</a>--}}
+{{--            <a href="{{ route('members.loans.create', $member) }}" class="btn btn-primary"><i class="fe fe-dollar-sign"></i> Add Loan</a>--}}
+{{--        </div>--}}
+
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
                     @include('shared.notifications')
                     @include('shared.errors')
                     <h2 class="mb-3 h1">Settings</h2>
@@ -82,10 +93,11 @@
                     <div class="divider"></div>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
+</section>
+
+
 @endsection
 
 <!-- @@section('scripts')

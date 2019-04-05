@@ -26,18 +26,20 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish')->group(function () {
-    Route::get('/{parish}/news', 'PostController@index')->name('news.index');
-    Route::get('/{parish}/news/{post}', 'PostController@show')->name('news.show');
-    Route::get('/{parish}/projects', 'ProjectController@index')->name('projects.index');
-    Route::get('/{parish}/projects/{project}', 'ProjectController@show')->name('projects.show');
-    Route::get('/{parish}/events', 'EventController@index')->name('events.index');
-    Route::get('/{parish}/events/{event}', 'EventController@show')->name('events.show');
-    Route::view('/{parish}/contact-us', 'parish.contact')->name('contact.create');
-    Route::get('/{parish}/prayer-requests', 'Parish\PrayerRequestController@index')->name('prayerRequests.index');
+Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}')->group(function () {
+    Route::get('/about-the-parish', 'Parish\PageController@about')->name('about');
+    Route::get('news', 'PostController@index')->name('news.index');
+    Route::get('news/{post}', 'PostController@show')->name('news.show');
+    Route::get('projects', 'ProjectController@index')->name('projects.index');
+    Route::get('projects/{project}', 'ProjectController@show')->name('projects.show');
+    Route::get('events', 'EventController@index')->name('events.index');
+    Route::get('events/{event}', 'EventController@show')->name('events.show');
+
+    Route::view('/contact-us', 'parish.contact')->name('contact.create');
+    Route::get('/prayer-requests', 'Parish\PrayerRequestController@index')->name('prayerRequests.index');
 
     Route::name('admin.')
-            ->prefix('{parish}/admin')
+            ->prefix('admin')
             ->namespace('Parish\Admin')
             ->middleware(['isParishAdmin'])
             ->group(function () {
@@ -46,6 +48,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish')->group(
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
         Route::resource('/news', 'NewsController');
+        Route::resource('/pages', 'PageController');
     });
 });
 

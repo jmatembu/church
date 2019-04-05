@@ -56,9 +56,9 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getSnippetAttribute()
+    public function author()
     {
-        return strip_tags(Str::limit($this->body, 150));
+        return $this->belongsTo(User::class, 'author_id')->withDefault(['name' => 'Admin']);
     }
 
     public function media($key, $default = null)
@@ -79,5 +79,25 @@ class Post extends Model
     public function getBriefTitleAttribute()
     {
         return Str::limit($this->title);
+    }
+
+    public function getBriefNewsTitleAttribute()
+    {
+        return Str::limit($this->title, 50);
+    }
+
+    public function getSnippetAttribute()
+    {
+        return strip_tags(Str::limit($this->body, 150));
+    }
+
+    public function getBriefSnippetAttribute()
+    {
+        return Str::limit($this->snippet, 100);
+    }
+
+    public function isAboutParish()
+    {
+        return Str::contains($this->slug, 'about-the-parish');
     }
 }

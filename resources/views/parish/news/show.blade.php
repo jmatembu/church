@@ -35,7 +35,7 @@
                 </div>
             </div>
             
-            @include('parish.layout.partials.sidebar')
+            @include('parish.layout.partials.sidebar-bk')
         </div>
     </div>
 </section>

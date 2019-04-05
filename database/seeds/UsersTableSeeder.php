@@ -12,15 +12,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 2)->state('bishop')->create([
-                'prefix' => 'Bp'
-            ]);
+        factory(App\User::class, 2)->state('bishop')->create();
 
-        factory(App\User::class, 10)->state('priest')->create([
-                'prefix' => 'Rev. Fr.'
-            ])->each(function ($priest) {
-                $priest->clergy()->save(factory(App\Clergy::class)->state('priest')->make());
-            });
+        factory(App\User::class, 10)->state('priest')->create()->each(function ($priest) {
+            $priest->clergy()->save(factory(App\Clergy::class)->state('priest')->make());
+        });
 
         // Rest of the laity
         factory(App\User::class, 100)->state('laity')->create([

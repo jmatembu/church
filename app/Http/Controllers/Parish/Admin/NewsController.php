@@ -47,7 +47,7 @@ class NewsController extends Controller
         $newsPost['author_id'] = $request->user()->id;
 
         if ($request->hasFile('post-image')) {
-            $newsPostFileName = 'featured_image.' . $request->file('post-image')->getClientOriginalExtension();
+            $newsPostFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
             $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
 
@@ -84,7 +84,7 @@ class NewsController extends Controller
         $newsPost['start_publishing_at'] = now()->toDateTimeString();
 
         if ($request->hasFile('post-image')) {
-            $newsPostFileName = 'featured_image.' . $request->file('post-image')->getClientOriginalExtension();
+            $newsPostFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
             $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
             // Delete old news image
@@ -105,6 +105,9 @@ class NewsController extends Controller
     {
         try {
             $news->delete();
+
+            // Delete post image as well
+            Storage::disk('public')->delete($news->featured_image);
 
             return redirect()->route('parish.admin.news.index', $parish)
                 ->with('success', 'News post deleted successfully.');

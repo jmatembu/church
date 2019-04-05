@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('parish.layout.backend')
 
 @section('styles')
     @parent
@@ -8,9 +8,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-3">
-                @include('parish.layout.partials.admin-sidemenu')
-            </div>
             <div class="col-md-9">
                 @include('shared.notifications')
                 @include('shared.errors')

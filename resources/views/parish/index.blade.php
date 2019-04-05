@@ -21,6 +21,7 @@
     <!-- /End Banner -->
 
     <!-- Next-Events-Homilies -->
+    @if(! empty($nextEvent) && ! empty($latestNews))
     <section class="latest_event_homilies">
         <div class="container">
             <div class="row">
@@ -41,45 +42,23 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="box_wrap next_homilies">
-                        <p class="subtitle">Latest Homily</p>
-                        <h4><a href="#">{{ title_case($latestHomily->title) }}</a></h4>
+                    <div class="box_wrap next_homilies pb-3">
+                        <p class="subtitle">Latest News</p>
+                        <h4><a href="#">{{ $latestNews->brief_news_title }}</a></h4>
                         <ul class="homilies_meta">
-                            <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
-                            <li><i class="fa fa-calendar-check-o"></i> {{ $latestHomily->start_publishing_at->diffForHumans() }}</li>
+                            <li><i class="fa fa-user"></i> Message from <a href="#">{{ optional($latestNews->author)->name }}</a></li>
+                            <li><i class="fa fa-calendar-check-o"></i> {{ optional($latestNews->start_publishing_at)->diffForHumans() }}</li>
                         </ul>
                         <div class="homilies_inside">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#"><i class="fa fa-file-pdf-o"></i></a></li>
-                                <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
-                            </ul>
+                            <p class="mb-3">{{ $latestNews->brief_snippet }}</p>
+                            <a href="{{ route('parish.news.show', [$parish, $latestNews]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
                         </div>
-                        <div class="audio-player">
-                            <div id="play-btn">
-                                <i class="fa fa-play"> </i>
-                                <i class="fa fa-pause"></i>
-                            </div>
-                            <div class="audio-wrapper" id="player-container">
-                              <audio id="player" ontimeupdate="initProgressBar()">
-                                  <source src="{{ $latestHomily->media['audio'] }}" type="audio/mp3">
-                              </audio>
-                            </div>
-                            <div class="player-controls scrubber">
-                               <small class="end-time">5:44</small>
-                               <span id="seekObjContainer"> <progress id="seekObj" value="0" max="1"></progress>  </span>
-                               <i class="fa fa-volume-up"></i>
-                            </div>
-                            <div class="next_prev">
-                                <i class="fa fa-angle-left"></i>
-                                <i class="fa fa-angle-right"></i>
-                            </div>
-                          </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- /Next-Events-Homilies -->
 
     <!-- About -->
@@ -94,7 +73,10 @@
                         <h2>Welcome to {{ $parish->name }}</h2>
                         <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).  If you are going to use a passage of Lorem.</p>
                         <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined. chunks as necessary.</p>
-                        <a class="btn btn-lg dark-btn" href="#">Read more...</a>
+                        @if($parish->about_page)
+                            <a class="btn btn-lg dark-btn" href="{{ route('parish.about', $parish) }}">Read more...</a>
+                        @endif
+
                     </div>
                 </div>
             </div>

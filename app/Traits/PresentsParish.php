@@ -8,6 +8,18 @@ use Illuminate\Support\Arr;
 
 trait PresentsParish
 {
+    public function aboutPage()
+    {
+        return $this->pageCategory->posts->first(function ($post) {
+            return $post->isAboutParish();
+        });
+    }
+
+    public function getAboutPageAttribute()
+    {
+        return $this->aboutPage();
+    }
+
     public function settings($key, $default = null)
     {
         return Arr::get($this->settings, $key, $default);

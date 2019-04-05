@@ -61,6 +61,13 @@ class Parish extends Model
         return $this->hasMany(Staff::class);
     }
 
+    public function clergies()
+    {
+        return $this->belongsToMany(Clergy::class, 'clergy_parish', 'clergy_id', 'parish_id')
+                    ->withPivot(['role'])
+                    ->withTimestamps();
+    }
+
     /**
      * Get all of the parish events
      */
@@ -120,6 +127,18 @@ class Parish extends Model
         return $this->news();
     }
 
+    public function pages()
+    {
+        return $this->posts->filter(function ($post) {
+            return strtolower($post->category->name) === 'pages';
+        })->sortByDesc('created_at')->values();
+    }
+
+    public function getPagesAttribute()
+    {
+        return $this->pages();
+    }
+
     /**
      * Get all parish homilies
      *
@@ -148,6 +167,11 @@ class Parish extends Model
     public function newsCategory()
     {
         return $this->hasOne(Category::class, 'categorable_id')->whereIn('name', ['news', 'News', 'NEWS']);
+    }
+
+    public function pageCategory()
+    {
+        return $this->hasOne(Category::class, 'categorable_id')->whereIn('name', ['pages', 'Pages', 'PAGES']);
     }
 
     public function laity()

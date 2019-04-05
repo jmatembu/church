@@ -16,6 +16,7 @@ class CreateClergyParishTable extends Migration
         Schema::create('clergy_parish', function (Blueprint $table) {
             $table->unsignedInteger('parish_id');
             $table->unsignedInteger('clergy_id');
+            $table->string('role', 25);
             $table->timestamps();
 
             $table->foreign('parish_id')->references('id')->on('parishes')->onDelete('cascade');

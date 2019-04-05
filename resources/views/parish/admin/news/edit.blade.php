@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('parish.layout.backend')
 
 @section('styles')
     @parent
@@ -8,9 +8,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-3">
-                @include('parish.layout.partials.admin-sidemenu')
-            </div>
             <div class="col-md-9">
                 @include('shared.notifications')
                 @include('shared.errors')
@@ -47,7 +44,7 @@
                         <input type="file" class="form-control-file" name="post-image" id="post-image">
                     </div>
                     <div class="form-group text-right">
-                        <a href="{{ route('parish.admin.news.index', $parish) }}" class="btn
+                        <a href="{{ route('parish.admin.news.index', ['parish' => $parish, 'news' => $news]) }}" class="btn
                                 btn-secondary px-4">Cancel</a>
                         <button type="submit" class="btn btn-success px-4">Save Changes</button>
                     </div>

@@ -36,7 +36,9 @@
                 <li class="dropdown">
                     <a href="#">The Parish <span class="nav_arrow"></span></a>
                     <ul class="sub-menu">
-                        <li><a href="#">About The Parish</a></li>
+                        @if($parish->about_page)
+                        <li><a href="{{ route('parish.about', $parish) }}">About The Parish</a></li>
+                        @endif
                         <li><a href="{{ route('parish.contact.create', $parish) }}">Contact</a></li>
                     </ul>
                 </li>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Clergy;
 use App\Staff;
 use App\User;
 use \Illuminate\Support\Arr;
@@ -24,14 +26,25 @@ $factory->afterCreating(App\Diocese::class, function ($diocese, $faker) {
         $parish->projects()->saveMany(factory(App\Project::class, 3)->make());
 
         // Create parish categories
-        $categories = $parish->categories()->saveMany(factory(App\Category::class, 3)->make());
-
-        $categories->each(function ($category) use ($parish) {
-            // Create category posts
-            $parish->posts()->saveMany(factory(App\Post::class, 5)->make(['category_id' => $category->id]));
+        $categoryNames = collect(['News', 'Pages']);
+        $categoryNames->each(function ($categoryName) use ($parish) {
+            $parish->categories()->save(factory(App\Category::class)->make([
+                'name' => $categoryName
+            ]));
         });
 
+        $parish->categories->each(function ($category) use ($parish) {
+            // Create category posts
+            if ($category->name != 'Pages') {
+                $parish->posts()->saveMany(factory(App\Post::class, 5)->make(['category_id' => $category->id]));
+            }
+        });
+
+        // Create homilies
         $homilyCategory = $parish->categories()->save(factory(App\Category::class)->make(['name' => 'Homilies']));
         $parish->posts()->saveMany(factory(App\Post::class, 5)->state('homily')->make(['category_id' => $homilyCategory->id]));
+
+        // Create an about page
+        $parish->posts()->save(factory(App\Post::class)->make(['title' => 'About the Parish', 'category_id' => $parish->pageCategory->id]));
     });
 });
