@@ -49,6 +49,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
         Route::resource('/news', 'NewsController');
         Route::resource('/pages', 'PageController');
+        Route::resource('/projects', 'ProjectController');
     });
 });
 

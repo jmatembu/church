@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('category')->default('Laity');
             $table->unsignedInteger('current_parish')->nullable();
             $table->text('biography')->nullable();
+            $table->string('avatar')->nullable();
             $table->jsonb('settings')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -13,15 +13,17 @@
                 <div class="event_date">
                     <span>{{ $event->starts_at->format('d') }}</span> {{ $event->starts_at->format("M' Y") }}
                 </div>
+                @if($event->featured_image)
                 <div class="event_img">
-                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ $event->image_url }}" alt="image"></a>
+                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ asset($event->featured_image) }}" alt="image"></a>
                 </div>
-                <div class="event_info">
+                @endif
+                <div class="event_info" @if(! $event->featured_image) style="width: 97.3%;" @endif>
                     <h4><a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">{{ title_case($event->title) }}</a></h4>
                     <p>{{ $event->description }}</p>
                     <ul>
                         <li><i class="fa fa-clock-o"></i> Date:  {{ $event->starts_at->toDayDateTimeString() }}</li>
-                        <li><i class="fa fa-map-marker"></i> Venue: {{ $event->budget }}</li>
+                        <li><i class="fa fa-map-marker"></i> Venue: {{ $event->venue }}</li>
                     </ul>
                     <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
                 </div>

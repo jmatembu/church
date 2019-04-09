@@ -18,10 +18,11 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->float('budget');
+            $table->float('budget', 10);
             $table->unsignedInteger('projectable_id');
             $table->string('projectable_type');
-            $table->string('image_path')->nullable();
+            $table->string('featured_image')->nullable();
+            $table->string('featured_image_thumb')->nullable();
             $table->timestamps();
         });
     }

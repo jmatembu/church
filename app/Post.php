@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\PresentsPost;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\SlugOptions;
@@ -10,7 +11,7 @@ use Spatie\Sluggable\HasSlug;
 
 class Post extends Model
 {
-    use HasSlug;
+    use HasSlug, PresentsPost;
     
     protected $dates = [
         'start_publishing_at',
@@ -64,40 +65,5 @@ class Post extends Model
     public function media($key, $default = null)
     {
         return Arr::get($this->media, $key, $default);
-    }
-
-    public function getFeaturedImageAttribute()
-    {
-        return $this->media('image');
-    }
-
-    public function hasFeaturedImage()
-    {
-        return ! empty($this->featured_image);
-    }
-
-    public function getBriefTitleAttribute()
-    {
-        return Str::limit($this->title);
-    }
-
-    public function getBriefNewsTitleAttribute()
-    {
-        return Str::limit($this->title, 50);
-    }
-
-    public function getSnippetAttribute()
-    {
-        return strip_tags(Str::limit($this->body, 150));
-    }
-
-    public function getBriefSnippetAttribute()
-    {
-        return Str::limit($this->snippet, 100);
-    }
-
-    public function isAboutParish()
-    {
-        return Str::contains($this->slug, 'about-the-parish');
     }
 }

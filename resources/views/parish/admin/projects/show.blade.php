@@ -7,21 +7,21 @@
             <div class="col-md-9">
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <h2 class="mb-sm-3">{{ $news->title }}</h2>
+                        <h2 class="mb-sm-3">{{ $project->title }}</h2>
                     </div>
                     <div class="col-md-12 text-right">
-                        <a class="btn btn-secondary" href="{{ route('parish.admin.news.index', $parish) }}">< Back</a>
-                        <a class="btn btn-warning" href="{{ route('parish.admin.news.edit', ['parish' => $parish, 'news' => $news]) }}">! Edit</a>
+                        <a class="btn btn-secondary" href="{{ route('parish.admin.projects.index', $parish) }}">< Back</a>
+                        <a class="btn btn-warning" href="{{ route('parish.admin.projects.edit', ['parish' => $parish, 'projects' => $project]) }}">! Edit</a>
                         <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteNewsModal">x Delete</button>
                     </div>
                 </div>
-                @if($news->featured_image)
+                @if($project->featured_image)
                 <div class="mb-4">
-                    <img src="{{ asset($news->featured_image) }}" class="img-fluid">
+                    <img src="{{ asset($project->featured_image) }}" class="img-fluid">
                 </div>
                 @endif
                 <div class="post-body">
-                    {!! $news->body !!}
+                    {!! $project->description !!}
                 </div>
             </div>
         </div>
@@ -37,14 +37,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>You are about to delete this post. This action cannot be undone. Do you want to continue?</p>
+                    <p>You are about to delete this project. This action cannot be undone. Do you want to continue?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <form class="d-inline-block" action="{{ route('parish.admin.news.destroy', ['parish' => $parish, 'news' => $news]) }}" method="POST">
+                    <form class="d-inline-block" action="{{ route('parish.admin.projects.destroy', ['parish' => $parish, 'project' => $project]) }}" method="POST">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete this Post</button>
+                        <button type="submit" class="btn btn-danger">Delete Project</button>
                     </form>
                 </div>
             </div>

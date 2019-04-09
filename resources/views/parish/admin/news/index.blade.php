@@ -16,7 +16,6 @@
 
                 <div class="card">
                     <div class="card-body">
-                        @include('shared.notifications')
                         @if ($parish->news->count())
                             <table class="table table-condensed table-borderless table-striped">
                                 <tbody>
@@ -26,7 +25,7 @@
                                             <div class="row">
 
                                                 <div class="col-sm-2">
-                                                    @if($post->hasFeaturedImage())
+                                                    @if($post->featured_image)
                                                         <img src="{{ asset($post->featured_image) }}" class="img-fluid mt-2">
                                                     @endif
                                                 </div>

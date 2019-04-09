@@ -38,7 +38,7 @@
                     <p style="font-size: 2em;">There are no prayer requests at the moment</p>
                     @endif
                 </div>
-                @include('parish.layout.partials.sidebar-bk')
+                @include('parish.layout.partials.aside')
             </div>
 
         </div>

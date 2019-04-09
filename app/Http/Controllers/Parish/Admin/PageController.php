@@ -52,9 +52,7 @@ class PageController extends Controller
             $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
 
-            $newsPost['media'] = [
-                'image' => Str::after($filePath, 'public/')
-            ];
+            $newsPost['featured_image'] = Str::after($filePath, 'public/');
         }
 
         $parish->posts()->create($newsPost);
@@ -82,12 +80,13 @@ class PageController extends Controller
             $fileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
             $postDirectory = 'public/parishes/' . $parish->slug . '/images/pages';
             $filePath = $request->file('post-image')->storeAs($postDirectory, $fileName);
-            // Delete old page image
-            Storage::disk('public')->delete($page->featured_image);
 
-            $pagePost['media'] = [
-                'image' => Str::after($filePath, 'public/')
-            ];
+            // Delete old page image
+            if (Storage::disk('public')->exists($page->featured_image)) {
+                Storage::disk('public')->delete($page->featured_image);
+            }
+
+            $pagePost['featured_image'] = Str::after($filePath, 'public/');
         }
 
         $page->update($pagePost);

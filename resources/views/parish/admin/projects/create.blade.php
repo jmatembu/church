@@ -11,38 +11,42 @@
             <div class="col-md-9">
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <h2 class="mb-sm-3">Create News Post</h2>
+                        <h2 class="mb-sm-3">Create Project</h2>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a class="btn btn-secondary" href="{{ route('parish.admin.news.index', $parish) }}">< Back</a>
+                        <a class="btn btn-secondary" href="{{ route('parish.admin.projects.index', $parish) }}">< Back</a>
                     </div>
                 </div>
 
 
                 <form
-                    action="{{ route('parish.admin.news.store', $parish) }}"
+                    action="{{ route('parish.admin.projects.store', $parish) }}"
                     method="POST"
-                    id="post-editor-form"
+                    id="project-editor-form"
                     enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
-                        <label for="news-title">Title</label>
-                        <input type="text" class="form-control" name="title" id="news-title" required>
+                        <label for="projects-title">Title</label>
+                        <input type="text" class="form-control" name="title" id="projects-title" required>
                     </div>
                     <div class="form-group">
-                        <label for="post-editor">Body</label>
+                        <label for="post-editor">Description</label>
                         <textarea id="post-editor"
                                   class="p-3"
-                                  name="body"
-                                  placeholder="So what's new at the parish?"></textarea>
+                                  name="description"
+                                  placeholder="So what's this project about?"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="post-image">Featured Image</label>
-                        <input type="file" class="form-control-file" name="post-image" id="post-image">
+                        <input type="file" class="form-control-file" name="featured_image" id="post-image">
+                    </div>
+                    <div class="form-group">
+                        <label for="project-budget">Estimated Cost</label>
+                        <input type="number" class="form-control" name="budget" id="project-budget" required>
                     </div>
                     <div class="form-group text-right">
-                        <a href="{{ route('parish.admin.news.index', $parish) }}" class="btn
+                        <a href="{{ route('parish.admin.projects.index', $parish) }}" class="btn
                                 btn-secondary px-4">Cancel</a>
                         <button type="submit" class="btn btn-success px-4">Save Changes</button>
                     </div>

@@ -12,20 +12,18 @@
                 @foreach ($news as $post)
                 <div class="col-md-6">
                     <div class="blog_wrap margin-btm-60">
+                        @if($post->featured_image)
                         <div class="blog_img">
                             <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">
-                                @if($post->hasFeaturedImage())
-                                    <img src="{{ asset($post->featured_image) }}" alt="image">
-                                @else
-                                    <img src="{{ $post->featured_image }}" alt="image">
-                                @endif
+                                <img src="{{ asset($post->featured_image) }}" alt="image">
                             </a>
                         </div>
+                        @endif
                         <div class="blog_info">
                             <div class="post_date"><a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">{{ $post->start_publishing_at->format('d M, Y') }}</a></div>
                             <h5><a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">{{ str_limit($post->title, 50) }}</a></h5>
                             <p>{!! $post->snippet !!}</p>
-                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}" class="btn">Details <i class="fa fa-caret-right"></i> </a>
+                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}" class="btn">Read This <i class="fa fa-caret-right"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -40,7 +38,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                     <p>Page {{ $news->currentPage() }} of {{ $news->lastPage() }}</p>
-                    </div><div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
                         {{ $news->links() }}
                     </div>
                 </div>

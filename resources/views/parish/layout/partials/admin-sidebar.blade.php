@@ -28,7 +28,7 @@
                     mr-2"></i> News</a>
                 </li>
                 <li class="py-2">
-                    <a href="#" class="slide-item"><i class="fe fe-file-text
+                    <a href="{{ route('parish.admin.projects.index', $parish) }}" class="slide-item"><i class="fe fe-file-text
                     mr-2"></i> Projects</a>
                 </li>
             </ul>

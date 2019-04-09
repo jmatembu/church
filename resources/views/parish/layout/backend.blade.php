@@ -34,7 +34,7 @@
         @include('parish/layout.partials.top-header')
 
         @if (Auth::user()->isParishAdministrator())
-            @include('parish/layout.partials.sidebar')
+            @include('parish.layout.partials.admin-sidebar')
         @else
             @include('parish.layout.partials.parishioner-sidebar')
         @endif

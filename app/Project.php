@@ -11,6 +11,7 @@ class Project extends Model
 {
     use HasSlug;
 
+    protected $guarded = [];
     /**
      * Get the options for generating the slug.
      */
@@ -41,6 +42,16 @@ class Project extends Model
 
     public function getBriefDescriptionAttribute()
     {
-        return Str::limit($this->description, 200);
+        return strip_tags(Str::limit($this->description, 200));
+    }
+
+    public function getSnippetAttribute()
+    {
+        return Str::limit($this->brief_description);
+    }
+
+    public function getFormattedBudgetAttribute()
+    {
+        return number_format($this->budget);
     }
 }

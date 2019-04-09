@@ -81,7 +81,7 @@ class Parish extends Model
      */
     public function projects()
     {
-        return $this->morphMany('App\Project', 'projectable');
+        return $this->morphMany('App\Project', 'projectable')->latest();
     }
 
     /**
@@ -125,6 +125,16 @@ class Parish extends Model
     public function getNewsAttribute()
     {
         return $this->news();
+    }
+
+    public function getLatestAsideNewsAttribute()
+    {
+        return $this->news()->take(3);
+    }
+
+    public function getLatestAsideEventsAttribute()
+    {
+        return $this->events->take(3);
     }
 
     public function pages()

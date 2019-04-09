@@ -16,12 +16,15 @@
             <div class="col-md-7 col-12">
                 <div class="follow_us sa-follow-us">
                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-search"></i></a></li>
 
                         @auth
-                        <li><a class="user" href="{{ route('users.account') }}"><img src="{{ asset('assets/images/icon/user.png') }}" alt="user"></a></li>
+                            <li><a class="font-weight-bold text-white" href="{{ route('users.account') }}" style="font-size: 120%">My Account</a></li>
+                            <a class="btn btn-sm dark-btn py-0 ml-3"
+                               href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+									document.getElementById('logout-form').submit();">
+                                <i class="fe fe-log-out"></i>  {{ __('Logout') }}
+                            </a>
                         @endauth
 
                         @guest

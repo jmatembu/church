@@ -9,8 +9,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                @include('shared.notifications')
-                @include('shared.errors')
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <h2 class="mb-sm-3">Edit Page</h2>

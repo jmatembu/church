@@ -51,9 +51,7 @@ class NewsController extends Controller
             $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
 
-            $newsPost['media'] = [
-                'image' => Str::after($filePath, 'public/')
-            ];
+            $newsPost['featured_image'] = Str::after($filePath, 'public/');
         }
 
         $parish->posts()->create($newsPost);
@@ -87,12 +85,13 @@ class NewsController extends Controller
             $newsPostFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
             $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
-            // Delete old news image
-            Storage::disk('public')->delete($news->featured_image);
 
-            $newsPost['media'] = [
-                'image' => Str::after($filePath, 'public/')
-            ];
+            // Delete old news image
+            if (Storage::disk('public')->exists($news->featured_image)) {
+                Storage::disk('public')->delete($news->featured_image);
+            }
+
+            $newsPost['featured_image'] = Str::after($filePath, 'public/');
         }
 
         $news->update($newsPost);

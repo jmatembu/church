@@ -5,8 +5,6 @@
 
         <div class="row justify-content-center">
             <div class="col-md-9">
-                @include('shared.notifications')
-                @include('shared.errors')
                 <div class="row mb-4">
                     <div class="col-md-12">
                         <h2 class="mb-sm-3">{{ $page->title }}</h2>
@@ -19,10 +17,11 @@
                         @endif
                     </div>
                 </div>
-
+                @if($page->featured_image)
                 <div class="mb-4">
                     <img src="{{ asset($page->featured_image) }}" class="img-fluid">
                 </div>
+                @endif
                 <div class="post-body">
                     {!! $page->body !!}
                 </div>

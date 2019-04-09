@@ -2,14 +2,16 @@
 @section('title', 'Projects of ' . $parish->name)
 @section('parishName', $parish->name)
 @section('content')
-@include('parish.layout.partials.page-header', ['pageTitle' => $post->title])
+@include('parish.layout.partials.page-header', ['pageTitle' => $post->brief_news_title])
 <section class="post_detail section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                @if($post->featured_image)
                 <div class="post_img">
-                    <img src="https://lorempixel.com/900/480/?21647" alt="image">
+                    <img src="{{ asset($post->featured_image) }}" alt="image">
                 </div>
+                @endif
                 <h2>{{ $post->title }}</h2>
                 <div class="post_meta">
                     <ul>
@@ -18,24 +20,9 @@
                     </ul>
                 </div>
                 {!! $post->body !!}
-                
-                <!-- Tags-Share -->
-                <div class="tags_share">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="psot_share">
-                                <span><strong>Share:</strong></span>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
-            @include('parish.layout.partials.sidebar-bk')
+            @include('parish.layout.partials.aside')
         </div>
     </div>
 </section>

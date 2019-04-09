@@ -26,8 +26,6 @@
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-body">
-                    @include('shared.notifications')
-                    @include('shared.errors')
                     <h2 class="mb-3 h1">Settings</h2>
 
                     <h3>Home Page Banner</h3>

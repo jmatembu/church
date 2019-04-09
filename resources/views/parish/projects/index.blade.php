@@ -18,15 +18,19 @@
 
             @foreach($parish->projects as $project)
             <div class="events_wrap">
+                @if($project->featured_image)
                 <div class="event_img">
-                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ $project->image_path }}" alt="image"></a>
+                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ asset($project->featured_image) }}" alt="image"></a>
                 </div>
-                <div class="event_info">
+                @endif
+                <div class="event_info" @if(! $project->featured_image) style="width: 97.3%;" @endif>
                     <h4><a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">{{ title_case($project->title) }}</a></h4>
-                    {!! $project->description !!}
+                    <div class="post-body mb-4">
+                        {!! $project->brief_description !!}
+                    </div>
                     <ul>
-                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>
-                        <li><i class="fa fa-dollar"></i> Bugdet: {{ $project->budget }}</li>
+{{--                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>--}}
+                        <li><i class="fa fa-dollar"></i> Bugdet: {{ $project->formatted_budget }}</li>
                     </ul>
                     <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>
                 </div>

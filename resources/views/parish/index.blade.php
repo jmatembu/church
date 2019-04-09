@@ -7,7 +7,7 @@
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
                 <div class="container">
-                    <div class="intro_text white_text">
+                    <div class="intro_text white_text pb-sm-5">
                         <h1>{{ $parish->banner_headline }}</h1>
                         <p>{{ $parish->banner_description }}</p>
                         @if($parish->hasBannerButton())
