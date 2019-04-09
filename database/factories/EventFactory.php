@@ -9,6 +9,6 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'venue' => $faker->words(2, true),
         'starts_at' => now()->addDays(3)->toDateTimeString(),
         'ends_at' => now()->addDays(20)->toDateTimeString(),
-        'image_url' => $faker->imageUrl()
+        'featured_image' => $faker->imageUrl()
     ];
 });
