@@ -52,7 +52,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::resource('/news', 'NewsController');
         Route::resource('/pages', 'PageController');
         Route::resource('/projects', 'ProjectController');
-        
+        Route::resource('/events', 'EventController');
     });
 });
 

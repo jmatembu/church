@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasSlug;
-    
+
+    protected $guarded = [];
+
     protected $dates = [
         'starts_at',
         'ends_at'
@@ -41,5 +44,15 @@ class Event extends Model
     public function eventable()
     {
         return $this->morphTo();
+    }
+
+    public function getBriefDescriptionAttribute()
+    {
+        return strip_tags(Str::limit($this->description, 200));
+    }
+
+    public function getSnippetAttribute()
+    {
+        return Str::limit($this->brief_description);
     }
 }

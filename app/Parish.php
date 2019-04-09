@@ -73,7 +73,7 @@ class Parish extends Model
      */
     public function events()
     {
-        return $this->morphMany('App\Event', 'eventable');
+        return $this->morphMany('App\Event', 'eventable')->latest();
     }
 
     /**

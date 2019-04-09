@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Parish\Admin;
 
+use App\Event;
 use App\Parish;
-use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
-class ProjectController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,9 @@ class ProjectController extends Controller
      */
     public function index(Parish $parish)
     {
-        $projects = $parish->projects->paginate(10);
+        $events = $parish->events->paginate(10);
 
-        return view('parish.admin.projects.index', compact('projects'));
+        return view('parish.admin.events.index', compact('events'));
     }
 
     /**
@@ -30,14 +29,15 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('parish.admin.projects.create');
+        return view('parish.admin.events.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Parish $parish
+     * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Parish $parish)
@@ -45,46 +45,47 @@ class ProjectController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'budget' => 'required|numeric',
+            'venue' => 'required|string|max:255',
+            'starts_at' => 'required|date',
+            'ends_at' => 'required|date',
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
-        $projectRecord = $request->only(['title', 'description', 'budget']);
+        $record = $request->only(['title', 'description', 'venue', 'starts_at', 'ends_at']);
 
         if ($request->hasFile('featured_image')) {
             $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishProjectsDirectory = 'public/parishes/' . $parish->slug . '/images/projects';
-            $projectRecord['featured_image'] = $request->file('featured_image')->storeAs($parishProjectsDirectory, $featuredImageFileName, 'public');
+            $parishEventsDirectory = 'public/parishes/' . $parish->slug . '/images/events';
+            $record['featured_image'] = $request->file('featured_image')->storeAs($parishEventsDirectory, $featuredImageFileName, 'public');
         }
 
-        $parish->projects()->create($projectRecord);
+        $parish->events()->create($record);
 
-        return redirect()->route('parish.admin.projects.index', $parish)
-            ->with('success', 'Project created and published successfully');
+        return redirect()->route('parish.admin.events.index', $parish)
+            ->with('success', 'Event created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Parish $parish
-     * @param Project $project
+     * @param  \App\Parish  $parish
      * @return \Illuminate\Http\Response
      */
-    public function show(Parish $parish, Project $project)
+    public function show(Parish $parish, Event $event)
     {
-        return view('parish.admin.projects.show', compact('parish', 'project'));
+        return view('parish.admin.events.show', compact('parish', 'event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param \App\Parish $parish
-     * @param Project $project
+     * @param Event $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Parish $parish, Project $project)
+    public function edit(Parish $parish, Event $event)
     {
-        return view('parish.admin.projects.edit', compact('project'));
+        return view('parish.admin.events.edit', compact('event'));
     }
 
     /**
@@ -92,36 +93,38 @@ class ProjectController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Parish $parish
-     * @param Project $project
+     * @param Event $event
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, Parish $parish, Project $project)
+    public function update(Request $request, Parish $parish, Event $event)
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'budget' => 'required|numeric',
+            'venue' => 'required|string|max:255',
+            'starts_at' => 'required|date',
+            'ends_at' => 'required|date',
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
-        $projectRecord = $request->only(['title', 'description', 'budget']);
+        $record = $request->only(['title', 'description', 'venue', 'starts_at', 'ends_at']);
 
         if ($request->hasFile('featured_image')) {
             $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishProjectsDirectory = 'parishes/' . $parish->slug . '/images/projects';
-            $projectRecord['featured_image'] = $request->file('featured_image')->storeAs($parishProjectsDirectory, $featuredImageFileName, 'public');
+            $parishEventsDirectory = 'public/parishes/' . $parish->slug . '/images/events';
+            $record['featured_image'] = $request->file('featured_image')->storeAs($parishEventsDirectory, $featuredImageFileName, 'public');
 
             // Delete old featured image
-            if (Storage::disk('public')->exists($project->featured_image)) {
-                Storage::disk('public')->delete($project->featured_image);
+            if (Storage::disk('public')->exists($event->featured_image)) {
+                Storage::disk('public')->delete($event->featured_image);
             }
         }
 
-        $project->fill($projectRecord)->save();
+        $event->fill($record)->save();
 
-        return redirect()->route('parish.admin.projects.index', $parish)
-            ->with('success', 'Project updated successfully');
+        return redirect()->route('parish.admin.events.index', $parish)
+            ->with('success', 'Event updated successfully');
     }
 
     /**
@@ -130,12 +133,12 @@ class ProjectController extends Controller
      * @param  \App\Parish  $parish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parish $parish, Project $project)
+    public function destroy(Parish $parish, Event $event)
     {
         try {
-            $project->delete();
+            $event->delete();
 
-            return redirect()->route('parish.admin.projects.index', $parish);
+            return redirect()->route('parish.admin.events.index', $parish);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

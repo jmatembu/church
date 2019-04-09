@@ -21,7 +21,6 @@ class CreateEventsTable extends Migration
             $table->string('venue');
             $table->datetime('starts_at');
             $table->datetime('ends_at');
-            $table->string('image_url')->nullable();
             $table->unsignedInteger('eventable_id');
             $table->string('eventable_type');
             $table->string('featured_image')->nullable();

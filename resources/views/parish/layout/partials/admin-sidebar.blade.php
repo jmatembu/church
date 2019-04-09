@@ -28,6 +28,10 @@
                     mr-2"></i> News</a>
                 </li>
                 <li class="py-2">
+                    <a href="{{ route('parish.admin.events.index', $parish) }}" class="slide-item"><i class="fe fe-calendar
+                    mr-2"></i> Events</a>
+                </li>
+                <li class="py-2">
                     <a href="{{ route('parish.admin.projects.index', $parish) }}" class="slide-item"><i class="fe fe-file-text
                     mr-2"></i> Projects</a>
                 </li>
