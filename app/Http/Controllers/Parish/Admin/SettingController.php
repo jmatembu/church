@@ -84,4 +84,18 @@ class SettingController extends Controller
 
         return back()->with('success', 'Parish updated successfully');
     }
+
+    public function updateQuote(Request $request, Parish $parish)
+    {
+        $settings = $parish->settings;
+        $settings['quotes'][] = [
+            'id' => now()->timestamp,
+            'text' => $request->quote_text,
+            'author' => $request->quote_author
+        ];
+
+        $parish->update(['settings' => $settings]);
+
+        return back()->with('success', 'Quote added successfully');
+    }
 }

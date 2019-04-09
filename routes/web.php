@@ -47,10 +47,12 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::get('/settings', 'SettingController@index')->name('settings.index');
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
+        Route::put('/settings/quotes/update', 'SettingController@updateQuote')->name('settings.quotes.update');
         Route::put('/settings/parish-update', 'SettingController@parishUpdate')->name('settings.parishUpdate');
         Route::resource('/news', 'NewsController');
         Route::resource('/pages', 'PageController');
         Route::resource('/projects', 'ProjectController');
+        
     });
 });
 

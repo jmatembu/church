@@ -4,28 +4,8 @@
     <div class="footer_top secondary-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 top_widget">
-                    <div class="footer_logo">
-                        <a href="#"><img src="{{ asset('assets/images/logo.png') }}" alt="image"></a>
-                    </div>
-                </div>
-                <div class="col-md-4 top_widget">
-                    <div class="newsletter">
-                        <form>
-                            <div class="email_input">
-                                <input type="email" placeholder="Email address">
-                            </div>
-                            <button type="submit">Submit <i class="fa fa-caret-right"></i></button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-4 top_widget">
-                    <div class="follow_us">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="col-md-12 top_widget">
+                    <blockquote class="bg-none text-white font-weight-bold" cite="{{ $parish->quote_author }}" style="font-size: 120%;">{{ $parish->quote_text }} <span class="text-muted">- {{ $parish->quote_author }}</span></blockquote>
                 </div>
             </div>
         </div>
@@ -49,9 +29,10 @@
                     <div class="footer_nav">
                         <ul>
                             <li><a href="#">FAQ</a></li>
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="{{ route('users.account') }}">My Account</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="https://www.uecon.org" target="_blank">Uganda Episcopal Conference</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -64,20 +45,12 @@
     <div class="footer_bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-10 text-center">
                     <p>&copy; {{ date('Y') }} @yield('parishName') All Rights Reserved</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div id="back-top" class="back-top">
                         <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="footer_links">
-                        <a href="#">Home</a>
-                        <a href="#">About Us</a>
-                        <a href="#">Homily</a>
-                        <a href="#">Events</a>
                     </div>
                 </div>
             </div>

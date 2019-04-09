@@ -78,4 +78,29 @@ trait PresentsParish
     {
         return $this->settings('banner.button_link', route('parish.news.index', $this));
     }
+
+    public function getQuotesAttribute()
+    {
+        return $this->settings('quotes', []);
+    }
+
+    public function getQuoteAttribute()
+    {
+        return Arr::random($this->quotes);
+    }
+
+    public function getQuoteTextAttribute()
+    {
+        return $this->quote['text'];
+    }
+
+    public function getQuoteAuthorAttribute()
+    {
+        return $this->quote['author'];
+    }
+
+    public function getQuoteIdAttribute()
+    {
+        return $this->quote['id'];
+    }
 }

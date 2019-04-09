@@ -92,7 +92,37 @@
                             <button type="submit" class="btn btn-outline-primary">Save Changes</button>
                         </div>
                     </form>
-                    <hr class="divider my-4"></hr>
+                    <hr class="divider my-4">
+                    <h3>Quotes <small>(Up to 5)</small></h3>
+                    <p>One of the quotes randomly appears in the footer section</p>
+                    @if(!empty($parish->quotes))
+                        <ul>
+                            @foreach($parish->quotes as $quote)
+                                <li>
+                                    <p>{{ $quote['text'] }}... <span class="text-muted">{{ $quote['author'] }}</span> </p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    @if (count($parish->quotes) <= 5)
+                        <form action="{{ route('parish.admin.settings.quotes.update', $parish) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <div class="form-group">
+                                <label for="quote-text">Quote Text</label>
+                                <input type="text" class="form-control" name="quote_text" id="quote-text" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quote-author">Quote Author</label>
+                                <input type="text" class="form-control" name="quote_author" id="quote-author" required>
+                            </div>
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                            </div>
+                        </form>
+                        <hr class="divider my-4">
+                    @endif
 
                     <h3>Contacts</h3>
                     <form action="{{ route('parish.admin.settings.contacts', $parish) }}" method="post">
