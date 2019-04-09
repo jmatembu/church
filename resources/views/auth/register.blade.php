@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-md-11">
+                            @include('shared.errors')
                             <form method="POST" action="{{ route('register') }}">
 
                                 @csrf
