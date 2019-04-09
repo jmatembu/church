@@ -49,5 +49,4 @@ $factory->afterCreatingState(App\User::class, 'laity', function ($user) {
     $user->prayerRequests()->save(factory(App\PrayerRequest::class)->make([
         'parish_id' => $user->current_parish
     ]));
-
 });

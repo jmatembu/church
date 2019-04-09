@@ -19,6 +19,7 @@ class CreateParishesTable extends Migration
             $table->string('slug');
             $table->unsignedInteger('diocese_id')->nullable();
             $table->text('description')->nullable();
+            $table->string('logo')->nullable();
             $table->jsonb('settings')->nullable();
             $table->timestamps();
 

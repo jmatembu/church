@@ -1,8 +1,14 @@
 <nav id="navigation_bar" class="navbar navbar-default sa-navbar">
     <div class="container">
       <div class="navbar-header">
-        <div class="logo"> 
-            <a href="{{ url('/') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="image"/></a> 
+        <div class="logo" style="max-width: 300px; max-height: 60px; overflow: hidden;">
+            <a href="{{ route('parish.index') }}" class="text-white">
+                @if ($parish->logo)
+                    <img class="img-fluid" src="{{ asset($parish->logo) }}" alt="{{ $parish->title }} logo"/>--}}
+                @else
+                    <span class="h5">{{ $parish->name }}</span>
+                @endif
+            </a>
         </div> <!-- /Logo -->
         <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
             <span class="icon-bar"></span> 

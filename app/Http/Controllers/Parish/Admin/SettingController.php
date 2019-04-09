@@ -7,6 +7,7 @@ use App\Parish;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -64,13 +65,22 @@ class SettingController extends Controller
         return back()->with('error', 'Something went wrong, settings not updated.');
     }
 
-    public function parishDescription(Request $request, Parish $parish)
+    public function parishUpdate(Request $request, Parish $parish)
     {
         $this->validate($request, [
-            'parish_description' => 'required|string|max:1000',
+            'description' => 'required|string|max:1000',
+            'logo' => 'nullable|image|mimes:jpg,png,jpeg|max:500',
         ]);
 
-        $parish->fill(['description' => $request->parish_description])->save();
+        $record = $request->only(['description']);
+
+        if ($request->hasFile('logo')) {
+            $fileName = 'logo.' . $request->file('logo')->getClientOriginalExtension();
+            $postDirectory = 'parishes/' . $parish->slug . '/images/';
+            $record['logo'] = $request->file('logo')->storeAs($postDirectory, $fileName, 'public');
+        }
+
+        $parish->fill($record)->save();
 
         return back()->with('success', 'Parish updated successfully');
     }

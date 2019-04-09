@@ -23,9 +23,14 @@ class UsersTableSeeder extends Seeder
             'current_parish' => Arr::random(App\Parish::pluck('id')->all()),
         ]);
         // Known users
-        factory(App\User::class)->create([
+        $joseph = factory(App\User::class)->create([
             'email' => 'jmatembu@gmail.com',
             'current_parish' => App\Parish::get()->random()->id
+        ]);
+        // Make joseph an Administrator of his parish
+        factory(\App\Staff::class)->states('administrator')->create([
+            'user_id' => $joseph->id,
+            'parish_id' => $joseph->current_parish
         ]);
     }
 }

@@ -27,7 +27,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="mb-3 h1">Settings</h2>
-
+                    <hr class="divider my-4"></hr>
                     <h3>Home Page Banner</h3>
                     <p>The home page banner appears only on the parish home page.</p>
                     <form action="{{ route('parish.admin.settings.banner', $parish) }}" method="post" enctype="multipart/form-data">
@@ -64,19 +64,29 @@
 
                     <hr class="divider my-4"></hr>
 
-                    <h3>Parish Description</h3>
-                    <p>This appears at the <strong>"Welcome to {{ $parish->name }}"</strong> section </p>
-                    <form action="{{ route('parish.admin.settings.parishDescription', $parish) }}" method="post">
+                    <h3>Parish Details</h3>
+
+                    <form action="{{ route('parish.admin.settings.parishUpdate', $parish) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+                        @if($parish->logo)
+                            <p>Current logo</p>
+                            <div class=" w-30">
+                                <img class="img-fluid" src="{{ asset($parish->logo) }}" alt="{{ $parish->name }} logo">
+                            </div>
+                        @endif
                         <div class="form-group">
-                            <label for="parish-description">Parish Welcome Message</label>
+                            <label for="parish-logo">Logo</label>
+                            <input type="file" class="form-control-file" name="logo" id="parish-logo">
+                        </div>
+                        <div class="form-group">
+                            <label for="parish-description">Parish Welcome Message. <small>This appears at the <strong>"Welcome to {{ $parish->name }}"</strong> section </small></label>
                             <textarea
                                 class="form-control"
-                                name="parish_description"
+                                name="description"
                                 id="parish-description"
                                 rows="8"
-                                placeholder="Write the welcome message here">{{ old('parish_description', $parish->description) }}</textarea>
+                                placeholder="Write the welcome message here">{{ old('description', $parish->description) }}</textarea>
                         </div>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-outline-primary">Save Changes</button>
