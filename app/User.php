@@ -88,6 +88,10 @@ class User extends Authenticatable
 
     public function isParishAdministrator()
     {
-        return $this->parish->administrators->contains($this->staff);
+        if ($this->current_parish) {
+            return optional($this->parish->administrators)->contains($this->staff);
+        }
+
+        return false;
     }
 }
