@@ -84,53 +84,12 @@
     </section>
      <!-- /About -->
 
-
-
-    <!-- Causes -->
-    {{-- <section id="causes" class="section-padding gray_bg">
-        <div class="container">
-            <div class="owl-carousel">
-                <div class="item">
-                    <div class="causes_info white_text">
-                        <div class="h__set">
-                            <h6>Urgent CAUSES</h6>
-                        </div>
-                        <h2>The Five Points of Gospel Truth</h2>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</p>
-                        <div class="causes_chart">
-                            <p>Raised: <strong>$15,000.00</strong></p>
-                            <div class="chart"><img src="assets/images/chart.png" alt="image"></div>
-                            <p>Goal: <strong>$25,000.00</strong></p>
-                        </div>
-                        <a href="#" class="btn btn-lg dark-btn">Donate Now</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="causes_info white_text">
-                        <div class="h__set">
-                            <h6>Urgent CAUSES</h6>
-                        </div>
-                        <h2>The Five Points of Gospel Truth</h2>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</p>
-                        <div class="causes_chart">
-                            <p>Raised: <strong>$15,000.00</strong></p>
-                            <div class="chart"><img src="assets/images/chart.png" alt="image"></div>
-                            <p>Goal: <strong>$25,000.00</strong></p>
-                        </div>
-                        <a href="#" class="btn btn-lg dark-btn">Donate Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-     <!-- /Causes -->
-
-    <!-- Latest-Events-Homilies -->
+    <!-- Latest-Events-News -->
     <section class="section-padding latest_event_homilies m-0">
         <div class="container">
             <div class="row">
                 @if($latestEvents->count())
-                <div class="col-md-6 col-lg-5">
+                    <div class="col-md-6 col-lg-5">
                     <div class="heading">
                         <h3>Latest Events</h3>
                         <a href="{{ route('parish.events.index', $parish) }}" class="btn btn-sm pull-right">See All</a>
@@ -155,41 +114,30 @@
                     </div>
                 </div>
                 @endif
-                @if($latestHomilies->count())
-                <div class="col-md-6 col-lg-5 offset-lg-2">
-                    <div class="heading">
-                        <h3>Latest Homilies</h3>
-                        <a href="#" class="btn btn-sm pull-right">See All</a>
-                    </div>
-                    <div class="panel-group" id="homilyAccordion" role="tablist" aria-multiselectable="true">
-                        @foreach($latestHomilies as $homily)
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="homilyHeading{{ $homily->id }}">
-                                <h6 class="panel-title">
-                                <a class="{{ ! $loop->first ? 'collapsed' : '' }}" role="button" data-toggle="collapse" data-parent="#homilyAccordion" href="#homilyCollapse{{ $homily->id }}" aria-expanded="{{ $loop->first ? 'true' : 'false' }}" aria-controls="homilyCollapse{{ $homily->id }}">
-                                    {{ title_case($homily->title) }}</a>
-                                </h6>
-                            </div>
-                            <div id="homilyCollapse{{ $homily->id }}" class="panel-collapse collapse {{ $loop->first ? 'in show' : '' }}" role="tabpanel" aria-labelledby="homilyHeading{{ $homily->id }}">
-                                <div class="panel-body">
-                                <ul class="homilies_meta">
-                                    <li><i class="fa fa-user"></i> Message from <a href="#">Frederick</a></li>
-                                    <li><i class="fa fa-calendar-check-o"></i> Aug 12, 2018</li>
-                                </ul>
-                                <div class="homilies_inside">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-music"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-file-pdf-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-share-alt"></i></a></li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </div>
+                @if($news->count())
+                    <div class="col-md-6 col-lg-5 offset-lg-2">
+                        <div class="heading">
+                            <h3>Latest News</h3>
+                            <a href="{{ route('parish.news.index', $parish) }}" class="btn btn-sm pull-right">See All</a>
                         </div>
-                        @endforeach
+                        <div class="event_list">
+                            <ul>
+                                @foreach($news as $post)
+                                    <li>
+                                        <div class="event_info">
+                                            <div class="event_date">
+                                                <span>{{ $post->start_publishing_at->format('d') }}</span> {{ $post->start_publishing_at->format('M y') }}
+                                            </div>
+                                            <h6><a href="#">{{ $post->brief_news_title }}</a></h6>
+                                            <ul>
+                                                <li><i class="fa fa-sticky-note"></i> {{ $post->brief_news_snippet }}</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 @endif
             </div>
         </div>
@@ -211,14 +159,18 @@
 
             @foreach($projects as $project)
             <div class="events_wrap">
+                @if($project->featured_image)
                 <div class="event_img">
-                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ $project->image_path }}" alt="image"></a>
+                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ asset($project->featured_image) }}" alt="{{ $project->title }}"></a>
                 </div>
+                @endif
                 <div class="event_info">
-                    <h4 class="mt-0"><a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">{{ title_case($project->title) }}</a></h4>
-                    {!! $project->brief_description !!}
+                    <h4 class="mt-0"><a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">{{ $project->title }}</a></h4>
+                    <div class="mb-4">
+                        {!! $project->brief_description !!}
+                    </div>
                     <ul>
-                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>
+{{--                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>--}}
                         <li><i class="fa fa-dollar"></i> Bugdet: {{ $project->budget }}</li>
                     </ul>
                     <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>

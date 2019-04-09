@@ -19,7 +19,7 @@ class ParishController extends Controller
         
         $latestEvents = $parish->events->sortByDesc('starts_at')->take(3);
         $nextEvent = $latestEvents->first();
-        $news = $parish->posts()->latest()->take(2)->get();
+        $news = $parish->news->take(3);
         $latestNews = $news->first();
         $latestHomilies = $parish->categories()->whereName('Homilies')->first()->posts->sortByDesc('start_publishing_at')->take(5);
         $latestHomily = $latestHomilies->first();

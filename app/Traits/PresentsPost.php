@@ -28,6 +28,11 @@ trait PresentsPost
         return Str::limit($this->snippet, 100);
     }
 
+    public function getBriefNewsSnippetAttribute()
+    {
+        return Str::limit($this->snippet, 50);
+    }
+
     public function isAboutParish()
     {
         return Str::contains($this->slug, 'about-the-parish');
