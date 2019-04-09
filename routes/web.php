@@ -47,6 +47,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::get('/settings', 'SettingController@index')->name('settings.index');
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
+        Route::put('/settings/parish-description', 'SettingController@parishDescription')->name('settings.parishDescription');
         Route::resource('/news', 'NewsController');
         Route::resource('/pages', 'PageController');
         Route::resource('/projects', 'ProjectController');

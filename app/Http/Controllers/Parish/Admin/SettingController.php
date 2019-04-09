@@ -63,4 +63,15 @@ class SettingController extends Controller
 
         return back()->with('error', 'Something went wrong, settings not updated.');
     }
+
+    public function parishDescription(Request $request, Parish $parish)
+    {
+        $this->validate($request, [
+            'parish_description' => 'required|string|max:1000',
+        ]);
+
+        $parish->fill(['description' => $request->parish_description])->save();
+
+        return back()->with('success', 'Parish updated successfully');
+    }
 }

@@ -66,13 +66,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-8 order-lg-1 sa-about-us-bg">
-                    <img src="assets/images/bg/2.png" alt="img">
+                    <img src="{{ asset('assets/images/bg/2.png') }}" alt="img">
                 </div>
                 <div class="col-lg-8 order-lg-12">
                     <div class="sa-about-us-details">
                         <h2>Welcome to {{ $parish->name }}</h2>
-                        <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).  If you are going to use a passage of Lorem.</p>
-                        <p>You need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined. chunks as necessary.</p>
+                        <p>{{ $parish->description }}</p>
                         @if($parish->about_page)
                             <a class="btn btn-lg dark-btn" href="{{ route('parish.about', $parish) }}">Read more...</a>
                         @endif

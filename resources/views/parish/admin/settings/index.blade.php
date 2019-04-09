@@ -64,6 +64,26 @@
 
                     <hr class="divider my-4"></hr>
 
+                    <h3>Parish Description</h3>
+                    <p>This appears at the <strong>"Welcome to {{ $parish->name }}"</strong> section </p>
+                    <form action="{{ route('parish.admin.settings.parishDescription', $parish) }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="form-group">
+                            <label for="parish-description">Parish Welcome Message</label>
+                            <textarea
+                                class="form-control"
+                                name="parish_description"
+                                id="parish-description"
+                                rows="8"
+                                placeholder="Write the welcome message here">{{ old('parish_description', $parish->description) }}</textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                        </div>
+                    </form>
+                    <hr class="divider my-4"></hr>
+
                     <h3>Contacts</h3>
                     <form action="{{ route('parish.admin.settings.contacts', $parish) }}" method="post">
                         @csrf
