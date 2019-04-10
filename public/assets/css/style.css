@@ -1504,6 +1504,10 @@ ul.sub-menu ul.sub-menu {
 	color: #deb668;
 }
 @media All and (max-width: 991px) {
+    .header_top div.h3 {
+        text-align: center;
+        width: 100%;
+    }
 	.sa-page-title {
 	    padding: 230px 0 120px;
 	    text-align: center !important;
@@ -1515,6 +1519,18 @@ ul.sub-menu ul.sub-menu {
 	}
 }
 @media All and (max-width: 767px) {
+    .sa-page-title {
+        padding: 120px 0 120px;
+    }
+
+    .login-wrapper {
+        margin-top: 60px;
+    }
+    
+    .login-wrapper .form-group  {
+        text-align: left;
+    }
+
 	.sa-page-title h1 {
 	    font-size: 35px;
 	    font-weight: 500;
@@ -1523,6 +1539,12 @@ ul.sub-menu ul.sub-menu {
 	.sa-page-title ul li {
 	    font-weight: 500;
 	}
+}
+
+@media All and (max-width: 575px) {
+    .container {
+        width: 90%;
+    }
 }
 
 /*===============

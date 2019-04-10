@@ -42,10 +42,10 @@
                     <div class="banner-details donation-banner-details mt-1 py-5 px-3">
                         <h1>Join your Parish Today</h1>
                         <p class="text-white" style="font-size: 120%;">Now, every catholic parish can have its own online community. Join your catholic parish community today.</p>
-                        <a href="{{ route('register') }}" class="btn black-btn">Register Now</a>
+                        <a href="{{ route('register') }}" class="btn dark-btn">Register Now</a>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-8">
+                <div class="col-lg-5 col-md-12 login-wrapper">
                     <div class="sa-banner-coundown-wrap">
                         <div class="sa-banner-coundown">
                             <h4>Login to your account</h4>
@@ -72,7 +72,7 @@
     <section class="section-padding">
         <div class="container">
             <div class="about_us">
-                <div class="section-header text-center">
+                <div class="sa-section-title text-center">
                     <h2>Why are we building <br><u>{{ config('app.name') }}</u>?</h2>
                 </div>
                 <p style="font-size: 1.125em">There is no doubt that information technology enhances delivery and consumption of services of any entity. The Catholic Church is no exception to this. {{ config('app.name') }} is a <strong>forever free service</strong> that is here to assist members of each parish community all over Uganda to have an even easier connection with their Parish, and in the same way assist the priests connect with their community. For example, members of a parish community shouldn't only get news updates when they attend mass. No! It would be great to have them have access to information and resources of the parish anytime and anywhere.</p>
