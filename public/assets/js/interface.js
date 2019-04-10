@@ -248,8 +248,7 @@
                 btn.text('Send Message');
             }, 3000);
             setTimeout(function () {
-                btn.fadeOut(500);
-                //btn.remove();
+                form.find('#alert-message').fadeOut();
             }, 10000);
         }).catch(function (error) {
             var message = $('<div class="alert alert-danger mt-2" id="alert-message">There was a problem sending email. Try again later.</div>');
@@ -261,9 +260,9 @@
             }, 3000);
 
             setTimeout(function () {
-                btn.fadeOut();
-                //btn.remove();
+                form.find('#alert-message').fadeOut();
             }, 10000);
+            console.log(error.response);
         });
     });
     
