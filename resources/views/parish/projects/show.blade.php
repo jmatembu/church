@@ -9,7 +9,7 @@
             <div class="col-md-8">
                 @if($project->featured_image)
                 <div class="post_img">
-                    <img src="{{ asset($project->featured_image) }}" alt="Image of {{ $project->title }}">
+                    <img src="{{ asset('storage/' . $project->featured_image) }}" alt="Image of {{ $project->title }}">
                 </div>
                 @endif
                 <h2>{{ $project->title }}</h2>

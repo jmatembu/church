@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 @if($event->featured_image)
                 <div class="post_img">
-                    <img src="{{ asset($event->featured_image) }}" alt="{{ $event->title }}">
+                    <img src="{{ asset('storage/' . $event->featured_image) }}" alt="{{ $event->title }}">
                     <div class="event_timer">
                         <div class="date">
                             <span>{{ $event->starts_at->format('d') }}</span>

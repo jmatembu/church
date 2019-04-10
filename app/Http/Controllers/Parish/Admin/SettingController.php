@@ -76,7 +76,7 @@ class SettingController extends Controller
 
         if ($request->hasFile('logo')) {
             $fileName = 'logo.' . $request->file('logo')->getClientOriginalExtension();
-            $postDirectory = 'parishes/' . $parish->slug . '/images/';
+            $postDirectory = 'parishes/' . $parish->slug . '/images';
             $record['logo'] = $request->file('logo')->storeAs($postDirectory, $fileName, 'public');
         }
 

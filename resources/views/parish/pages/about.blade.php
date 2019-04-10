@@ -2,7 +2,7 @@
 @section('title', 'About ' . $parish->name)
 @section('parishName', $parish->name)
 @section('content')
-    <section class="sa-page-title text-left" style="background-image: url('{{ asset($page->featured_image) }}')">
+    <section class="sa-page-title text-left" style="background-image: url('{{ asset('storage/' . $page->featured_image) }}')">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

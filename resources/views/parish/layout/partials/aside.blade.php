@@ -32,7 +32,7 @@
                     <li @if(! $post->featured_image) style="padding-left: 0;" @endif>
                         @if($post->featured_image)
                         <div class="post_thumb" style="height:  auto;">
-                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'news' => $post]) }}"><img src="{{ asset($post->featured_image) }}" alt="image"></a>
+                            <a href="{{ route('parish.news.show', ['parish' => $parish, 'news' => $post]) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="image"></a>
                         </div>
                         @endif
                         <h6 class="mt-0"><a href="#">{{ $post->brief_news_title }}</a></h6>

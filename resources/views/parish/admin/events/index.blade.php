@@ -26,7 +26,7 @@
 
                                                 <div class="col-sm-2">
                                                     @if($event->featured_image)
-                                                        <img src="{{ asset($event->featured_image) }}" class="img-fluid mt-2">
+                                                        <img src="{{ asset('storage/' . $event->featured_image) }}" class="img-fluid mt-2">
                                                     @endif
                                                 </div>
 

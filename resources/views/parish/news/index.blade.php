@@ -15,7 +15,7 @@
                         @if($post->featured_image)
                         <div class="blog_img">
                             <a href="{{ route('parish.news.show', ['parish' => $parish, 'newsItem' => $post]) }}">
-                                <img src="{{ asset($post->featured_image) }}" alt="image">
+                                <img src="{{ asset('storage/' . $post->featured_image) }}" alt="image">
                             </a>
                         </div>
                         @endif

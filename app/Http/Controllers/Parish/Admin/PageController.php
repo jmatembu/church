@@ -49,7 +49,7 @@ class PageController extends Controller
 
         if ($request->hasFile('post-image')) {
             $newsPostFileName = 'featured_image.' . $request->file('post-image')->getClientOriginalExtension();
-            $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
+            $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/pages';
             $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
 
             $newsPost['featured_image'] = Str::after($filePath, 'public/');

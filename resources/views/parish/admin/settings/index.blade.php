@@ -72,7 +72,7 @@
                         @if($parish->logo)
                             <p>Current logo</p>
                             <div class=" w-30">
-                                <img class="img-fluid" src="{{ asset($parish->logo) }}" alt="{{ $parish->name }} logo">
+                                <img class="img-fluid" src="{{ asset('storage/' . $parish->logo) }}" alt="{{ $parish->name }} logo">
                             </div>
                         @endif
                         <div class="form-group">

@@ -17,7 +17,7 @@
                 </div>
                 @if($project->featured_image)
                 <div class="mb-4">
-                    <img src="{{ asset($project->featured_image) }}" class="img-fluid">
+                    <img src="{{ asset('storage/' . $project->featured_image) }}" class="img-fluid">
                 </div>
                 @endif
                 <div class="post-body">

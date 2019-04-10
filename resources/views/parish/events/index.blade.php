@@ -15,7 +15,7 @@
                 </div>
                 @if($event->featured_image)
                 <div class="event_img">
-                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ asset($event->featured_image) }}" alt="image"></a>
+                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ asset('storage/' . $event->featured_image) }}" alt="image"></a>
                 </div>
                 @endif
                 <div class="event_info" @if(! $event->featured_image) style="width: 97.3%;" @endif>

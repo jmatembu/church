@@ -22,7 +22,7 @@
                 </div>
                 @if($event->featured_image)
                 <div class="mb-4">
-                    <img src="{{ asset($event->featured_image) }}" class="img-fluid">
+                    <img src="{{ asset('storage/' . $event->featured_image) }}" class="img-fluid">
                 </div>
                 @endif
                 <div class="post-body">

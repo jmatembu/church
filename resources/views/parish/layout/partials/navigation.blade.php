@@ -4,7 +4,7 @@
         <div class="logo" style="max-width: 300px; max-height: 60px; overflow: hidden;">
             <a href="{{ route('parish.index') }}" class="text-white">
                 @if ($parish->logo)
-                    <img class="img-fluid" src="{{ asset($parish->logo) }}" alt="{{ $parish->title }} logo"/>
+                    <img class="img-fluid" src="{{ asset('storage/' . $parish->logo) }}" alt="{{ $parish->name }} logo"/>
                 @else
                     <span class="h5">{{ $parish->name }}</span>
                 @endif
