@@ -11,57 +11,6 @@
 	  if (scroll >= 100) sticky.addClass('sticky');
 	  else sticky.removeClass('sticky');
 	});
-
-	/* -------------------------------------------------------------
-	   gallery isotope
-	------------------------------------------------------------- */
-    // init Isotope after all images have loaded code
-    var isotopeContainer = $('.gallery-mesonary');
-    isotopeContainer.isotope({
-      itemSelector: '.gallery-item',
-      masonry: {
-        columnWidth: isotopeContainer.width() / 4,
-      }
-    });
-
-    /* -------------------------------------------------------------
-	   gallery isotope
-	------------------------------------------------------------- */
-	$('.gallery-isotope').imagesLoaded( function() {
-	    // init Isotope after all images have loaded code
-	    var isotopeContainer = $('.gallery-mesonary-nonprofit');
-	    isotopeContainer.isotope({
-	      itemSelector: '.gallery-item',
-	      masonry: {
-	        columnWidth: isotopeContainer.width() / 3,
-	      }
-	    });
-    });
-
-	/////////// sa-gallery-mesonary ////////////
-	$('.sa-gallery-mesonary').imagesLoaded( function() {
-		var isotopeContainer = $('.sa-gallery-mesonary');
-		isotopeContainer.isotope({
-		  itemSelector: '.sa-gallery-item',
-		  masonry: {
-		    columnWidth: isotopeContainer.width() / 5,
-		  }
-		});
-	});
-
-
-	/*-------------------------------------------------------------------------------
-		  Video
-		-------------------------------------------------------------------------------*/
-	$('.popup-youtube').magnificPopup({
-		type: 'iframe'
-	});
-	$('.popup-vimeo').magnificPopup({
-		type: 'iframe'
-	});
-	$('.popup-video').magnificPopup({
-		type: 'iframe'
-	});
 		  
 	/*------------------------------------------------------------------
 		Intro-Slider
@@ -72,7 +21,7 @@
 	    nav:true,
 	    items:1,
 	    dots:false,
-	})
+	});
 
 	// style-two //
 	$('.style-two-slider').owlCarousel({
@@ -173,69 +122,7 @@
 	    nav:false,
 	    items:1,
 	    dots:true,
-	})
-
-	/*------------------------------------------------------------------
-	    progress bar funtion
-	-------------------------------------------------------------------*/
-    function progressBars() {
-        var progressBar = $('.cause-progress .progress-bar');
-        progressBar.css({width: 0});
-        progressBar.each(function () {
-            $(this).animate({width: $(this).attr("aria-valuenow") + "%"}, 1000)
-        });
-    }
-    // progress bar funtion call
-    progressBars();
-
-
-    /* -------------------------------------------------------------
-      RoundCircle Progress js
-    ------------------------------------------------------------- */
-    function roundCircleProgress () {
-      var rounderContainer = $('.piechart');
-      if (rounderContainer.length) {
-        rounderContainer.each(function () {
-          var Self = $(this);
-          var value = Self.data('value');
-          var size = Self.parent().width();
-          var color = Self.data('border-color');
-
-          Self.find('.count').each(function () {
-            var expertCount = $(this);
-            expertCount.appear(function () {
-              expertCount.countTo({
-                from: 1,
-                to: value*100,
-                speed: 2000
-              });
-            });
-
-          });
-          Self.appear(function () {         
-            Self.circleProgress({
-              value: value,
-              size: 130,
-              thickness: 15,
-              emptyFill: '#fff',
-              animation: {
-                duration: 2000
-              },
-              fill: {
-                color: color
-              }
-            });
-          });
-        });
-      };
-    }
-    roundCircleProgress ();
-    // Window load function
-    jQuery(window).on('load', function () {
-       (function ($) {
-          roundCircleProgress ();
-      })(jQuery);
-    });
+	});
 
 
     /* -------------------------------------------------------------
@@ -282,62 +169,103 @@
     |----------------------------------------------------------------------------
     */
     if($('#map-canvas').length > 0){
-      function popup_listing_map(){
-         var map;        
-          var myCenter=new google.maps.LatLng(53, -1.33);
-          var marker=new google.maps.Marker({
-              position:myCenter
-          });
-          function initialize() {
-              var mapProp = {
+      popup_listing_map();
+    }
+
+    function popup_listing_map(){
+        var map;
+        var myCenter=new google.maps.LatLng(53, -1.33);
+        var marker=new google.maps.Marker({
+            position:myCenter
+        });
+        function initialize() {
+            var mapProp = {
                 center:myCenter,
                 zoom: 14,
                 draggable: false,
                 scrollwheel: false,
                 mapTypeId:google.maps.MapTypeId.ROADMAP
-              };
+            };
 
-              map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+            map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
 
-               //Map Marker
-              var marker = new google.maps.Marker({
-                  position:myCenter,
-                  map: map,
-                  icon: 'assets/images/marker.png'
-              });
+            //Map Marker
+            var marker = new google.maps.Marker({
+                position:myCenter,
+                map: map,
+                icon: 'assets/images/marker.png'
+            });
 
-              google.maps.event.addListener(marker, 'click', function() {
-                
-              infowindow.setContent(contentString);
-              infowindow.open(map, marker);
+            google.maps.event.addListener(marker, 'click', function() {
 
-              }); 
-          };
+                infowindow.setContent(contentString);
+                infowindow.open(map, marker);
 
-          google.maps.event.addDomListener(window, 'load', initialize);
+            });
+        };
 
-          google.maps.event.addDomListener(window, "resize", resizingMap());
+        google.maps.event.addDomListener(window, 'load', initialize);
 
-          $('#popupmodal').on('show.bs.modal', function() {
-             //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
-             resizeMap();
-          })
+        google.maps.event.addDomListener(window, "resize", resizingMap());
 
-          function resizeMap() {
-             if(typeof map =="undefined") return;
-             setTimeout( function(){resizingMap();} , 400);
-          }
+        $('#popupmodal').on('show.bs.modal', function() {
+            //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
+            resizeMap();
+        })
 
-          function resizingMap() {
-             if(typeof map =="undefined") return;
-             var center = map.getCenter();
-             google.maps.event.trigger(map, "resize");
-             map.setCenter(center); 
-          } 
-      }
-      popup_listing_map();
+        function resizeMap() {
+            if(typeof map =="undefined") return;
+            setTimeout( function(){resizingMap();} , 400);
+        }
 
+        function resizingMap() {
+            if(typeof map =="undefined") return;
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        }
     }
+
+    $('#feedback-form').submit(function (e) {
+        var form = $(this);
+        var btn = form.find('#submit-feedback');
+        e.preventDefault();
+
+        btn.attr('disabled', true);
+        btn.text('Sending feedback...');
+
+        axios.post(form.attr('action'), {
+            name: form.find('#name').val(),
+            email: form.find('#feedback_email').val(),
+            body: form.find('#message').val()
+        }).then(function (response) {
+            var message = $('<div class="alert alert-success mt-2" id="alert-message">Thank you for your feedback. May God bless you.</div>');
+
+            setTimeout(function () {
+                form.trigger('reset');
+                form.append(message);
+                btn.attr('disabled', false);
+                btn.text('Send Message');
+            }, 3000);
+            setTimeout(function () {
+                btn.fadeOut(500);
+                //btn.remove();
+            }, 10000);
+        }).catch(function (error) {
+            var message = $('<div class="alert alert-danger mt-2" id="alert-message">There was a problem sending email. Try again later.</div>');
+
+            setTimeout(function () {
+                form.append(message);
+                btn.attr('disabled', false);
+                btn.text('Send Message');
+            }, 3000);
+
+            setTimeout(function () {
+                btn.fadeOut();
+                //btn.remove();
+            }, 10000);
+        });
+    });
     
   
 

@@ -20,9 +20,15 @@ class ReceiveFeedback extends Controller
             Mail::to(config('settings.feedback.email'))
                 ->send(new FeedbackReceived($request->all()));
 
-            return back()->with('success', 'Thank you for your feedback.');
+            return response()->json([
+                'message' => 'Thank you for your feedback.'
+            ], 200);
+
         } catch (\Exception $e) {
-            return back()->with('error', 'Could not send email at this time.');
+            return response()->json([
+                'error' => $e->getMessage(),
+                'message' => 'Could not send email at this time.'
+            ], 500);
         }
     }
 }

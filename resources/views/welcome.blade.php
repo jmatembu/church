@@ -209,7 +209,7 @@
                     </div>
 
                     <div class="sa-contact-area">
-                        <form class="sa-contact-form" action="{{ route('feedback.store') }}" method="post">
+                        <form class="sa-contact-form" action="{{ route('feedback.store') }}" method="post" id="feedback-form">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
@@ -221,7 +221,7 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input class="input-control" id="email" placeholder="e.g john@example.com" type="email" name="email" required>
+                                        <input class="input-control" id="feedback_email" placeholder="e.g john@example.com" type="email" name="email" required>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
                                 <label for="message">Message</label>
                                 <textarea id="message" class="input-control" name="body" placeholder="Type your message here" rows="5" required></textarea>
                             </div>
-                            <button type="submit" id="submit" class="btn black-btn">Send Message</button>
+                            <button type="submit" id="submit-feedback" class="btn black-btn">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -253,14 +253,8 @@
     <!-- Scripts -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/audio_custome.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('assets/js/isotope.js') }}"></script>
-    <script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>
-    <script src="https://npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <!--Custome-JS-->
     <script src="{{  asset('assets/js/interface.js') }}"></script>
 </body>
