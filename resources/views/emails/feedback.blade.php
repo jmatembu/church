@@ -1,7 +1,7 @@
 @component('mail::message')
 # Feedback
 
-{{ $details['name'] }} ({{ $details['feedback_email'] }}) wrote:
+{{ $details['name'] }} ({{ $details['email'] }}) wrote:
 
 {{ $details['body'] }}
 
