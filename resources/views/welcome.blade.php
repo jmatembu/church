@@ -209,24 +209,25 @@
                     </div>
 
                     <div class="sa-contact-area">
-                        <form class="sa-contact-form">
+                        <form class="sa-contact-form" action="{{ route('feedback.store') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input class="input-control" placeholder="Your real name" id="name" type="text" name="name">
+                                        <input class="input-control" placeholder="Your real name" id="name" type="text" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input class="input-control" id="email" placeholder="e.g john@example.com" type="email" name="email">
+                                        <input class="input-control" id="email" placeholder="e.g john@example.com" type="email" name="email" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="message">Message</label>
-                                <textarea id="message" class="input-control" placeholder="Type your message here" rows="5"></textarea>
+                                <textarea id="message" class="input-control" name="body" placeholder="Type your message here" rows="5" required></textarea>
                             </div>
                             <button type="submit" id="submit" class="btn black-btn">Send Message</button>
                         </form>

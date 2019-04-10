@@ -12,6 +12,7 @@
 */
 
 Route::view('/', 'welcome');
+Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 
 Auth::routes(['verify' => true]);
 
