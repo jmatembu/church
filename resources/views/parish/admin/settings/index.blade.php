@@ -135,13 +135,15 @@
                         </div>
                         <div class="form-group">
                             <label for="contact_email">Email</label>
-
                             <input type="email" class="form-control" name="contact_email" id="contact_email" value="{{ old('contact_email', $parish->main_email) }}">
                         </div>
                         <div class="form-group">
                             <label for="contact_phone">Phone Number</label>
-
                             <input type="tel" class="form-control" name="contact_phone" id="contact_phone" value="{{ old('contact_phone', $parish->main_phone) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_location">Map Location Url</label>
+                            <input type="text" class="form-control" name="contact_location" id="contact_location" value="{{ old('contact_location', $parish->map_location) }}">
                         </div>
 
                         <div class="form-group text-right">

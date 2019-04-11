@@ -5,18 +5,29 @@
 @include('parish.layout.partials.page-header', ['pageTitle' => 'Contact Us'])
 <section class="section-padding">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="sa-section-title text-center">
-                    <h2>Find Us on Google Maps</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
+        @if ($parish->map_location)
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="sa-section-title text-center">
+                        <h2>Find {{ $parish->name }} on Google Maps</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="map_wrap map_wrap-contact">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3554.859511213048!2d32.7171749430933!3d0.3700428231759754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x15ae229fb8dff5c2!2sSt.+Augustine%2C+Seeta+Catholic+Church!5e0!3m2!1sen!2sus!4v1548420018006" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div> 
-        
+
+            <div class="map_wrap map_wrap-contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3554.859511213048!2d32.7171749430933!3d0.3700428231759754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x15ae229fb8dff5c2!2sSt.+Augustine%2C+Seeta+Catholic+Church!5e0!3m2!1sen!2sus!4v1548420018006" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        @endif
+
+        @if(! $parish->map_location)
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="sa-section-title text-center">
+                        <p>You can reach us through the contacts below. Use the form to send an email the parish office.</p>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="contact_wrap">
             <div class="row">
                 <div class="col-md-5 secondary-bg">

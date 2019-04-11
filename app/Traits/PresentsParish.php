@@ -47,6 +47,11 @@ trait PresentsParish
         return $phoneNumbers[0];
     }
 
+    public function getMapLocationAttribute()
+    {
+        return Arr::get($this->contacts, 'location', null);
+    }
+
     public function getBannerHeadlineAttribute()
     {
         return $this->settings('banner.headline', 'God gives us Power');

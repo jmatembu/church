@@ -23,13 +23,15 @@ class SettingController extends Controller
         $this->validate($request, [
             'contact_address' => 'required|string|max:255',
             'contact_email' => 'required|email',
-            'contact_phone' => 'required|max:15'
+            'contact_phone' => 'required|max:15',
+            'contact_location' => 'nullable|string',
         ]);
 
         $settings = $parish->settings;
         Arr::set($settings, 'contacts.address', $request->contact_address);
         Arr::set($settings, 'contacts.email', $request->contact_email);
         Arr::set($settings, 'contacts.phone', [$request->contact_phone]);
+        Arr::set($settings, 'contacts.location', $request->contact_location);
 
         if ($parish->update(['settings' => $settings])) {
             return back()->with('success', 'Settings updated successfully');
