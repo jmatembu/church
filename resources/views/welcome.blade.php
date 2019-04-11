@@ -75,7 +75,7 @@
                 <div class="sa-section-title text-center">
                     <h2>Why are we building <br><u>{{ config('app.name') }}</u>?</h2>
                 </div>
-                <p style="font-size: 1.125em">There is no doubt that information technology enhances delivery and consumption of services of any entity. The Catholic Church is no exception to this. {{ config('app.name') }} is a <strong>forever free service</strong> that is here to assist members of each parish community all over Uganda to have an even easier connection with their Parish, and in the same way assist the priests connect with their community. For example, members of a parish community shouldn't only get news updates when they attend mass. No! It would be great to have them have access to information and resources of the parish anytime and anywhere.</p>
+                <p style="font-size: 1.125em">There is no doubt that information technology enhances delivery and consumption of services of any entity. The Catholic Church is no exception to this. {{ config('app.name') }} is a <strong>forever free service</strong> that is here to assist members of each parish community to have an even easier connection with their Parish, and in the same way assist the priests connect with their community. For example, members of a parish community shouldn't only get news updates when they attend mass. No! It would be great to have them have access to information and resources of the parish anytime and anywhere.</p>
                 <p style="font-size: 1.125em">{{ config('app.name') }} also greatly cuts down the costs that would be required if each parish decided to build and manage its own online parish community. Well, {{ config('app.name') }} is an opt-in service. Therefore each Parish through its Parish Priest would need to request to be added to {{ config('app.name') }}.</p>
             </div>
 
@@ -242,8 +242,11 @@
         <div class="footer_top secondary-bg pb-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 pt-3 pb-0">
-                        <p class="text-white text-center">&copy; {{ date('Y') }} {{ config('app.name') }}</p>
+                    <div class="col-md-4 pt-3 pb-0">
+                        <p class="text-white">&copy; {{ date('Y') }} {{ config('app.name') }}</p>
+                    </div>
+                    <div class="col-md-8 text-right pt-3 pb-0">
+                        <a href="{{ route('pages.terms') }}">Terms of Service</a>
                     </div>
                 </div>
             </div>

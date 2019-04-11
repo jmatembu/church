@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg main-navbar">
 	<a class="header-brand" href="{{ url('/') }}">
-		My Catholic Parish
+		{{ config('app.name') }}
 	</a>
 	<ul class="navbar-nav mr-3 mr-auto">
 		<li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>

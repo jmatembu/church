@@ -28,10 +28,9 @@
                     <h5>Useful Links</h5>
                     <div class="footer_nav">
                         <ul>
-                            <li><a href="#">FAQ</a></li>
                             <li><a href="{{ route('users.account') }}">My Account</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="{{ route('pages.terms') }}">Terms and Conditions</a></li>
                             <li><a href="https://www.uecon.org" target="_blank">Uganda Episcopal Conference</a> </li>
                         </ul>
                     </div>

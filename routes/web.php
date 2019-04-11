@@ -12,6 +12,7 @@
 */
 
 Route::view('/', 'welcome');
+Route::view('terms-of-service', 'terms')->name('pages.terms');
 Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 
 Auth::routes(['verify' => true]);

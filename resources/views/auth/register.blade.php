@@ -82,8 +82,7 @@
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="text-right">
-                                        <p class="text-muted">By registering, you agree to these <a href="#">Terms of
-                                                Service</a></p>
+                                        <p class="text-muted">By registering, you agree to these <a href="{{ route('pages.terms') }}">Terms and Conditions</a></p>
                                         <button type="submit" class="btn btn-primary btn-lg px-5">
                                             {{ __('Register') }}
                                         </button>
