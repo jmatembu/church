@@ -38,6 +38,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
     Route::get('events/{event}', 'EventController@show')->name('events.show');
 
     Route::view('/contact-us', 'parish.contact')->name('contact.create');
+    Route::post('/contact-us', 'Parish\ContactParish')->name('contact.send');
     Route::get('/prayer-requests', 'Parish\PrayerRequestController@index')->name('prayerRequests.index');
 
     Route::name('admin.')

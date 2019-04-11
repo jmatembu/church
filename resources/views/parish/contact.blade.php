@@ -41,19 +41,22 @@
                     </div>
                 </div>
                 <div class="col-md-7">
+                    @include('shared.errors')
+                    @include('shared.notifications');
                     <div class="form_wrap">
-                        <form>
+                        <form action="{{ route('parish.contact.send', $parish) }}" method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" required>
-                                <span class="focus-input" data-placeholder="Your Name (required)"></span>
+                                <label for="contact_name">Name</label>
+                                <input type="text" class="form-control" id="contact_name" name="name" placeholder="Type your name here" value="{{ old('name') }}" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" required>
-                                <span class="focus-input" data-placeholder="Your Email (required)"></span>
+                                <label for="contact_email">Email</label>
+                                <input type="email" class="form-control" id="contact_email" name="email" placeholder="e.g tom@example.org" value="{{ old('email') }}" required>
                             </div>
                             <div class="form-group">
-                                <textarea name="body" cols="45" rows="6" class="form-control" required></textarea>
-                                <span class="focus-input" data-placeholder="Your Message (required)"></span>
+                                <label for="contact_body">Your message</label>
+                                <textarea name="body" id="contact_body" cols="45" rows="6" class="form-control" placeholder="Write your message here" required>{{ old('body') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <input class="btn dark-btn" value="Submit" type="submit">
