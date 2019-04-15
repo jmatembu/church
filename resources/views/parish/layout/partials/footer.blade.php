@@ -1,6 +1,7 @@
 <!-- Footer -->
 <footer id="footer">
     <!-- Footer-Top -->
+    @if(! empty($parish->quotes))
     <div class="footer_top secondary-bg">
         <div class="container">
             <div class="row">
@@ -10,6 +11,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- /Footer-Top -->
 
     <!-- Footer-Widgets -->
