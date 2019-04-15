@@ -17,6 +17,8 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             [
                 'parish.*',
+                'layouts.*',
+                'accounts.*'
             ],
             function ($view) {
                 $parish = request()->user()->parish;

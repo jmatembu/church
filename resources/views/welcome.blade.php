@@ -34,31 +34,22 @@
     <section class="sa-page-title text-left" style="background-image: url({{ asset('assets/images/bg/1.jpg') }});">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7 col-md-12" style="background-color: rgba(0,0,0,0.2);">
-                    <div class="banner-details donation-banner-details mt-1 py-5 px-3">
-                        <h1>Join your Parish Today</h1>
-                        <p class="text-white" style="font-size: 120%;">Now, every catholic parish can have its own online community for free. Join your catholic parish community today.</p>
-                        <a href="{{ route('register') }}" class="btn dark-btn">Register Now</a>
+                <div class="col-12 donation-banner-details py-5 mt-0" style="background-color: rgba(0,0,0,0.2);">
+                    <h1 class="h1 text-white text-center">Search for a Parish</h1>
+                    <div class="search-form-wrapper py-5">
+                        <form action="#" method="post">
+                            @csrf
+                            <div class="form-row justify-content-center">
+                                <div class="col-xs-12 col-sm-9 d-flex">
+                                    <input class="form-control rounded-left d-sm-block" type="text" name="searh_query" required>
+                                    <button class="btn black-btn rounded d-sm-block" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="col-lg-5 col-md-12 login-wrapper">
-                    <div class="sa-banner-coundown-wrap">
-                        <div class="sa-banner-coundown">
-                            <h4>Login to your account</h4>
-                            <form method="post" action="{{ route('login') }}" id="login-form">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="**************************" required>
-                                </div>
-                            </form>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-8">
 
-                            <button type="submit" class="btn black-btn btn-block mb-3" form="login-form">Login</button>
-                            <p>Don't have an account? <a href="{{ route('register') }}" class="d-inline">Register here</a> instead.</p>
                         </div>
                     </div>
                 </div>
@@ -100,8 +91,8 @@
                         <div class="d-inline-block mb-4" style="width: 40px; height: 50px; fill: #deb668;">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g id="Outline"><path d="M5.29,5.29a1.032,1.032,0,0,0-.21.33.942.942,0,0,0,0,.76.933.933,0,0,0,.21.33,1.014,1.014,0,0,0,1.42,0,1.014,1.014,0,0,0,0-1.42A1.047,1.047,0,0,0,5.29,5.29Z"/><path d="M8.62,5.08a.933.933,0,0,0-.33.21,1.014,1.014,0,0,0,0,1.42A1,1,0,0,0,10,6a1.052,1.052,0,0,0-.29-.71A1.017,1.017,0,0,0,8.62,5.08Z"/><path d="M11.62,5.08a1.032,1.032,0,0,0-.33.21,1.014,1.014,0,0,0,0,1.42,1.155,1.155,0,0,0,.33.21A1,1,0,0,0,12,7a.99.99,0,0,0,1-1,1.052,1.052,0,0,0-.29-.71A1.037,1.037,0,0,0,11.62,5.08Z"/><rect x="15" y="19" width="14" height="2"/><rect x="15" y="25" width="14" height="2"/><rect x="15" y="31" width="19" height="2"/><rect x="15" y="37" width="13" height="2"/><rect x="15" y="43" width="8" height="2"/><rect x="15" y="49" width="6" height="2"/><path d="M58.171,14a3.8,3.8,0,0,0-2.707,1.122L52,18.586V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V59a3,3,0,0,0,3,3H49a3,3,0,0,0,3-3V29.414l8.878-8.878A3.828,3.828,0,0,0,58.171,14ZM4,5A1,1,0,0,1,5,4H49a1,1,0,0,1,1,1V8H4ZM50,59a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V10H50V20.586l-6,6v-3L33.414,13H10V57H44V37.414l6-6ZM26.126,44.46l-2.707,8.121,8.121-2.707L34.414,47,42,39.414V55H12V15H32V25H42v3.586l-13,13ZM29,44.414,31.586,47,30.46,48.126l-3.879,1.293,1.293-3.879Zm5-28L40.586,23H34ZM33,45.586,30.414,43,54,19.414,56.586,22ZM59.464,19.122,58,20.586,55.414,18l1.464-1.464a1.829,1.829,0,1,1,2.586,2.586Z"/></g></svg>
                         </div>
-                        <h2>News & Updates</h2>
-                        <p>Read news and updates about your parish.</p>
+                        <h2>News & Events</h2>
+                        <p>Read news and events from your parish.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

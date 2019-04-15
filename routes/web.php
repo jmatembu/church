@@ -11,11 +11,11 @@
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 Route::view('terms-of-service', 'terms')->name('pages.terms');
 Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
-
 Auth::routes(['verify' => true]);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', 'ParishController@index')->name('parish.index')->middleware('parish');
@@ -57,6 +57,10 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::resource('/projects', 'ProjectController');
         Route::resource('/events', 'EventController');
     });
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
+    \Aschmelyun\Larametrics\Larametrics::routes();
 });
 
 

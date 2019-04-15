@@ -7623,3 +7623,16 @@ ul.sa-speaker-event-schedule li.day:last-child .entry-dot:after {
 .bannercoundown .countdown-period-last {
 	margin-right: 0 !important;
 }
+.search-form-wrapper .form-control{
+    padding: 8px 20px;
+    font-size: 32px;
+    height: 61px;
+    width: 80%;
+}
+.search-form-wrapper button[type=submit]{
+    padding: 16px;
+    font-size: 16px;
+    width: 20%;
+    height: 61px;
+    min-width: 100px;
+}
