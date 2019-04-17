@@ -265,6 +265,10 @@
             console.log(error.response);
         });
     });
+
+    var userDataTable = $('.datatable').DataTable({
+        "ordering": false
+    });
     
   
 

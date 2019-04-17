@@ -12,9 +12,12 @@
 */
 
 Route::view('/', 'welcome')->name('home');
-Route::view('terms-of-service', 'terms')->name('pages.terms');
-Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 Auth::routes(['verify' => true]);
+
+// Site pages
+Route::view('terms-of-service', 'terms')->name('pages.terms');
+Route::get('parishes', 'Parish\ParishController@index')->name('parishes.index');
+Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 
 
 Route::middleware(['auth'])->group(function () {

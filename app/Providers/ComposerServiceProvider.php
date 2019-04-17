@@ -17,7 +17,7 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             [
                 'parish.*',
-                'layouts.*',
+                //'layouts.*',
                 'accounts.*'
             ],
             function ($view) {

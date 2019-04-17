@@ -1,55 +1,35 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="catholic, parish, catholic parish, free service, catholic community, community, parish news, parish priest">
-    <meta name="description" content="My Catholic Parish is a forever free service that connects parishes to their communities. It aims as enabling each Catholic parish running its community online.">
-    <title>{{ config('app.name') }} - Join your parish today</title>
-    <!--Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
-    <!--OWL Carousel slider-->
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}" type="text/css">
-    <!--Custome Style -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
-    <!--magnific Style -->
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}" type="text/css">
-    <!--FontAwesome Font Style -->
-    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Fav and touch icons -->
-    @include('layouts.partials.favicon')
-    <!-- Google-Font-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-{{--    <!--[if lt IE 9]>--}}
-{{--    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--}}
-{{--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--}}
-{{--    <![endif]-->--}}
-</head>
-<body>
-    @include('layout.partials.header')
+@extends('layouts.site')
+
+@section('content')
     <section class="sa-page-title text-left" style="background-image: url({{ asset('assets/images/bg/1.jpg') }});">
         <div class="container">
-            <div class="row">
-                <div class="col-12 donation-banner-details py-5 mt-0" style="background-color: rgba(0,0,0,0.2);">
-                    <h1 class="h1 text-white text-center">Search for a Parish</h1>
-                    <div class="search-form-wrapper py-5">
-                        <form action="#" method="post">
-                            @csrf
-                            <div class="form-row justify-content-center">
-                                <div class="col-xs-12 col-sm-9 d-flex">
-                                    <input class="form-control rounded-left d-sm-block" type="text" name="searh_query" required>
-                                    <button class="btn black-btn rounded d-sm-block" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-sm-8">
 
+            <div class="row">
+                <div class="col-lg-7 col-md-12" style="background-color: rgba(0,0,0,0.2);">
+                    <div class="banner-details donation-banner-details mt-1 py-5 px-3">
+                        <h1>Join your Parish Today</h1>
+                        <p class="text-white" style="font-size: 120%;">Now, every catholic parish can have its own online community for free. Join your catholic parish community today.</p>
+                        <a href="{{ route('register') }}" class="btn dark-btn">Register Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 login-wrapper">
+                    <div class="sa-banner-coundown-wrap">
+                        <div class="sa-banner-coundown">
+                            <h4>Login to your account</h4>
+                            <form method="post" action="{{ route('login') }}" id="login-form">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="**************************" required>
+                                </div>
+                            </form>
+
+                            <button type="submit" class="btn black-btn btn-block mb-3" form="login-form">Login</button>
+                            <p>Don't have an account? <a href="{{ route('register') }}" class="d-inline">Register here</a> instead.</p>
                         </div>
                     </div>
                 </div>
@@ -378,13 +358,13 @@
         </div>
     </section>
 
-    <section class="sa-contact-section pd-default-2">
+    <section class="sa-contact-section pd-default-2" id="site-feedback">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <h2 class="title mb-5">We appreciate your feedback</h2>
+                    <h2 class="title mb-5 text-center" >We appreciate your feedback</h2>
                     <div class="sa-poster-con-info">
-                        <p>If you have any feedback for us about {{ config('app.name') }}, we would be more than happy to know about it. Use the contact form below to reach out to the developers of {{ config('app.name') }}.</p>
+                        <p class="text-center">If you have any feedback about {{ config('app.name') }}, we would be more than happy to know about it. Use the contact form below to reach out to the administrators of {{ config('app.name') }}.</p>
                     </div>
 
                     <div class="sa-contact-area">
@@ -416,28 +396,7 @@
         </div>
     </section>
 
-    <footer id="footer">
-        <!-- Footer-Top -->
-        <div class="footer_top secondary-bg pb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 pt-3 pb-0">
-                        <p class="text-white">&copy; {{ date('Y') }} {{ config('app.name') }}</p>
-                    </div>
-                    <div class="col-md-8 text-right pt-3 pb-0">
-                        <a href="{{ route('pages.terms') }}">Terms of Service</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Footer-Top -->
-    </footer>
-    <!-- Scripts -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+@section('scripts')
+    @parent
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-    <!--Custome-JS-->
-    <script src="{{  asset('assets/js/interface.js') }}"></script>
-</body>
-</html>
+@endsection
