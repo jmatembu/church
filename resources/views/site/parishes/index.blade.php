@@ -20,9 +20,9 @@
 @endsection
 @section('content')
 
-    <section class="sa-page-title text-left">
-        <div class="container">
-            <div class="row">
+    <section class="sa-page-title text-left p-5">
+        <div class="container pt-5">
+            <div class="row pt-5">
                 <div class="col-md-12">
                     <h1>Find a Parish</h1>
                 </div>
@@ -62,7 +62,7 @@
             <div class="row justify-content-center">
                 <div class="col-8 text-center">
                     <h3>Didn't find the parish you were looking for?</h3>
-                    <p>There are thousands of Catholic parishes allover the world, help us add more to the site. Use this <a href="{{ route('home') }}#site-feedback">feedback form</a> to let us know of the parish you want us to add. Please ensure you give us full details of the parish such as contact details. We will contact the parish to verify and request permission to be added onto {{ config('app.name') }}.</p>
+                    <p>There are thousands of Catholic parishes allover the world, help us add more to the site. Use this <a href="{{ route('home') }}#site-feedback">feedback form</a> to let us know of the parish you want us to add. Please ensure you give us full details of the parish including its contact details. We will contact the parish to verify and request permission to be added onto <a href="{{ route('home') }}">{{ config('app.name') }}</a>.</p>
                 </div>
             </div>
         </div>

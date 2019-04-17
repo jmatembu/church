@@ -1,12 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.site')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="mb-4">{{ __('Register') }}</h2>
+<div class="container my-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 mt-5">
+            <h2 class="mb-4 mt-5">{{ __('Register') }}</h2>
             <div class="card">
-
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col-md-11">
@@ -65,9 +64,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="default_parish_selector">Parish <small class="text-secondary">This is
-                                            the parish
-                                            where you usually pray from. You can change this anytime.</small></label>
+                                    <label for="default_parish_selector">Parish <small class="text-secondary font-italic">This is
+                                            the parish where you usually pray from. You can change this anytime.</small></label>
 
                                     <select class="search-select form-control" name="current_parish" id="default_parish_selector">
                                         <option>Select your current Parish</option>
@@ -80,10 +78,12 @@
                                         @endforeach
                                     </select>
                                 </div>
+
                                 <div class="form-group mb-0">
+                                    <p class="text-darker">Your parish is not listed? You can still register and visit other parishes as you wait for your parish to be added.</p>
                                     <div class="text-right">
                                         <p class="text-muted">By registering, you agree to these <a href="{{ route('pages.terms') }}">Terms and Conditions</a></p>
-                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <button type="submit" class="btn black-btn btn-lg px-5">
                                             {{ __('Register') }}
                                         </button>
 

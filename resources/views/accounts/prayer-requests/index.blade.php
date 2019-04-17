@@ -6,6 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        @if(Auth::user()->current_parish)
                         <div class="row mb-4">
                             <div class="col-12 text-right">
                                 <a class="btn btn-secondary" href="{{ route('users.prayerRequests.create') }}">
@@ -13,6 +14,7 @@
                                     Add Prayer Request</a>
                             </div>
                         </div>
+                        @endif
                         @include('shared.notifications')
                         @if ($prayerRequests->count())
                         <table class="table table-condensed">
@@ -39,7 +41,7 @@
                             </tbody>
                         </table>
                         @else
-                            <p>You have not made any prayer requests. Consider adding on above.</p>
+                            <p>Your prayer requests will appear here.</p>
                         @endif
                     </div>
                 </div>

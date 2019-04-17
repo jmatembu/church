@@ -24,6 +24,7 @@
                                 <label for="default_parish_selector">Default Parish</label>
                                 <p class="text-muted">This is the parish where you usually pray from.</p>
                                 <select class="search-select form-control" name="default_parish" id="default_parish_selector">
+                                    <option>Select Parish</option>
                                     @foreach($parishesByDiocese as $diocese => $dioceseParishes)
                                     <optgroup label="{{ $diocese }}">
                                         @foreach($dioceseParishes as $parish)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Parish;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,7 +55,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'current_parish' => ['required', 'exists:parishes,id']
+            //'current_parish' => ['sometimes', 'exists:parishes,id']
         ]);
     }
 
@@ -66,13 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $record = [
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'current_parish' => $data['current_parish']
-        ]);
+            'password' => Hash::make($data['password'])
+        ];
+
+        if (Arr::has($data, 'current_parish')) {
+            $parish = Parish::find($data['current_parish']);
+
+            if ($parish) {
+                $record['current_parish'] = $data['current_parish'];
+            }
+        }
+
+        return User::create($record);
     }
 
     public function showRegistrationForm()
