@@ -151,6 +151,49 @@
                         </div>
                     </form>
                     <div class="divider"></div>
+
+                    <h3>Mass Schedules</h3>
+                    <form action="{{ route('parish.admin.settings.massSchedule', $parish) }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="form-group">
+                            <label for="mass_schedule_notes">Mass Schedule Notes <small>- Will appear besides the mass schedule</small></label>
+                            <textarea class="form-control" name="mass_schedule_notes" id="mass_schedule_notes" rows="5">{{ old('mass_schedule_notes', $parish->mass_schedule_notes) }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sunday_schedule">Sunday</label>
+                            <input type="text" class="form-control" name="sunday" id="sunday_schedule"  value="{{ old('sunday', $parish->mass_on_sunday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="monday_schedule">Monday</label>
+                            <input type="text" class="form-control" name="monday" id="monday_schedule"  value="{{ old('monday', $parish->mass_on_monday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="tuesday_schedule">Tuesday</label>
+                            <input type="text" class="form-control" name="tuesday" id="tuesday_schedule"  value="{{ old('tuesday', $parish->mass_on_tuesday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="wednesday_schedule">Wednesday</label>
+                            <input type="text" class="form-control" name="wednesday" id="wednesday_schedule"  value="{{ old('wednesday', $parish->mass_on_wednesday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="thursday_schedule">Thursday</label>
+                            <input type="text" class="form-control" name="thursday" id="thursday_schedule"  value="{{ old('thursday', $parish->mass_on_thursday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="friday_schedule">Friday</label>
+                            <input type="text" class="form-control" name="friday" id="friday_schedule"  value="{{ old('friday', $parish->mass_on_friday) }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="saturday_schedule">Saturday</label>
+                            <input type="text" class="form-control" name="saturday" id="saturday_schedule"  value="{{ old('saturday', $parish->mass_on_saturday) }}">
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button class="btn btn-outline-primary" type="submit">Save Changes</button>
+                        </div>
+                    </form>
+                    <div class="divider"></div>
                 </div>
             </div>
         </div>

@@ -55,6 +55,7 @@ Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}'
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::get('/settings', 'SettingController@index')->name('settings.index');
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
+        Route::put('/settings/mass-schedule', 'SettingController@massSchedule')->name('settings.massSchedule');
         Route::put('/settings/banner', 'SettingController@banner')->name('settings.banner');
         Route::put('/settings/quotes/update', 'SettingController@updateQuote')->name('settings.quotes.update');
         Route::put('/settings/parish-update', 'SettingController@parishUpdate')->name('settings.parishUpdate');

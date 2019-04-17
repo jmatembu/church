@@ -108,4 +108,53 @@ trait PresentsParish
     {
         return $this->quote['id'];
     }
+    public function getMassScheduleAttribute()
+    {
+        return $this->settings('mass');
+    }
+
+    public function getMassScheduleNotesAttribute()
+    {
+        return $this->settings('mass.notes');
+    }
+
+    public function massOn($day)
+    {
+        return Arr::get($this->mass_schedule, $day);
+    }
+
+    public function getMassOnSundayAttribute()
+    {
+        return $this->massOn('sunday');
+    }
+
+    public function getMassOnMondayAttribute()
+    {
+        return $this->massOn('monday');
+    }
+
+    public function getMassOnTuesdayAttribute()
+    {
+        return $this->massOn('tuesday');
+    }
+
+    public function getMassOnWednesdayAttribute()
+    {
+        return $this->massOn('wednesday');
+    }
+
+    public function getMassOnThursdayAttribute()
+    {
+        return $this->massOn('thursday');
+    }
+
+    public function getMassOnFridayAttribute()
+    {
+        return $this->massOn('friday');
+    }
+
+    public function getMassOnSaturdayAttribute()
+    {
+        return $this->massOn('saturday');
+    }
 }

@@ -33,7 +33,7 @@ class SettingController extends Controller
         Arr::set($settings, 'contacts.phone', [$request->contact_phone]);
         Arr::set($settings, 'contacts.location', $request->contact_location);
 
-        if ($parish->update(['settings' => $settings])) {
+        if ($this->updateParishSettings($parish, $settings)) {
             return back()->with('success', 'Settings updated successfully');
         }
 
@@ -60,7 +60,7 @@ class SettingController extends Controller
         }
 
 
-        if ($parish->update(['settings' => $settings])) {
+        if ($this->updateParishSettings($parish, $settings)) {
             return back()->with('success', 'Settings updated successfully');
         }
 
@@ -96,8 +96,35 @@ class SettingController extends Controller
             'author' => $request->quote_author
         ];
 
-        $parish->update(['settings' => $settings]);
+        $this->updateParishSettings($parish, $settings);
 
         return back()->with('success', 'Quote added successfully');
+    }
+
+    public function massSchedule(Request $request, Parish $parish)
+    {
+        $this->validate($request, [
+            'sunday' => 'required|string',
+            'monday' => 'required|string',
+            'tuesday' => 'required|string',
+            'wednesday' => 'required|string',
+            'thursday' => 'required|string',
+            'friday' => 'required|string',
+            'saturday' => 'required|string',
+            'mass_schedule_notes' => 'nullable|string|max:1000',
+        ]);
+
+        $settings = $parish->settings;
+        $schedule = $request->only(['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']);
+        $schedule['notes'] = $request->mass_schedule_notes;
+        $settings['mass'] = $schedule;
+
+        $this->updateParishSettings($parish, $settings);
+
+        return back()->with('success', 'Mass schedule updated successfully');
+    }
+
+    protected function updateParishSettings(Parish $parish, array $settings) {
+        return $parish->update(['settings' => $settings]);
     }
 }

@@ -81,21 +81,22 @@
             </div>
         </div>
     </section>
-    <section class="pd-default">
+    @if($parish->mass_schedule)
+    <section class="pd-default pb-0">
         <div class="container">
             <div class="sa-schedules-section">
-                <div class="row">
-                    <div class="col-lg-5 col-12">
+                <div class="row justify-content-center">
+                    <div class="col-10">
                         <div class="sa-schedule">
-                            <div class="sa-schedules-heading">
-                                <h2>Mass Schedules</h2>
-                                <p>Many desktop publishing packages and the web page editors now use lorem Ipsum as their default model text and a search fornt.</p>
+                            <div class="text-center">
+                                <h2>Mass Schedule</h2>
+                                @if($parish->mass_schedule_notes)
+                                <p>{{ $parish->mass_schedule_notes }}</p>
+                                @endif
                             </div>
-
-                            <a class="btn dark-btn" href="#">Contact us</a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-12">
+                    <div class="col-10">
                         <table class="table sa-schedules-table">
                             <thead class="thead-dark">
                             <tr>
@@ -105,24 +106,32 @@
                             </thead>
                             <tbody class="table-body">
                             <tr>
-                                <th scope="row">Saturday</th>
-                                <td>2:00 PM - 5:45 PM</td>
-                            </tr>
-                            <tr>
                                 <th scope="row">Sunday</th>
-                                <td>4:00 PM - 9:45 PM</td>
+                                <td>{{ $parish->mass_on_sunday }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Monday</th>
-                                <td>9:00 PM - 5:45 PM</td>
+                                <td>{{ $parish->mass_on_monday }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Tuesday</th>
-                                <td>2:00 PM - 5:45 PM</td>
+                                <td>{{ $parish->mass_on_tuesday }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Wednesday</th>
-                                <td>2:00 PM - 5:45 PM</td>
+                                <td>{{ $parish->mass_on_wednesday }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Thursday</th>
+                                <td>{{ $parish->mass_on_thursday }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Friday</th>
+                                <td>{{ $parish->mass_on_friday }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Saturday</th>
+                                <td>{{ $parish->mass_on_saturday }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -131,6 +140,7 @@
             </div>
         </div>
     </section>
+    @endif
      <!-- /About -->
 
     <!-- Latest-Events-News -->
