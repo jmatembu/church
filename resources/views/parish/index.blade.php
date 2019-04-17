@@ -9,7 +9,9 @@
                 <div class="container">
                     <div class="intro_text white_text pb-sm-5">
                         <h1>{{ $parish->banner_headline }}</h1>
+                        @if($parish->banner_description)
                         <p>{{ $parish->banner_description }}</p>
+                        @endif
                         @if($parish->hasBannerButton())
                         <a href="{{ $parish->banner_button_link }}" class="btn btn-lg dark-btn">{{ $parish->banner_button_text }}</a>
                         @endif
@@ -226,7 +228,7 @@
                 <div class="event_info">
                     <h4 class="mt-0"><a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">{{ $project->title }}</a></h4>
                     <div class="mb-4">
-                        {!! $project->brief_description !!}
+                        <p>{!! $project->brief_description !!}</p>
                     </div>
                     <ul>
 {{--                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>--}}

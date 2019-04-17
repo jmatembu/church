@@ -1520,7 +1520,7 @@ ul.sub-menu ul.sub-menu {
 }
 @media All and (max-width: 767px) {
     .sa-page-title {
-        padding: 120px 0 120px;
+        padding: 200px 0 120px;
     }
 
     .login-wrapper {
@@ -2584,11 +2584,11 @@ ul.homilies_meta {
 	padding: 10px 10px;
 }
 .header_top p.address {
-	display:none;
+
 }
 .intro_text {
 	padding: 100px 0;
-	margin:0 auto;
+	margin:0 auto 90px;
 }
 .intro_text h1 {
 	font-size: 55px;
@@ -3486,7 +3486,7 @@ blockquote p {
 	.header_top p.address {
 	    text-align: right;
     	float: right;
-	    font-size: 10px;
+	    font-size: 13px;
         margin: 15px auto;
         display: block;
 	}
@@ -3713,7 +3713,7 @@ blockquote p {
 	    padding: 13px 30px;
 	}
 	.main-banner-section .intro_text {
-	    margin: 0 auto;
+	    margin: 0 auto 100px;
 	    padding: 180px 0 60px;
 	}
 	.sa-banner-carousel {
@@ -4197,16 +4197,15 @@ blockquote p {
 @media all and (max-width: 1024px){
 	.sa-schedules-table .thead-dark th {
 	    padding: 13px 30px;
-	    font-size: 12px;
 	}
 	.sa-schedules-table .table-body td,
 	.sa-schedules-table .table-body tr th {
-		font-size: 12px;
+
 	}
 }
 @media all and (max-width: 991px){
 	.sa-schedules-table {
-		margin-top: 50px;
+		margin-top: 0;
 	}
 }
 @media all and (max-width: 767px){
@@ -4228,7 +4227,7 @@ blockquote p {
 	.sa-schedules-table .table-body td,
 	.sa-schedules-table .thead-dark th {
 	    padding: 10px 8px;
-	    font-size: 9px;
+	    font-size: 13px;
 	}
 }
 
