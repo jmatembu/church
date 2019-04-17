@@ -266,9 +266,13 @@
         });
     });
 
-    var userDataTable = $('.datatable').DataTable({
-        "ordering": false
-    });
+    var datatable = $('.datatable');
+
+    if (datatable.length) {
+        datatable.DataTable({
+            "ordering": false
+        });
+    }
     
   
 

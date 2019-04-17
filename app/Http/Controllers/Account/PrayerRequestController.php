@@ -73,7 +73,7 @@ class PrayerRequestController extends Controller
      */
     public function edit(PrayerRequest $prayerRequest)
     {
-        return view('accounts.prayer-requests.edit', $prayerRequest);
+        return view('accounts.prayer-requests.edit', compact('prayerRequest'));
     }
 
     /**
@@ -85,7 +85,18 @@ class PrayerRequestController extends Controller
      */
     public function update(Request $request, PrayerRequest $prayerRequest)
     {
-        return redirect()->route('users.prayerRequests.show', $prayerRequest);
+        $this->validate($request, [
+            'title' => 'required|string|max:100',
+            'description' => 'required|string|max:1000',
+            'parish_id' => 'required|exists:parishes,id'
+        ]);
+
+        $prayerRequest = $request->only(['title', 'description', 'parish_id']);
+        $prayerRequest['publish_at'] = now()->toDateTimeString();
+
+        $request->user()->prayerRequests()->update($prayerRequest);
+
+        return redirect()->route('users.prayerRequests.index');
     }
 
     /**
@@ -103,8 +114,7 @@ class PrayerRequestController extends Controller
             return redirect()->route('users.prayerRequests.index')
                 ->with('success', 'Prayer request deleted successfully.');
         } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('error', 'Could not delete prayer request at this moment. Try again or notify support.');
         }
-
     }
 }

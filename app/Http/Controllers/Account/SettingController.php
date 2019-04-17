@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Account;
 
+use App\Http\Controllers\Controller;
 use App\Parish;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserSettingsRequest;
 
-class UserSettingController extends Controller
+class SettingController extends Controller
 {
     public function index()
     {
@@ -16,7 +17,7 @@ class UserSettingController extends Controller
             return $parish->diocese->name;
         });
 
-        return view('users.settings', compact('parishesByDiocese'));
+        return view('accounts.settings', compact('parishesByDiocese'));
     }
 
     public function update(UpdateUserSettingsRequest $request)

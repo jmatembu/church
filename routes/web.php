@@ -23,11 +23,14 @@ Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 Route::middleware(['auth'])->group(function () {
     Route::get('home', 'ParishController@index')->name('parish.index')->middleware('parish');
     Route::get('users/account', 'AccountController@index')->name('users.account');
-    Route::get('users/settings', 'UserSettingController@index')->name('users.settings.index');
-    Route::put('users/settings', 'UserSettingController@update')->name('users.settings.update');
+    Route::get('users/settings', 'Account\SettingController@index')->name('users.settings.index');
+    Route::put('users/settings', 'Account\SettingController@update')->name('users.settings.update');
     Route::get('users/prayer-requests', 'Account\PrayerRequestController@index')->name('users.prayerRequests.index');
     Route::get('users/prayer-requests/create', 'Account\PrayerRequestController@create')->name('users.prayerRequests.create');
     Route::post('users/prayer-requests', 'Account\PrayerRequestController@store')->name('users.prayerRequests.store');
+    Route::get('users/prayer-requests/{prayerRequest}/edit', 'Account\PrayerRequestController@edit')->name('users.prayerRequests.edit');
+    Route::put('users/prayer-requests/{prayerRequest}', 'Account\PrayerRequestController@update')->name('users.prayerRequests.update');
+    Route::delete('users/prayer-requests/{prayerRequest}', 'Account\PrayerRequestController@destroy')->name('users.prayerRequests.destroy');
 });
 
 

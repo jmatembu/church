@@ -14,12 +14,13 @@
                             <div class="col-md-8">
                                 <p class="my-4">Members of your parish community who see this prayer request will join you in
                                     prayer.</p>
-                                <form action="{{ route('users.prayerRequests.store') }}" method="POST">
+                                <form action="{{ route('users.prayerRequests.update', $prayerRequest) }}" method="POST">
                                     @csrf
+                                    @method('put')
                                     <input type="hidden" name="parish_id" value="{{ Auth::user()->current_parish }}">
                                     <div class="form-group">
                                         <label for="prayer-title">Prayer Title</label>
-                                        <input type="text" class="form-control" name="title" id="prayer-title" required>
+                                        <input type="text" class="form-control" name="title" id="prayer-title" value="{{ old('title', $prayerRequest->title) }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="prayer-title">Prayer Description <small class="text-muted">- Provide details of your prayer in the text area below</small></label>
@@ -29,12 +30,12 @@
                                                   id="prayer-title"
                                                   rows="6"
                                                   required
-                                                  placeholder="The description of your prayer request"></textarea>
+                                                  placeholder="The description of your prayer request">{{ old('description', $prayerRequest->description) }}</textarea>
                                     </div>
                                     <div class="form-group text-right">
                                         <a href="{{ route('users.prayerRequests.index') }}" class="btn
                                         btn-secondary px-4"><i class="fa fa-chevron-left"></i> Cancel</a>
-                                        <button type="submit" class="btn btn-primary px-4"><i class="fa fa-check"></i> Submit Prayer Request</button>
+                                        <button type="submit" class="btn btn-primary px-4"><i class="fa fa-check"></i> Save Changes</button>
                                     </div>
                                 </form>
 

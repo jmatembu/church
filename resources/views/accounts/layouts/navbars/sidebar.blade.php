@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <span class="d-inline-block mr-2" style="width: 25px; height: 25px; vertical-align: middle; margin-top: -10px">
+            <span class="d-inline-block" style="width: 25px; height: 25px; vertical-align: middle; margin-top: -10px">
                 <svg viewBox="-7 0 497 497.888" xmlns="http://www.w3.org/2000/svg"><path d="m354.324219 209.886719h-224v-136l112-56 112 56zm0 0" fill="#d3dbe0"/><path d="m434.324219 497.886719h-384v-247.277344l192-104.722656 192 104.722656zm0 0" fill="#d3dbe0"/><path d="m130.324219 73.886719v53.664062l112-56 112 56v-53.664062l-112-56zm0 0" fill="#adb9c8"/><path d="m50.324219 250.609375v52.078125l192-102.398438 192 102.398438v-52.078125l-192-104.722656zm0 0" fill="#adb9c8"/><path d="m226.324219 65.886719h32v32h-32zm0 0" fill="#fff"/><path d="m290.324219 241.886719h-32v-32h-32v32h-32v32h32v64h32v-64h32zm0 0" fill="#57565c"/><path d="m290.324219 497.886719h-96v-80c0-26.507813 21.492187-48 48-48 26.511719 0 48 21.492187 48 48zm0 0" fill="#92a2b5"/><g fill="#fff"><path d="m114.324219 401.886719h32v32h-32zm0 0"/><path d="m114.324219 337.886719h32v32h-32zm0 0"/><path d="m338.324219 401.886719h32v32h-32zm0 0"/><path d="m338.324219 337.886719h32v32h-32zm0 0"/></g><path d="m380.855469 105.039062-138.53125-69.261718-138.527344 69.261718c-7.902344 3.957032-17.519531.753907-21.472656-7.152343-3.953125-7.902344-.753907-17.515625 7.152343-21.472657l152.847657-76.414062 152.851562 76.414062c7.902344 3.957032 11.105469 13.570313 7.148438 21.472657-3.953125 7.90625-13.566407 11.109375-21.46875 7.152343zm0 0" fill="#57565c"/><path d="m460.679688 280.480469-218.355469-116.449219-218.351563 116.449219c-7.796875 4.15625-17.488281 1.207031-21.648437-6.59375-4.15625-7.796875-1.207031-17.488281 6.59375-21.648438l233.40625-124.496093 233.410156 124.496093c7.796875 4.160157 10.75 13.851563 6.589844 21.648438-4.15625 7.800781-13.847657 10.75-21.644531 6.59375zm0 0" fill="#57565c"/></svg>
             </span>
             <span class="d-inline-block">{{ config('app.name') }}</span>
@@ -35,22 +35,22 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-single-02"></i>
-                        <span>{{ __('My profile') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <i class="ni ni-single-02"></i>--}}
+{{--                        <span>{{ __('My profile') }}</span>--}}
+{{--                    </a>--}}
+                    <a href="{{ route('users.settings.index') }}" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
                     </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>{{ __('Activity') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>{{ __('Support') }}</span>
-                    </a>
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <i class="ni ni-calendar-grid-58"></i>--}}
+{{--                        <span>{{ __('Activity') }}</span>--}}
+{{--                    </a>--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <i class="ni ni-support-16"></i>--}}
+{{--                        <span>{{ __('Support') }}</span>--}}
+{{--                    </a>--}}
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -65,12 +65,15 @@
             <!-- Collapse header -->
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
-                    <div class="col-6 collapse-brand">
-                        <a href="{{ route('home') }}">
-                            <img src="{{ asset('user') }}/img/brand/blue.png">
+                    <div class="col-8 collapse-brand">
+                        <a class="text-dark" href="{{ route('home') }}">
+                            <span class="d-inline-block mr-2" style="width: 25px; height: 25px; vertical-align: middle; margin-top: -10px">
+                                <svg viewBox="-7 0 497 497.888" xmlns="http://www.w3.org/2000/svg"><path d="m354.324219 209.886719h-224v-136l112-56 112 56zm0 0" fill="#d3dbe0"/><path d="m434.324219 497.886719h-384v-247.277344l192-104.722656 192 104.722656zm0 0" fill="#d3dbe0"/><path d="m130.324219 73.886719v53.664062l112-56 112 56v-53.664062l-112-56zm0 0" fill="#adb9c8"/><path d="m50.324219 250.609375v52.078125l192-102.398438 192 102.398438v-52.078125l-192-104.722656zm0 0" fill="#adb9c8"/><path d="m226.324219 65.886719h32v32h-32zm0 0" fill="#fff"/><path d="m290.324219 241.886719h-32v-32h-32v32h-32v32h32v64h32v-64h32zm0 0" fill="#57565c"/><path d="m290.324219 497.886719h-96v-80c0-26.507813 21.492187-48 48-48 26.511719 0 48 21.492187 48 48zm0 0" fill="#92a2b5"/><g fill="#fff"><path d="m114.324219 401.886719h32v32h-32zm0 0"/><path d="m114.324219 337.886719h32v32h-32zm0 0"/><path d="m338.324219 401.886719h32v32h-32zm0 0"/><path d="m338.324219 337.886719h32v32h-32zm0 0"/></g><path d="m380.855469 105.039062-138.53125-69.261718-138.527344 69.261718c-7.902344 3.957032-17.519531.753907-21.472656-7.152343-3.953125-7.902344-.753907-17.515625 7.152343-21.472657l152.847657-76.414062 152.851562 76.414062c7.902344 3.957032 11.105469 13.570313 7.148438 21.472657-3.953125 7.90625-13.566407 11.109375-21.46875 7.152343zm0 0" fill="#57565c"/><path d="m460.679688 280.480469-218.355469-116.449219-218.351563 116.449219c-7.796875 4.15625-17.488281 1.207031-21.648437-6.59375-4.15625-7.796875-1.207031-17.488281 6.59375-21.648438l233.40625-124.496093 233.410156 124.496093c7.796875 4.160157 10.75 13.851563 6.589844 21.648438-4.15625 7.800781-13.847657 10.75-21.644531 6.59375zm0 0" fill="#57565c"/></svg>
+                            </span>
+                            <span class="d-inline-block">{{ config('app.name') }}</span>
                         </a>
                     </div>
-                    <div class="col-6 collapse-close">
+                    <div class="col-4 collapse-close">
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                             <span></span>
                             <span></span>
@@ -78,69 +81,58 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="{{ __('Search') }}" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
+
             <!-- Navigation -->
             <ul class="navbar-nav">
+                @if (Auth::user()->parish)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('parish.index') }}">
+                            <i class="fa fa-church text-primary"></i>
+                            Parish Home
+                        </a>
+                    </li>
+                @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.account') }}">
+                            <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                        </a>
+                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    <a class="nav-link" href="{{ route('users.prayerRequests.index') }}">
+                        <i class="fa fa-pray text-primary"></i>
+                        Prayer Requests
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
+                    <a class="nav-link" href="{{ route('users.settings.index') }}">
+                        <i class="fa fa-cog text-primary"></i>
+                        My Settings
                     </a>
-
-                    <div class="collapse show" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('User profile') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    {{ __('User Management') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="nav-item">
                     @if(Auth::user()->isParishAdministrator())
-                        <a class="nav-link" href="{{ route('parish.admin.dashboard', $parish) }}"><i class="ni ni-user-run text-pink"></i> Administrator Panel</a>
+                        <a class="nav-link" href="{{ route('parish.admin.dashboard', $parish) }}"><i class="fa fa-user-alt text-purple"></i> Administrator Panel</a>
                     @endif
                 </li>
             </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-palette"></i> F.A.Q
-                    </a>
-                </li>
-            </ul>
+{{--            <!-- Divider -->--}}
+{{--            <hr class="my-3">--}}
+{{--            <!-- Heading -->--}}
+{{--            <h6 class="navbar-heading text-muted">Documentation</h6>--}}
+{{--            <!-- Navigation -->--}}
+{{--            <ul class="navbar-nav mb-md-3">--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#">--}}
+{{--                        <i class="ni ni-spaceship"></i> Getting started--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#">--}}
+{{--                        <i class="ni ni-palette"></i> F.A.Q--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
         </div>
     </div>
 </nav>

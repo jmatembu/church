@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('accounts.layouts.app')
 
 <!-- @@section('styles')
     @@parent
@@ -6,21 +6,15 @@
 @@endsection -->
 
 @section('content')
-<div class="container">
+<div class="container-fluid mt--6">
     <div class="row justify-content-center">
-        <div class="col-md-3">
-            @include('parish.layout.partials.sidemenu')
-        </div>
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">Settings</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @include('shared.notifications')
+                    @include('shared.errors')
 
                     <form action="{{ route('users.settings.update') }}" method="post">
                         @csrf
@@ -28,7 +22,7 @@
                         <fieldset>
                             <div class="form-group">
                                 <label for="default_parish_selector">Default Parish</label>
-                                <p class="text-muted">This is the parish where you usually pray from. You can change this anytime.</p>
+                                <p class="text-muted">This is the parish where you usually pray from.</p>
                                 <select class="search-select form-control" name="default_parish" id="default_parish_selector">
                                     @foreach($parishesByDiocese as $diocese => $dioceseParishes)
                                     <optgroup label="{{ $diocese }}">

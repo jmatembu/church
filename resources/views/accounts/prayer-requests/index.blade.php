@@ -1,42 +1,38 @@
-@extends('layouts.app')
-
+@extends('accounts.layouts.app')
+@section('pageTitle', 'Prayer Requests')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                @include('parish.layout.partials.sidemenu')
-            </div>
-            <div class="col-md-9">
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h2 class="mb-sm-3">Prayer Requests</h2>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a class="btn btn-primary" href="{{ route('users.prayerRequests.create') }}">+
-                            Make Prayer Request</a>
-                    </div>
-                </div>
-
+    <div class="container-fluid mt--7">
+        <div class="row mt-5">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-12 text-right">
+                                <a class="btn btn-secondary" href="{{ route('users.prayerRequests.create') }}">
+                                    <i class="fa fa-plus"></i>
+                                    Add Prayer Request</a>
+                            </div>
+                        </div>
                         @include('shared.notifications')
                         @if ($prayerRequests->count())
-                        <table class="table table-condensed table-borderless table-striped">
-                            <thead>
+                        <table class="table table-condensed">
+                            <thead class="d-none">
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Publish Date</th>
-                                    <th class="text-center">Action</th>
+                                    <th>Prayer Requests</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($prayerRequests as $prayerRequest)
                                     <tr>
-                                        <td><a href="#">{{ $prayerRequest->title }}</a></td>
-                                        <td>{{ $prayerRequest->publish_at }}</td>
-                                        <td class="text-center">
-                                            <a href="#" class="btn btn-sm btn-info mr-2">! Edit</a>
-                                            <a href="#" class="btn btn-sm btn-danger">x Delete</a>
+                                        <td>
+                                            <h3>{{ $prayerRequest->title }}</h3>
+                                            <p>{{ $prayerRequest->description }}</p>
+                                            <small>Published: {{ $prayerRequest->publish_at->toDateString() }} ({{ $prayerRequest->publish_at->diffForHumans() }})</small>
+
+                                            <div class="text-right">
+                                                <a href="{{ route('users.prayerRequests.edit', $prayerRequest) }}" class="btn btn-sm btn-warning mr-2 px-3"><i class="fa fa-pen"></i> Edit</a>
+                                                <button type="button" class="btn btn-sm btn-light modal-action-btn px-3" data-toggle="modal" data-target="#modalDanger" data-action-url="{{ route('users.prayerRequests.destroy', $prayerRequest) }}"><i class="fa fa-trash"></i> Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -49,5 +45,45 @@
                 </div>
             </div>
         </div>
+
+        @include('accounts.layouts.footers.auth')
+    </div>
+    <div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="modalDanger" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="ni ni-bell-55 ni-3x"></i>
+                        <h4 class="heading mt-4">Are you sure about this?</h4>
+                        <p>This action will delete this prayer request, and cannot be undone.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <form class="d-inline-block" action="" method="post" id="delete-prayer-request-form">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-white">Yes, Delete</button>
+                    </form>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
+
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+           var modalBtn = $('.modal-action-btn');
+           modalBtn.click(function (e) {
+               $('#delete-prayer-request-form').attr('action', modalBtn.attr('data-action-url'));
+           });
+        });
+    </script>
+@endpush
