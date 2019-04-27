@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="catholic, parish, catholic parish, free service, catholic community, community, parish news, parish priest">
-    <meta name="description" content="My Catholic Parish is a forever free service that connects parishes to their communities. It aims as enabling each Catholic parish running its community online.">
-    <title>{{ config('app.name') }} - Join your parish today</title>
+    <meta name="keywords" content=@yield('metaKeywords', "catholic church, catholic parish, free service, catholic community")>
+    <meta name="description" content=@yield('metaDescription', "My Catholic Parish is a forever free service that connects parishes to their communities. It aims at enabling each Catholic parish running its community online.")>
+    <title>@yield('title', 'Join your parish today at ' . config('app.name'))</title>
     @section('styles')
     <!--Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">

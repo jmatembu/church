@@ -4,7 +4,7 @@
 <div class="container my-5">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6 mt-5">
-            <h2 class="mb-4 mt-5">{{ __('Register') }}</h2>
+            <h2 class="mb-4 mt-5 text-center">{{ __('Register') }}</h2>
             <div class="card">
                 <div class="card-body">
                     <div class="row justify-content-center">

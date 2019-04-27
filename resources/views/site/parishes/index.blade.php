@@ -1,5 +1,13 @@
 @extends('layouts.site')
 
+@section('metaKeywords')
+    "Find Parish, Catholic Parish, Cathedral, near you"
+@endsection
+
+@section('metaDescrition')
+    "Find a Catholic Parish near your. Simply search for available parishes'
+@endsection
+
 @section('styles')
     @parent
     <style type="text/css">
@@ -18,6 +26,7 @@
         }
     </style>
 @endsection
+
 @section('content')
 
     <section class="sa-page-title text-left p-5">

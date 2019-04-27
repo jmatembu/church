@@ -27,7 +27,7 @@
                         <li><a href="{{ route('parish.index') }}">My Parish</a></li>
                         <li><a href="{{ route('users.account') }}">My Account</a></li>
                     @else
-{{--                        <li><a href="{{ route('login') }}">Login</a></li>--}}
+                        <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @endauth
                 </ul>
