@@ -1,5 +1,6 @@
 @extends('parish.layout.app')
-
+@section('metaDescription', config('app.name') . ' is currently involved in a number of projects. See their details below.')
+@section('metaKeywords', $parish->name . ' projects, ' . config('app.name') . ', ' . 'projects, church projects')
 @section('title', 'Projects of ' . $parish->name)
 @section('parishName', $parish->name)
 @section('content')
@@ -12,7 +13,7 @@
                 <div class="col-lg-7">
                     <div class="sa-section-title text-center">
                         <h2>Our Projects</h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some</p>
+                        <p>{{ config('app.name') }} is currently involved in a number of projects. See their details below.</p>
                     </div>
                 </div>
             </div>
