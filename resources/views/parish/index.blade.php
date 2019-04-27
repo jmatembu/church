@@ -1,4 +1,6 @@
 @extends('parish.layout.app')
+@section('metaDescription', $parish->meta_description)
+@section('metaKeywords', $parish->name . ', ' . config('app.name') . ', ' . 'online community, mass schedule, schedule, prayer requests')
 @section('title', $parish->name)
 @section('parishName', $parish->name)
 @section('content')

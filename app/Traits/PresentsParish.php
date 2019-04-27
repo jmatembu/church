@@ -5,6 +5,7 @@ namespace App\Traits;
 
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 trait PresentsParish
 {
@@ -156,5 +157,10 @@ trait PresentsParish
     public function getMassOnSaturdayAttribute()
     {
         return $this->massOn('saturday');
+    }
+
+    public function getMetaDescriptionAttribute()
+    {
+        return Str::limit($this->description, 80);
     }
 }
