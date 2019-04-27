@@ -21,8 +21,16 @@ class ParishController extends Controller
         $nextEvent = $latestEvents->first();
         $news = $parish->news->take(3);
         $latestNews = $news->first();
-        $latestHomilies = $parish->categories()->whereName('Homilies')->first()->posts->sortByDesc('start_publishing_at')->take(5);
-        $latestHomily = $latestHomilies->first();
+        $homilyCategory = $parish->categories()->whereName('Homilies')->first();
+
+        if ($homilyCategory) {
+            $latestHomilies = $homilyCategory->posts->sortByDesc('start_publishing_at')->take(5);
+            $latestHomily = $latestHomilies->first();
+        } else {
+            $latestHomilies = collecte([]);
+            $latestHomily = null;
+        }
+
         $projects = $parish->projects()->latest()->take(2)->get();
 
         return view('parish.index', compact('latestEvents', 'nextEvent', 'parish', 'news', 'latestHomilies', 'latestHomily', 'projects', 'latestNews'));

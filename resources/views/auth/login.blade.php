@@ -4,7 +4,7 @@
     <div class="container my-5">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6 mt-5">
-                <h2 class="mb-4 mt-5 text-center">{{ __('Login to your Parish') }}</h2>
+                <h2 class="mb-4 mt-5 text-center">{{ __('Login to your Account') }}</h2>
                 <div class="card">
                     <div class="card-body">
                         @include('shared.errors')
@@ -47,7 +47,7 @@
 
                             <div class="form-group row mb-0 align-items-center">
                                 <div class="col-md-6 text-right">
-                                    <button type="submit" class="btn black-btn btn-block">
+                                    <button type="submit" class="btn black-btn btn-block" name="Login">
                                         {{ __('Login') }}
                                     </button>
                                 </div>

@@ -35,7 +35,7 @@
                             <a href="{{ route('parish.news.show', ['parish' => $parish, 'news' => $post]) }}"><img src="{{ asset('storage/' . $post->featured_image) }}" alt="image"></a>
                         </div>
                         @endif
-                        <h6 class="mt-0"><a href="#">{{ $post->brief_news_title }}</a></h6>
+                        <h6 class="mt-0"><a href="{{ route('parish.news.show', ['parish' => $parish, 'news' => $post]) }}">{{ $post->brief_news_title }}</a></h6>
                         <p>{{ $post->published_at }}</p>
                     </li>
                     @endforeach
