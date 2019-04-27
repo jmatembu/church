@@ -18,11 +18,8 @@
       </div>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
-                @auth
                 <li><a href="{{ route('parish.index') }}">Home</a></li>
-                @else
-                    <li><a href="{{ route('parish.show', $parish) }}">Home</a></li>
-                @endauth
+                <li><a href="{{ route('parish.show', $parish) }}">Parish Home</a></li>
                 <li class="dropdown">
                     <a href="#">Updates <span class="nav_arrow"></span></a>
                     <ul class="sub-menu">
