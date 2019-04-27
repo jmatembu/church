@@ -32,6 +32,8 @@ class CreateSubParishesTable extends Migration
      */
     public function down()
     {
+        \DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('sub_parishes');
+        \DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
