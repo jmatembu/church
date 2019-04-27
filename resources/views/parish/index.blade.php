@@ -165,7 +165,7 @@
                                     <div class="event_date">
                                         <span>{{ $event->starts_at->format('d') }}</span> {{ $event->starts_at->format('M y') }}
                                     </div>
-                                    <h6><a href="#">{{ title_case($event->title) }}</a></h6>
+                                    <h6><a href="{{ route('parish.events.show', [$parish, $event]) }}">{{ title_case($event->title) }}</a></h6>
                                     <ul>
                                         <li><i class="fa fa-clock-o"></i> {{ $event->starts_at->diffForHumans() }}</li>
                                         <li><i class="fa fa-paperclip"></i> {{ str_limit($event->description, 50) }}</li>
@@ -191,7 +191,7 @@
                                             <div class="event_date">
                                                 <span>{{ $post->start_publishing_at->format('d') }}</span> {{ $post->start_publishing_at->format('M y') }}
                                             </div>
-                                            <h6><a href="#">{{ $post->brief_news_title }}</a></h6>
+                                            <h6><a href="{{ route('parish.news.show', [$parish, $post]) }}">{{ $post->brief_news_title }}</a></h6>
                                             <ul>
                                                 <li><i class="fa fa-sticky-note"></i> {{ $post->brief_news_snippet }}</li>
                                             </ul>
