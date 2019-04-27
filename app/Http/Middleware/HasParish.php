@@ -15,7 +15,11 @@ class HasParish
      */
     public function handle($request, Closure $next)
     {
-        if (empty($request->user()->current_parish)) {
+        if ($request->parish) {
+            return $next($request);
+        }
+
+        if ($request->user() && empty($request->user()->current_parish)) {
             return redirect()
                     ->route('users.account')
                     ->with('status', 'You need to set your default parish first');

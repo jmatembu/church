@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Parish;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,7 +22,12 @@ class ComposerServiceProvider extends ServiceProvider
                 'accounts.*'
             ],
             function ($view) {
-                $parish = request()->user()->parish;
+                $parish = $this->getParish();
+
+                if (request()->user()) {
+                    $parish = request()->user()->parish;
+                }
+
                 $view->withParish($parish);
             }
         );
@@ -35,5 +41,16 @@ class ComposerServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    protected function getParish()
+    {
+        $parish = request()->parish;
+
+        if (is_string($parish)) {
+            return Parish::where('slug', $parish)->first();
+        }
+
+        return request()->parish;
     }
 }

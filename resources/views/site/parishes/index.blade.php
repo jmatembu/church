@@ -58,7 +58,7 @@
                     @foreach($parishes as $parish)
                         <tr>
                             <td class="border-0 px-0">
-                                <h2 class="h4"><a href="#">{{ $parish->name }}</a></h2>
+                                <h2 class="h4"><a href="{{ route('parish.show', $parish) }}">{{ $parish->name }}</a></h2>
                                 <p class="mb-1">{{ $parish->description }}</p>
                                 <p><strong>Diocese: </strong>{{ $parish->diocese->name }}, <strong>Address: </strong> {{ $parish->main_address }}</p>
                             </td>

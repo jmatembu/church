@@ -16,7 +16,6 @@
             <div class="col-md-7 col-12">
                 <div class="follow_us sa-follow-us">
                     <ul>
-
                         @auth
                             <li><a class="font-weight-bold text-white" href="{{ route('users.account') }}" style="font-size: 120%">My Account</a></li>
                             <a class="btn btn-sm dark-btn py-0 ml-3"

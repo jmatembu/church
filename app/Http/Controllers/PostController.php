@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $news = request()->user()->parish->news->paginate(10);
+        $news = $this->getParish()->news->paginate(10);
 
         return view('parish.news.index', compact('news'));
     }
@@ -18,5 +18,16 @@ class PostController extends Controller
     public function show(Parish $parish, Post $post)
     {
         return view('parish.news.show', compact('post'));
+    }
+
+    protected function getParish()
+    {
+        $parish = request()->parish;
+
+        if (is_string($parish)) {
+            return Parish::where('slug', $parish)->first();
+        }
+
+        return request()->parish;
     }
 }

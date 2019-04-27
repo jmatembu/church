@@ -34,7 +34,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::name('parish.')->middleware(['auth', 'parish'])->prefix('parish/{parish}')->group(function () {
+Route::name('parish.')->middleware([])->prefix('parish/{parish}')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Parish\PageController::class, 'parish'])->name('show');
     Route::get('/about-the-parish', 'Parish\PageController@about')->name('about');
     Route::get('news', 'PostController@index')->name('news.index');
     Route::get('news/{post}', 'PostController@show')->name('news.show');

@@ -3,7 +3,7 @@
 @section('parishName', $parish->name)
 @section('content')
     <!-- Banner -->
-    <section class="main-banner-section" style="background: url('{{ $parish->banner_background_image_path }}'); background-position: center; background-size: cover;">
+    <section class="main-banner-section" style="background: url('{{ $parish->banner_background_image_path }}') #022147; background-position: center; background-size: cover;">
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
                 <div class="container">
@@ -46,7 +46,7 @@
                 <div class="col-md-6">
                     <div class="box_wrap next_homilies pb-3">
                         <p class="subtitle">Latest News</p>
-                        <h4><a href="#">{{ $latestNews->brief_news_title }}</a></h4>
+                        <h4><a href="{{ route('parish.news.show', [$parish, $latestNews]) }}">{{ $latestNews->brief_news_title }}</a></h4>
                         <ul class="homilies_meta">
                             <li><i class="fa fa-user"></i> Message from <a href="#">{{ optional($latestNews->author)->name }}</a></li>
                             <li><i class="fa fa-calendar-check-o"></i> {{ optional($latestNews->start_publishing_at)->diffForHumans() }}</li>

@@ -1,4 +1,5 @@
 @extends('parish.layout.app')
+
 @section('title', 'Projects of ' . $parish->name)
 @section('parishName', $parish->name)
 @section('content')
