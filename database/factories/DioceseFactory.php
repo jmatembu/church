@@ -10,7 +10,8 @@ use Faker\Generator as Faker;
 $factory->define(App\Diocese::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'description' => $faker->realText(200)
+        'description' => $faker->realText(200),
+        'country' => 'Uganda',
     ];
 });
 

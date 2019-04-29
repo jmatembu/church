@@ -43,15 +43,15 @@
     <!-- /Footer-Widgets -->
 
     <!-- Footer-Bottom -->
-    <div class="footer_bottom">
+    <div class="footer_bottom bg-dark">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 text-center">
-                    <p>&copy; {{ date('Y') }} @yield('parishName') All Rights Reserved</p>
+                    <p class="text-secondary">&copy; {{ date('Y') }} <a href="{{ route('parish.index') }}">@yield('parishName')</a> All Rights Reserved.</p>
                 </div>
                 <div class="col-md-2">
                     <div id="back-top" class="back-top">
-                        <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a>
+                        <a href="#top" class="bg-white"><i class="fa fa-angle-up" aria-hidden="true"></i> </a>
                     </div>
                 </div>
             </div>

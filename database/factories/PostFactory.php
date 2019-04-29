@@ -12,7 +12,6 @@ $factory->define(App\Post::class, function (Faker $faker) {
     return [
         'title' => $faker->realText(100),
         'body' => $body,
-        'featured_image' => $faker->imageUrl()
     ];
 });
 

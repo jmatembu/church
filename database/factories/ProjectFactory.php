@@ -12,6 +12,5 @@ $factory->define(App\Project::class, function (Faker $faker) {
         'title' => $faker->realText(10),
         'description' => $body,
         'budget' => $faker->randomFloat(0, 300, 100000),
-        'featured_image' => $faker->imageUrl()
     ];
 });

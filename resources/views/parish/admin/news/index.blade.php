@@ -31,7 +31,7 @@
                                                 </div>
 
                                                 <div class="col-sm-10">
-                                                    <a class="d-block" href="{{ route('parish.admin.news.show', ['parish' => $parish, 'newsPost' => $post]) }}">{{ $post->brief_title }}</a>
+                                                    <a class="d-block" href="{{ route('parish.admin.news.show', [$parish, 'news' => $post]) }}">{{ $post->brief_title }}</a>
                                                     <p>{{ $post->snippet }}</p>
                                                     <div class="d-flex justify-content-between">
                                                         <span>Posted on: {{ $post->created_at->format('M d, Y') }}</span>

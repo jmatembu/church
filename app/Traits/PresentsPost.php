@@ -3,7 +3,7 @@
 
 namespace App\Traits;
 
-
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 trait PresentsPost
