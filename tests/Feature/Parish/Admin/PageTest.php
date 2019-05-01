@@ -10,28 +10,41 @@ use Tests\TestCase;
 
 class PageTest extends TestCase
 {
+    protected $user;
+    protected $admin;
+    protected $staff;
+    protected $parish;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setupParish();
+    }
+
+    protected function setupParish()
+    {
+        $this->parish = factory(Parish::class)->create();
+        $this->user = factory(User::class)->create();
+        $this->admin = factory(User::class)->create(['current_parish' => $this->parish->id]);
+        $this->staff = $this->parish->staffs()->save(factory(Staff::class)
+            ->states('administrator')
+            ->make([
+                'user_id' => $this->admin->id
+            ]));
+    }
+
     public function testNonAdminDoesNotHaveAccess()
     {
-        $parish = factory(Parish::class)->create();
-        $user = factory(User::class)->create();
-
-        $response = $this->actingAs($user)->get(route('parish.admin.dashboard', $parish));
+        $response = $this->actingAs($this->user)->get(route('parish.admin.dashboard', $this->parish));
 
         $response->assertForbidden();
     }
 
     public function testAdministratorCanAccessAdminArea()
     {
-        $parish = factory(Parish::class)->create();
-        $user = factory(User::class)->create(['current_parish' => $parish->id]);
-        $parish->staffs()->save(factory(Staff::class)
-            ->states('administrator')
-            ->make([
-                'user_id' => $user->id
-            ]));
-
-        $response = $this->actingAs($user)
-                         ->get(route('parish.admin.dashboard', $parish));
+        $response = $this->actingAs($this->admin)
+                         ->get(route('parish.admin.dashboard', $this->parish));
 
         $response->assertOk();
         $response->assertSeeText('Parish Dashboard');
