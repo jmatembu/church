@@ -16,7 +16,6 @@
                                     prayer.</p>
                                 <form action="{{ route('users.prayerRequests.store') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="parish_id" value="{{ Auth::user()->current_parish }}">
                                     <div class="form-group">
                                         <label for="prayer-title">Prayer Title</label>
                                         <input type="text" class="form-control" name="title" id="prayer-title" required>

@@ -17,7 +17,6 @@
                                 <form action="{{ route('users.prayerRequests.update', $prayerRequest) }}" method="POST">
                                     @csrf
                                     @method('put')
-                                    <input type="hidden" name="parish_id" value="{{ Auth::user()->current_parish }}">
                                     <div class="form-group">
                                         <label for="prayer-title">Prayer Title</label>
                                         <input type="text" class="form-control" name="title" id="prayer-title" value="{{ old('title', $prayerRequest->title) }}" required>

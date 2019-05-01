@@ -39,14 +39,18 @@ class PrayerRequestController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->user()->parish)) {
+            return redirect()->route('users.account')->with('error', 'You need to set your default parish first before adding a prayer request.');
+        }
+
         $this->validate($request, [
             'title' => 'required|string|max:100',
             'description' => 'required|string|max:1000',
-            'parish_id' => 'required|exists:parishes,id'
         ]);
 
         $prayerRequest = $request->input();
         $prayerRequest['publish_at'] = now()->toDateTimeString();
+        $prayerRequest['parish_id'] = $request->user()->current_parish;
 
         $request->user()->prayerRequests()->create($prayerRequest);
 
@@ -79,20 +83,26 @@ class PrayerRequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PrayerRequest  $prayerRequest
+     * @param \Illuminate\Http\Request $request
+     * @param \App\PrayerRequest $prayerRequest
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, PrayerRequest $prayerRequest)
     {
+        if ($request->user()->id !== $prayerRequest->user_id) {
+            return redirect()->route('users.prayerRequests.index')
+                ->with('error', 'Cannot update the prayer request. Permission denied.');
+        }
+
         $this->validate($request, [
             'title' => 'required|string|max:100',
-            'description' => 'required|string|max:1000',
-            'parish_id' => 'required|exists:parishes,id'
+            'description' => 'nullable|string|max:1000',
         ]);
 
-        $prayerRequest = $request->only(['title', 'description', 'parish_id']);
+        $prayerRequest = $request->only(['title', 'description']);
         $prayerRequest['publish_at'] = now()->toDateTimeString();
+        $prayerRequest['parish_id'] = $request->user()->current_parish;
 
         $request->user()->prayerRequests()->update($prayerRequest);
 
@@ -108,6 +118,11 @@ class PrayerRequestController extends Controller
      */
     public function destroy(PrayerRequest $prayerRequest)
     {
+        if (request()->user()->id !== $prayerRequest->user_id) {
+            return redirect()->route('users.prayerRequests.index')
+                ->with('error', 'Cannot delete the prayer request. Permission denied.');
+        }
+
         try {
             $prayerRequest->delete();
 
