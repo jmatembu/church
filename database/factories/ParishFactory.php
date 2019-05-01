@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Post;
 use Faker\Generator as Faker;
 
 $factory->define(App\Parish::class, function (Faker $faker) {
@@ -21,4 +23,12 @@ $factory->define(App\Parish::class, function (Faker $faker) {
 
 $factory->afterCreating(App\Parish::class, function ($parish, $faker) {
     $parish->subParishes()->saveMany(factory(App\SubParish::class, 5)->make());
+
+    if (! $parish->pageCategory) {
+        $parish->categories()->save(factory(App\Category::class)->make([
+            'name' => 'Pages'
+        ]));
+    }
+
+    $parish->refresh()->posts()->save(factory(App\Post::class)->make(['title' => 'About the Parish', 'category_id' => $parish->pageCategory->id]));
 });

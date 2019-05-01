@@ -11,6 +11,10 @@ trait PresentsParish
 {
     public function aboutPage()
     {
+        if (! $this->pageCategory) {
+            return null;
+        }
+
         return $this->pageCategory->posts->first(function ($post) {
             return $post->isAboutParish();
         });

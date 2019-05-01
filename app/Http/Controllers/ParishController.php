@@ -27,7 +27,7 @@ class ParishController extends Controller
             $latestHomilies = $homilyCategory->posts->sortByDesc('start_publishing_at')->take(5);
             $latestHomily = $latestHomilies->first();
         } else {
-            $latestHomilies = collecte([]);
+            $latestHomilies = collect([]);
             $latestHomily = null;
         }
 
