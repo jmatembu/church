@@ -77,6 +77,7 @@ class PageController extends Controller
         $pagePost['start_publishing_at'] = now()->toDateTimeString();
 
         if ($request->hasFile('post-image')) {
+            //TODO: Add test for uploading file
             $fileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
             $postDirectory = 'public/parishes/' . $parish->slug . '/images/pages';
             $filePath = $request->file('post-image')->storeAs($postDirectory, $fileName);
@@ -98,9 +99,13 @@ class PageController extends Controller
     public function destroy(Parish $parish, Post $page)
     {
         try {
-            $page->delete();
-            Storage::disk('public')->delete($page->featured_image);
+            if ($page->isAboutParish()) {
+                return back()->with('error', 'You do not have permissions to delete this page.');
+            }
 
+            $page->delete();
+
+            Storage::disk('public')->delete($page->featured_image);
 
             return redirect()->route('parish.admin.pages.index', $parish)
                 ->with('success', 'Page deleted successfully.');
