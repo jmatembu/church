@@ -99,7 +99,7 @@ class ParishPageTest extends TestCase
         $response->assertOk();
     }
 
-    public function testParishAboutParishPageIsAccessible()
+    public function testAboutParishPageIsAccessible()
     {
         $parish = \App\Parish::all()->random();
 
