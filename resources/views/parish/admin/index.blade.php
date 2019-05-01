@@ -5,7 +5,7 @@
     <section class="section">
         <div class="row justify-content-center">
             <div class="col-sm-11">
-                <h2 class="mb-3">Dashboard</h2>
+                <h2 class="mb-3">Parish Dashboard</h2>
 
                 <div class="card-deck">
                     <div class="card">
