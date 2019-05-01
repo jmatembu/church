@@ -22,10 +22,10 @@ class SettingController extends Controller
 
     public function update(UpdateUserSettingsRequest $request)
     {
-        $user = $request->user()->fill([
+        $request->user()->fill([
             'current_parish' => $request->default_parish
         ])->save();
 
-        return back()->with('status', 'Settings updated successfully');
+        return redirect()->route('users.settings.index')->with('success', 'Settings updated successfully');
     }
 }
