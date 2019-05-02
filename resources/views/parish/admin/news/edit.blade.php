@@ -1,25 +1,27 @@
-@extends('parish.layout.backend')
+@extends('layouts.dashboard.app')
 
-@section('styles')
-    @parent
+@push('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-@endsection
+@endpush
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container-fluid mt--7">
+        <div class="row my-5 justify-content-center">
             <div class="col-md-9">
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h2 class="mb-sm-3">Edit News Post</h2>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a class="btn btn-secondary" href="{{ route('parish.admin.news.show', ['parish' => $parish, 'news' => $news]) }}">< Back</a>
-                    </div>
-                </div>
+                <div class="card">
+                    <div class="card-body">
+                        @include('shared.errors')
 
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h2 class="mb-sm-3">Edit News Post</h2>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a class="btn btn-secondary" href="{{ route('parish.admin.news.show', ['parish' => $parish, 'news' => $news]) }}">< Back</a>
+                            </div>
+                        </div>
 
-                <form
+                        <form
                     action="{{ route('parish.admin.news.update', ['parish' => $parish, 'news' => $news]) }}"
                     method="POST"
                     id="post-editor-form"
@@ -47,13 +49,13 @@
                         <button type="submit" class="btn btn-success px-4">Save Changes</button>
                     </div>
                 </form>
-
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
-@section('scripts')
-
+@push('js')
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
     <script>
@@ -72,4 +74,4 @@
 
         });
     </script>
-@endsection
+@endpush

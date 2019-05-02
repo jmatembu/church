@@ -5,10 +5,11 @@ namespace Tests\Feature\Parish\Admin;
 use App\Parish;
 use App\Staff;
 use App\User;
-use Illuminate\Support\Str;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PageTest extends TestCase
+class PageControllerTest extends TestCase
 {
     protected $user;
     protected $admin;
@@ -34,18 +35,24 @@ class PageTest extends TestCase
             ]));
     }
 
-    public function testNonAdminDoesNotHaveAccess()
+    public function testIndexPageIsAccessible()
     {
-        $response = $this->actingAs($this->user)->get(route('parish.admin.dashboard', $this->parish));
-
-        $response->assertForbidden();
-    }
-
-    public function testAdministratorCanAccessAdminArea()
-    {
-        $response = $this->actingAs($this->admin)
-                         ->get(route('parish.admin.dashboard', $this->parish));
+        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.index', $this->parish));
 
         $response->assertOk();
+        $response->assertSeeText('Pages');
     }
+
+    public function testCanViewPageDetails()
+    {
+        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.show', ['parish' => $this->parish, 'page' => $this->parish->pages->first()]));
+
+        $response->assertOk()
+                ->assertViewIs('parish.admin.pages.show')
+                ->assertSeeText('Edit')
+                ->assertSeeText('Back');
+
+    }
+
+
 }

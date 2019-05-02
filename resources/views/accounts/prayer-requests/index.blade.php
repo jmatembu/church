@@ -1,4 +1,4 @@
-@extends('accounts.layouts.app')
+@extends('layouts.dashboard.app')
 @section('pageTitle', 'Prayer Requests')
 @section('content')
     <div class="container-fluid mt--7">
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        @include('accounts.layouts.footers.auth')
+        @include('layouts.dashboard.footers.auth')
     </div>
     <div class="modal fade" id="modalDanger" tabindex="-1" role="dialog" aria-labelledby="modalDanger" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">

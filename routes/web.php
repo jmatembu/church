@@ -53,7 +53,7 @@ Route::name('parish.')->middleware(['parish'])->prefix('parish/{parish}')->group
             ->namespace('Parish\Admin')
             ->middleware(['isParishAdmin'])
             ->group(function () {
-        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::get('/', [\App\Http\Controllers\Parish\Admin\DashboardController::class, 'index'])->name('dashboard');
         Route::get('/settings', 'SettingController@index')->name('settings.index');
         Route::put('/settings/contacts', 'SettingController@contacts')->name('settings.contacts');
         Route::put('/settings/mass-schedule', 'SettingController@massSchedule')->name('settings.massSchedule');
@@ -70,5 +70,7 @@ Route::name('parish.')->middleware(['parish'])->prefix('parish/{parish}')->group
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
     \Aschmelyun\Larametrics\Larametrics::routes();
 });
+
+Route::get('/user-guides', [\App\Http\Controllers\PageController::class, 'userGuide'])->name('userGuide');
 
 

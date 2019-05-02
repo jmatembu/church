@@ -27,6 +27,7 @@ class PageController extends Controller
 
         return view('parish.index', compact('latestEvents', 'nextEvent', 'parish', 'news', 'latestHomilies', 'latestHomily', 'projects', 'latestNews'));
     }
+
     public function about(Parish $parish)
     {
         $page = $parish->about_page;

@@ -1,33 +1,24 @@
-@extends('parish.layout.backend')
+@extends('layouts.dashboard.app')
 
 @section('content')
+    @include('layouts.dashboard.headers.cards.admin')
 
-    <section class="section">
-        <div class="row justify-content-center">
-            <div class="col-sm-11">
-                <h2 class="mb-3">Parish Dashboard</h2>
-
-                <div class="card-deck">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3>{{ $parish->laity->count() }}</h3>
-                            <p>Parishioners</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3>{{ $parish->prayerRequests->count() }}</h3>
-                            <p>Prayer Requests</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h3>{{ $parish->projects->count() }}</h3>
-                            <p>Projects</p>
+    <div class="container-fluid mt--7">
+        <div class="row mt-5">
+            <div class="col-sm-12 mb-5 mb-xl-0">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="mb-0">Latest Activity</h3>
+                            </div>
+                            <div class="col-12">
+                                <p>Your activity will appear here.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection

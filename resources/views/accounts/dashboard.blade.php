@@ -1,7 +1,7 @@
-@extends('accounts.layouts.app')
+@extends('layouts.dashboard.app')
 
 @section('content')
-    @include('accounts.layouts.headers.cards')
+    @include('layouts.dashboard.headers.cards.user')
     
     <div class="container-fluid mt--7">
         <div class="row mt-5">
@@ -21,6 +21,6 @@
             </div>
         </div>
 
-        @include('accounts.layouts.footers.auth')
+        @include('layouts.dashboard.footers.auth')
     </div>
 @endsection

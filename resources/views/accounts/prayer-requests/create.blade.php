@@ -1,4 +1,4 @@
-@extends('accounts.layouts.app')
+@extends('layouts.dashboard.app')
 @section('pageTitle', 'Add Prayer Request')
 @section('content')
     <div class="container-fluid mt--7">

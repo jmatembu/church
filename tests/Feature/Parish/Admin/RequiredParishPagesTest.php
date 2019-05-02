@@ -9,7 +9,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PagePostTest extends TestCase
+class RequiredParishPagesTest extends TestCase
 {
     protected $user;
     protected $admin;
@@ -35,14 +35,6 @@ class PagePostTest extends TestCase
             ]));
     }
 
-    public function testPagesIsAccessible()
-    {
-        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.index', $this->parish));
-
-        $response->assertOk();
-        $response->assertSeeText('Pages');
-    }
-
     public function testParishHasAboutPage()
     {
 
@@ -53,17 +45,9 @@ class PagePostTest extends TestCase
         $this->assertEquals($this->parish->aboutPage->title, 'About the Parish');
     }
 
-    public function testAdministratorCanViewAboutPage()
+    public function testEditPageIsAccessible()
     {
-        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.show', ['parish' => $this->parish, 'page' => $this->parish->about_page]));
-
-        $response->assertOk();
-        $response->assertViewIs('parish.admin.pages.show');
-    }
-
-    public function testAdministratorCanSeeEditAboutPage()
-    {
-        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.edit', ['parish' => $this->parish, 'page' => $this->parish->about_page]));
+        $response = $this->actingAs($this->admin)->get(route('parish.admin.pages.edit', ['parish' => $this->parish, 'page' => $this->parish->pages->first()]));
 
         $response->assertOk();
         $response->assertViewIs('parish.admin.pages.edit');

@@ -1,4 +1,4 @@
-@extends('parish.layout.backend')
+@extends('layouts.dashboard.app')
 
 @section('styles')
     @parent

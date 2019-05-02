@@ -35,22 +35,22 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <i class="ni ni-single-02"></i>--}}
-{{--                        <span>{{ __('My profile') }}</span>--}}
-{{--                    </a>--}}
+                    {{--                    <a href="#" class="dropdown-item">--}}
+                    {{--                        <i class="ni ni-single-02"></i>--}}
+                    {{--                        <span>{{ __('My profile') }}</span>--}}
+                    {{--                    </a>--}}
                     <a href="{{ route('users.settings.index') }}" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
                     </a>
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <i class="ni ni-calendar-grid-58"></i>--}}
-{{--                        <span>{{ __('Activity') }}</span>--}}
-{{--                    </a>--}}
-{{--                    <a href="#" class="dropdown-item">--}}
-{{--                        <i class="ni ni-support-16"></i>--}}
-{{--                        <span>{{ __('Support') }}</span>--}}
-{{--                    </a>--}}
+                    {{--                    <a href="#" class="dropdown-item">--}}
+                    {{--                        <i class="ni ni-calendar-grid-58"></i>--}}
+                    {{--                        <span>{{ __('Activity') }}</span>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="dropdown-item">--}}
+                    {{--                        <i class="ni ni-support-16"></i>--}}
+                    {{--                        <span>{{ __('Support') }}</span>--}}
+                    {{--                    </a>--}}
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -92,47 +92,65 @@
                         </a>
                     </li>
                 @endif
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.account') }}">
-                            <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
-                        </a>
-                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.prayerRequests.index') }}">
-                        <i class="fa fa-pray text-primary"></i>
-                        Prayer Requests
+                    <a class="nav-link" href="{{ route('parish.admin.dashboard', $parish) }}">
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.settings.index') }}">
+                    <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                        <i class="fas fa-globe text-primary"></i>
+                        <span class="nav-link-text">Website Content</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-examples" style="">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('parish.admin.pages.index', $parish) }}">
+                                    <i class="fas fa-paperclip text-primary"></i> Pages
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('parish.admin.news.index', $parish) }}">
+                                    <i class="fas fa-file text-primary"></i> News
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('parish.admin.events.index', $parish) }}">
+                                    <i class="fas fa-calendar-alt text-primary"></i> Events
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('parish.admin.projects.index', $parish) }}">
+                                    <i class="fas fa-project-diagram text-primary"></i> Projects
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('parish.admin.settings.index', $parish) }}">
                         <i class="fa fa-cog text-primary"></i>
                         My Settings
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    @if(Auth::user()->isParishAdministrator())
-                        <a class="nav-link" href="{{ route('parish.admin.dashboard', $parish) }}"><i class="fa fa-user-alt text-purple"></i> Administrator Panel</a>
-                    @endif
+                    <a class="nav-link" href="{{ route('users.account') }}"><i class="fas fa-user text-primary"></i> My Account</a>
                 </li>
             </ul>
-{{--            <!-- Divider -->--}}
-{{--            <hr class="my-3">--}}
-{{--            <!-- Heading -->--}}
-{{--            <h6 class="navbar-heading text-muted">Documentation</h6>--}}
-{{--            <!-- Navigation -->--}}
-{{--            <ul class="navbar-nav mb-md-3">--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">--}}
-{{--                        <i class="ni ni-spaceship"></i> Getting started--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">--}}
-{{--                        <i class="ni ni-palette"></i> F.A.Q--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
+            <!-- Divider -->
+            <hr class="my-3">
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">Documentation</h6>
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('userGuide') }}">
+                        <i class="ni ni-spaceship"></i> User Guide
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

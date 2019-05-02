@@ -1,27 +1,30 @@
-@extends('parish.layout.backend')
-
+@extends('layouts.dashboard.app')
+@section('pageTitle', $news->title)
 @section('content')
-    <div class="container">
-
-        <div class="row justify-content-center">
+    <div class="container-fluid mt--7">
+        <div class="row my-5 justify-content-center">
             <div class="col-md-9">
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <h2 class="mb-sm-3">{{ $news->title }}</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+                                <h2>{{ $news->title }}</h2>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <a class="btn btn-light" href="{{ route('parish.admin.news.index', $parish) }}"><i class="fas fa-chevron-left"></i> Back</a>
+                                <a class="btn btn-warning" href="{{ route('parish.admin.news.edit', ['parish' => $parish, 'news' => $news]) }}"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#deleteNewsModal"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                        </div>
+                        @if($news->featured_image)
+                            <div class="mb-4">
+                                <img src="{{ asset('storage/' . $news->featured_image) }}" class="img-fluid">
+                            </div>
+                        @endif
+                        <div class="post-body">
+                            {!! $news->body !!}
+                        </div>
                     </div>
-                    <div class="col-md-12 text-right">
-                        <a class="btn btn-secondary" href="{{ route('parish.admin.news.index', $parish) }}">< Back</a>
-                        <a class="btn btn-warning" href="{{ route('parish.admin.news.edit', ['parish' => $parish, 'news' => $news]) }}">! Edit</a>
-                        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deleteNewsModal">x Delete</button>
-                    </div>
-                </div>
-                @if($news->featured_image)
-                <div class="mb-4">
-                    <img src="{{ asset('storage/' . $news->featured_image) }}" class="img-fluid">
-                </div>
-                @endif
-                <div class="post-body">
-                    {!! $news->body !!}
                 </div>
             </div>
         </div>

@@ -1,10 +1,5 @@
-@extends('accounts.layouts.app')
-
-<!-- @@section('styles')
-    @@parent
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-@@endsection -->
-
+@extends('layouts.dashboard.app')
+@section('pageTitle', 'Settings')
 @section('content')
 <div class="container-fluid mt--6">
     <div class="row justify-content-center">

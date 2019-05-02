@@ -1,29 +1,34 @@
-@extends('parish.layout.backend')
-
+@extends('layouts.dashboard.app')
+@section('pageTitle', $page->title)
 @section('content')
-    <div class="container">
+    <div class="container-fluid mt--7">
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    @include('shared.notifications')
+                    <div class="card-body">
+                        <div class="row mb-4 align-contents-center">
+                            <div class="col-md-8">
+                                <h2 class="mb-sm-3">{{ $page->title }}</h2>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <a class="btn btn-secondary" href="{{ route('parish.admin.pages.index', $parish) }}"><i class="fas fa-chevron-left"></i> Back</a>
+                                <a class="btn btn-warning" href="{{ route('parish.admin.pages.edit', ['parish' => $parish, 'page' => $page]) }}"><i class="fas fa-edit"></i> Edit</a>
+                                @if(! $page->isAboutParish())
+                                    <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deletePageModal">x Delete</button>
+                                @endif
+                            </div>
+                        </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <h2 class="mb-sm-3">{{ $page->title }}</h2>
-                    </div>
-                    <div class="col-md-12 text-right">
-                        <a class="btn btn-secondary" href="{{ route('parish.admin.pages.index', $parish) }}">< Back</a>
-                        <a class="btn btn-warning" href="{{ route('parish.admin.pages.edit', ['parish' => $parish, 'page' => $page]) }}">! Edit</a>
-                        @if(! $page->isAboutParish())
-                        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#deletePageModal">x Delete</button>
+                        @if($page->featured_image)
+                            <div class="mb-4">
+                                <img src="{{ asset('storage/' . $page->featured_image) }}" class="img-fluid">
+                            </div>
                         @endif
+                        <div class="post-body">
+                            {!! $page->body !!}
+                        </div>
                     </div>
-                </div>
-                @if($page->featured_image)
-                <div class="mb-4">
-                    <img src="{{ asset('storage/' . $page->featured_image) }}" class="img-fluid">
-                </div>
-                @endif
-                <div class="post-body">
-                    {!! $page->body !!}
                 </div>
             </div>
         </div>

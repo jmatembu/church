@@ -15,6 +15,7 @@
         <!-- Icons -->
         <link href="{{ asset('user') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
         <link href="{{ asset('user') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        @stack('css')
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('user') }}/css/argon.css?v=1.0.0" rel="stylesheet">
     </head>
@@ -23,16 +24,16 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-            @include('accounts.layouts.navbars.sidebar')
+            @include('layouts.dashboard.navbars.sidebar')
         @endauth
         
         <div class="main-content">
-            @include('accounts.layouts.navbars.navbar')
+            @include('layouts.dashboard.navbars.navbar')
             @yield('content')
         </div>
 
         @guest()
-            @include('accounts.layouts.footers.guest')
+            @include('layouts.dashboard.footers.guest')
         @endguest
 
         <script src="{{ asset('user') }}/vendor/jquery/dist/jquery.min.js"></script>

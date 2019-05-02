@@ -1,7 +1,7 @@
-@extends('accounts.layouts.app', ['class' => 'bg-default'])
+@extends('layouts.dashboard.app', ['class' => 'bg-default'])
 
 @section('content')
-    @include('accounts.layouts.headers.guest')
+    @include('layouts.dashboard.headers.guest')
 
     <div class="container mt--8 pb-5">
         <div class="row justify-content-center">

@@ -19,11 +19,6 @@ class PageController extends Controller
         return view('parish.admin.pages.index', compact('pages'));
     }
 
-    public function create(Parish $parish)
-    {
-        return view('parish.admin.pages.create');
-    }
-
     public function store(Request $request, Parish $parish)
     {
         $this->validate($request, [
