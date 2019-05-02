@@ -27,7 +27,7 @@
                 @endauth
 
                 <li class="dropdown">
-                    <a href="#">Updates <span class="nav_arrow"></span></a>
+                    <a href="#">Communications <span class="nav_arrow"></span></a>
                     <ul class="sub-menu">
                         <li><a href="{{ route('parish.news.index', $parish) }}">News</a></li>
                         <li><a href="{{ route('parish.events.index', $parish) }}">Events</a></li>
