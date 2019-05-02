@@ -46,7 +46,7 @@
     </div>
 </nav>
 
-@if(! Route::is('users.account') && url()->current() != route('parish.admin.dashboard', $parish))
+@if(! Route::is('users.account') && ! Route::is('parish.admin.dashboard', $parish))
 <div class="header bg-gradient-primary pb-8 pt-3 pt-md-6">
     <div class="container-fluid">
         <div class="header-body">

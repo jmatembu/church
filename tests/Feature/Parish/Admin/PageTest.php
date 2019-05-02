@@ -47,5 +47,6 @@ class PageTest extends TestCase
                          ->get(route('parish.admin.dashboard', $this->parish));
 
         $response->assertOk();
+        $response->assertSeeText('Parish Dashboard');
     }
 }
