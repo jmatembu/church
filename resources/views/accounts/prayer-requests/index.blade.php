@@ -2,8 +2,8 @@
 @section('pageTitle', 'Prayer Requests')
 @section('content')
     <div class="container-fluid mt--7">
-        <div class="row mt-5">
-            <div class="col-md-12">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
                         @if(Auth::user()->current_parish)

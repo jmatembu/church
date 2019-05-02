@@ -131,7 +131,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('parish.admin.settings.index', $parish) }}">
                         <i class="fa fa-cog text-primary"></i>
-                        My Settings
+                        Settings
                     </a>
                 </li>
 

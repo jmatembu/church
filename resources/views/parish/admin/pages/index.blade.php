@@ -27,7 +27,7 @@
                                                     @endif
 
                                                     <div class="col-sm-10">
-                                                        <a class="d-block" href="{{ route('parish.admin.pages.show', ['parish' => $parish, 'page' => $page]) }}">{{ $page->brief_title }}</a>
+                                                        <h3><a class="d-block" href="{{ route('parish.admin.pages.show', ['parish' => $parish, 'page' => $page]) }}">{{ $page->brief_title }}</a></h3>
                                                         <p>{{ $page->snippet }}</p>
                                                         <div class="d-flex justify-content-between">
                                                             <span>Posted on: {{ $page->created_at->format('M d, Y') }}</span>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card">
                     @include('shared.notifications')
                     <div class="card-body">

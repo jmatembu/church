@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.app')
-
+@section('pageTitle', 'Parish Dashboard')
 @section('content')
     @include('layouts.dashboard.headers.cards.admin')
 

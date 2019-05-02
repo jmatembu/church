@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row mt-5 justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-9">
 
                 <div class="card">
                     <div class="card-body">
@@ -11,7 +11,7 @@
                         @include('shared.notifications')
                         @include('shared.errors')
                         <div class="row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="col-md-11">
                                 <p class="my-4">Members of your parish community who see this prayer request will join you in
                                     prayer.</p>
                                 <form action="{{ route('users.prayerRequests.store') }}" method="POST">
