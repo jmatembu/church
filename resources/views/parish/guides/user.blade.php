@@ -12,13 +12,17 @@
     </div>
     <div class="mb-5">
         <h3 class="h2">Your Member Account</h3>
-        <p>This section introduces you to your parish member account by taking you through what each page has for you. If you are already familiar with online communities or social media, you should find it extremely easy using your account. This guide assumes that you have very little to no knowledge in the use of online communities.</p>
+        <p>This section introduces you to your parish member account by taking you through what each page has for you. If you are already familiar with online communities or social media, you should find it extremely easy using your account.</p>
 
         <h4 class="h3">Dashboard</h4>
-        <p>About the dashboard</p>
+        <p>This is the page you see first when accessing your account. It shows basic reports such as number of prayer requests, of mass intentions submitted and among others, your latest activity.</p>
         <h4 class="h3">Prayer Requests</h4>
-        <p>About prayer requests</p>
+        <p>On this page, you can add, edit and delete prayer requests. Prayer request are public.</p>
         <h4 class="h3">My Settings</h4>
-        <p>About My Settings</p>
+        Set your default parish from here. You should set your default to:
+        <ul>
+            <li>Skip the process of finding your parish on the public site.</li>
+            <li>View member only sections - <em>Not yet empimentated</em></li>
+        </ul>
     </div>
 </article>
