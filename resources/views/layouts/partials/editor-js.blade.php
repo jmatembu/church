@@ -11,7 +11,6 @@
             var body = $('textarea');
             body.attr('name', 'body');
             body.html($('#post-editor').summernote('code'));
-            //$(this).append($body);
         });
 
     });

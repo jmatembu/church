@@ -3,15 +3,20 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Project extends Model implements HasMedia
 {
-    use HasSlug;
+    use HasSlug, HasMediaTrait;
 
     protected $guarded = [];
+
     /**
      * Get the options for generating the slug.
      */
@@ -30,6 +35,19 @@ class Project extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(160)
+            ->height(160)
+            ->sharpen(10)
+            ->nonQueued();
+
+        $this->addMediaConversion('featured')
+            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+            ->nonQueued();
     }
     
     /**
@@ -53,5 +71,10 @@ class Project extends Model
     public function getFormattedBudgetAttribute()
     {
         return number_format($this->budget);
+    }
+
+    public function getFeaturedImageAttribute()
+    {
+        return $this->getFirstMediaUrl('default', 'featured');
     }
 }

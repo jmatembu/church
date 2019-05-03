@@ -224,7 +224,9 @@
             <div class="events_wrap">
                 @if($project->featured_image)
                 <div class="event_img">
-                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}"><img src="{{ asset('storage/' . $project->featured_image) }}" alt="{{ $project->title }}"></a>
+                    <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}">
+                        <img src="{{ asset($project->featured_image) }}" alt="{{ $project->title }}">
+                    </a>
                 </div>
                 @endif
                 <div class="event_info">

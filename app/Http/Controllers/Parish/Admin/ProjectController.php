@@ -49,15 +49,18 @@ class ProjectController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
-        $projectRecord = $request->only(['title', 'description', 'budget']);
+        $project = $parish->projects()->create($request->only(['title', 'description', 'budget']));
 
         if ($request->hasFile('featured_image')) {
-            $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishProjectsDirectory = 'public/parishes/' . $parish->slug . '/images/projects';
-            $projectRecord['featured_image'] = $request->file('featured_image')->storeAs($parishProjectsDirectory, $featuredImageFileName, 'public');
-        }
+            $featuredImageFileName = now()->timestamp
+                . '-featured-image.'
+                . $request->file('featured_image')
+                          ->getClientOriginalExtension();
 
-        $parish->projects()->create($projectRecord);
+            $project->addMediaFromRequest('featured_image')
+                ->usingFileName($featuredImageFileName)
+                ->toMediaCollection();
+        }
 
         return redirect()->route('parish.admin.projects.index', $parish)
             ->with('success', 'Project created and published successfully');
@@ -108,14 +111,19 @@ class ProjectController extends Controller
         $projectRecord = $request->only(['title', 'description', 'budget']);
 
         if ($request->hasFile('featured_image')) {
-            $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishProjectsDirectory = 'parishes/' . $parish->slug . '/images/projects';
-            $projectRecord['featured_image'] = $request->file('featured_image')->storeAs($parishProjectsDirectory, $featuredImageFileName, 'public');
+            $featuredImageFileName = now()->timestamp . '-featured-image.' . $request->file('featured_image')->getClientOriginalExtension();
 
-            // Delete old featured image
-            if (Storage::disk('public')->exists($project->featured_image)) {
-                Storage::disk('public')->delete($project->featured_image);
+            $project->addMediaFromRequest('featured_image')
+                    ->usingFileName($featuredImageFileName)
+                    ->toMediaCollection();
+
+            // Delete old image
+            $images = $project->getMedia();
+
+            if ($images->count() > 1) {
+                $images->first()->delete();
             }
+
         }
 
         $project->fill($projectRecord)->save();
