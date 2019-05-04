@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
                         @include('shared.notifications')
@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <label for="banner_background_image_path">Background Image <small class="d-block">The image file to be used as the background of the banner. Recommended size: 1900x800</small></label>
 
-                                <input type="file" class="form-control-file" name="banner_background_image_path" id="banner_background_image_path" value="{{ old('banner_background_image_path') }}" accept="image/jpeg, image/png">
+                                <input type="file" class="form-control-file" name="banner_image" id="banner_background_image_path" value="{{ old('banner_background_image_path') }}" accept="image/jpeg, image/png">
                                 <small class="text-secondary">This will replace the existing image.</small>
                             </div>
                             <div class="form-group">
@@ -183,17 +183,9 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
 
 
 @endsection
-
-<!-- @@section('scripts')
-    @@parent
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.search-select').select2();
-        });
-    </script>
-@@endsection -->

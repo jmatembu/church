@@ -2,7 +2,10 @@
 
 namespace App\Listeners\Parish;
 
-use App\Events\Parish\EventCreated;
+use App\Events\Parish\EventSaved;
+use App\Events\Parish\ParishSaved;
+use App\Events\Parish\PostSaved;
+use App\Events\Parish\ProjectSaved;
 use App\Traits\UploadsMedia;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -23,11 +26,20 @@ class UploadMedia
     /**
      * Handle the event.
      *
-     * @param  EventCreated  $event
+     * @param  EventSaved  $event
      * @return void
      */
-    public function handle(EventCreated $event)
+    public function handle($event)
     {
-        $this->upload($event->event);
+        if ($event instanceof EventSaved) {
+            $this->upload($event->event);
+        } elseif ($event instanceof ProjectSaved) {
+            $this->upload($event->project);
+        } elseif ($event instanceof PostSaved) {
+            $this->upload($event->post);
+        } elseif ($event instanceof ParishSaved) {
+            $this->upload($event->parish, 'banner_image');
+        }
+
     }
 }

@@ -70,6 +70,20 @@ trait PresentsParish
         return $this->settings('banner.background_image_path', $defaultBgImagePath);
     }
 
+    public function getBannerImageAttribute()
+    {
+        if (! $this->hasMedia()) {
+            return 'assets/images/banner/3.jpg';
+        }
+
+        return $this->getFirstMediaUrl('default', 'banner');
+    }
+
+    public function getBannerImageThumbAttribute()
+    {
+        return $this->getFirstMediaUrl('default', 'thumb');
+    }
+
     public function hasBannerButton()
     {
         return ! empty($this->banner_button_text) && ! empty($this->banner_button_link);

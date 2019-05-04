@@ -4,8 +4,6 @@ namespace App;
 
 use App\Traits\PresentsMedia;
 use App\Traits\PresentsPost;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -16,7 +14,10 @@ use Spatie\Sluggable\HasSlug;
 
 class Post extends Model implements HasMedia
 {
-    use HasSlug, HasMediaTrait, PresentsPost, PresentsMedia;
+    use HasSlug,
+        HasMediaTrait,
+        PresentsPost,
+        PresentsMedia;
     
     protected $dates = [
         'start_publishing_at',
@@ -28,6 +29,10 @@ class Post extends Model implements HasMedia
     ];
 
     protected $guarded = [];
+
+    protected $dispatchesEvents = [
+        'saved' => \App\Events\Parish\PostSaved::class,
+    ];
 
     /**
      * Get the options for generating the slug.

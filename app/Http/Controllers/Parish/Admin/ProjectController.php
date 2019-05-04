@@ -49,7 +49,7 @@ class ProjectController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
-        $project = $parish->projects()->create($request->only(['title', 'description', 'budget']));
+        $parish->projects()->create($request->only(['title', 'description', 'budget']));
 
         return redirect()->route('parish.admin.projects.index', $parish)
             ->with('success', 'Project created and published successfully');

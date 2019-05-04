@@ -5,23 +5,23 @@ namespace App\Traits;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 trait UploadsMedia
 {
-    public function upload($model)
+    public function upload($model, $inputName = 'featured_image')
     {
         $request = Request::capture();
 
-        if (! $request->hasFile('featured_image')) {
+        if (! $request->hasFile($inputName)) {
             return false;
         }
 
-        $featuredImageFileName = now()->timestamp
-            . '-featured-image.'
-            . $request->file('featured_image')
+        $featuredImageFileName = Str::kebab(now()->timestamp . "-{$inputName}.")
+            . $request->file($inputName)
                 ->getClientOriginalExtension();
 
-        $model->addMediaFromRequest('featured_image')
+        $model->addMediaFromRequest($inputName)
             ->usingFileName($featuredImageFileName)
             ->toMediaCollection();
 

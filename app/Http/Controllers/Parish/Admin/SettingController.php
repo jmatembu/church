@@ -50,16 +50,6 @@ class SettingController extends Controller
         Arr::set($settings, 'banner.button_text', $request->banner_button_text);
         Arr::set($settings, 'banner.button_link', $request->banner_button_link);
 
-        if ($request->hasFile('banner_background_image_path')) {
-
-            $parishBannerBgImagePath = 'bg_banner.' . $request->file('banner_background_image_path')->getClientOriginalExtension();
-            $parishAssetDirectory = 'public/parishes/' . $parish->slug . '/images';
-            $filePath = $request->file('banner_background_image_path')->storeAs($parishAssetDirectory, $parishBannerBgImagePath);
-
-            Arr::set($settings, 'banner.background_image_path', Str::after($filePath, 'public/'));
-        }
-
-
         if ($this->updateParishSettings($parish, $settings)) {
             return back()->with('success', 'Settings updated successfully');
         }

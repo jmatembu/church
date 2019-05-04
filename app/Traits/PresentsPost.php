@@ -19,7 +19,7 @@ trait PresentsPost
 
     public function getSnippetAttribute()
     {
-        return strip_tags(Str::limit($this->body, 150));
+        return Str::limit(strip_tags($this->body), 150);
     }
 
     public function getBriefSnippetAttribute()

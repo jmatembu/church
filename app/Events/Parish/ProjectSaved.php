@@ -2,7 +2,7 @@
 
 namespace App\Events\Parish;
 
-use App\Event;
+use App\Project;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -11,20 +11,20 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class EventSaved
+class ProjectSaved
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $event;
+    public $project;
 
     /**
      * Create a new event instance.
      *
-     * @param Event $event
+     * @param Project $project
      */
-    public function __construct(Event $event)
+    public function __construct(Project $project)
     {
-        $this->event = $event;
+        $this->project = $project;
     }
 
     /**

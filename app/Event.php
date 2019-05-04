@@ -24,7 +24,7 @@ class Event extends Model implements HasMedia
     ];
 
     protected $dispatchesEvents = [
-        'saved' => \App\Events\Parish\EventCreated::class,
+        'saved' => \App\Events\Parish\EventSaved::class,
     ];
 
     /**

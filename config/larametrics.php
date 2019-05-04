@@ -13,7 +13,10 @@ return [
     |
     */
     'modelsWatched' => [
-        'App\User'
+        'App\User',
+        'App\Post',
+        'App\Project',
+        'App\Event'
     ],
 
     /*

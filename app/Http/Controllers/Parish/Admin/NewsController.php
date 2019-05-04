@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Parish\Admin;
 
+use App\Events\Parish\PostSaved;
 use App\Parish;
 use App\Post;
 use Illuminate\Http\Request;
@@ -87,9 +88,6 @@ class NewsController extends Controller
     {
         try {
             $news->delete();
-
-            // Delete post image as well
-            Storage::disk('public')->delete($news->featured_image);
 
             return redirect()->route('parish.admin.news.index', $parish)
                 ->with('success', 'News post deleted successfully.');

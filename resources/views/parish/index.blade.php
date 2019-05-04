@@ -5,7 +5,7 @@
 @section('parishName', $parish->name)
 @section('content')
     <!-- Banner -->
-    <section class="main-banner-section" style="background: url('{{ $parish->banner_background_image_path }}') #022147; background-position: center; background-size: cover;">
+    <section class="main-banner-section" style="background: url('{{ $parish->banner_image }}') #022147; background-position: center; background-size: cover;">
         <div class="sa-main-banner owl-carousel">
             <div class="item section-padding">
                 <div class="container">

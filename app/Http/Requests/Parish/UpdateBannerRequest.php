@@ -27,7 +27,7 @@ class UpdateBannerRequest extends FormRequest
         return [
             'banner_headline' => 'required|string|max:40',
             'banner_description' => 'required|string|max:255',
-            'banner_background_image_path' => [
+            'banner_image' => [
                 'nullable',
                 'mimes:png,jpeg,jpg',
                 Rule::dimensions()->minWidth(1200)->minHeight(600)

@@ -3,19 +3,27 @@
 namespace App;
 
 use App\Traits\PresentsParish;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 
-class Parish extends Model
+class Parish extends Model implements HasMedia
 {
-    use HasSlug, PresentsParish;
+    use HasSlug, PresentsParish, HasMediaTrait;
 
     protected $casts = [
         'settings' => 'array'
     ];
 
     protected $guarded = [];
+
+    protected $dispatchesEvents = [
+        'saved' => \App\Events\Parish\ParishSaved::class,
+    ];
 
     /**
      * Get the options for generating the slug.
@@ -35,6 +43,19 @@ class Parish extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(160)
+            ->height(160)
+            ->sharpen(10)
+            ->nonQueued();
+
+        $this->addMediaConversion('banner')
+            ->fit(Manipulations::FIT_CONTAIN, 1900, 1000)
+            ->nonQueued();
     }
     
     /**

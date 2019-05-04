@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Parish\Admin;
 
+use App\Events\Parish\PostSaved;
 use App\Http\Requests\Parish\UpdatePageRequest;
 use App\Parish;
 use App\Post;
@@ -27,25 +28,27 @@ class PageController extends Controller
             'featured_image' => 'nullable|image|mimes:jpeg,jpg,png'
         ]);
 
-        $newsCategory = $parish->pageCategory;
+        $pageCategory = $parish->pageCategory;
 
-        if (empty($newsCategory)) {
+        if (empty($pageCategory)) {
             // We create a new category for news if it does not exist
-            $newsCategory = $parish->categories()->create([
-                'name' => 'News',
-                'description' => 'A category of the latest news at the parish.'
+            $pageCategory = $parish->categories()->create([
+                'name' => 'Page',
+                'description' => 'A category of the pages of ' . $parish->name
             ]);
         }
 
         $newsPost = $request->only(['title', 'body']);
-        $newsPost['category_id'] = $newsCategory->id;
+        $newsPost['category_id'] = $pageCategory->id;
         $newsPost['start_publishing_at'] = now()->toDateTimeString();
         $newsPost['author_id'] = $request->user()->id;
 
-        $parish->posts()->create($newsPost);
+        //$page = $parish->posts()->create($newsPost);
 
-        return redirect()->route('parish.admin.news.index', $parish)
-            ->with('success', 'News Post created and published successfully');
+        //event(new PostSaved($page));
+
+        return redirect()->route('parish.admin.pages.index', $parish)
+            ->with('success', 'Page created and published successfully');
     }
 
     public function show(Parish $parish, Post $page)
@@ -65,6 +68,8 @@ class PageController extends Controller
 
         $page->update($pagePost);
 
+        //event(new PostSaved($page));
+
         return redirect()->route('parish.admin.pages.show',
             [
                 'parish' => $parish,
@@ -81,8 +86,6 @@ class PageController extends Controller
             }
 
             $page->delete();
-
-            Storage::disk('public')->delete($page->featured_image);
 
             return redirect()->route('parish.admin.pages.index', $parish)
                 ->with('success', 'Page deleted successfully.');
