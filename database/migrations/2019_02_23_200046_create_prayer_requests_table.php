@@ -20,6 +20,7 @@ class CreatePrayerRequestsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('request_type')->default('community');
+            $table->unsignedInteger('prayer_count')->nullable();
             $table->boolean('anonymous')->default(0);
             $table->timestamp('publish_at')->nullable();
             $table->timestamps();
