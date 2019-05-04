@@ -18,11 +18,7 @@
     <!--FontAwesome Font Style -->
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('assets/images/favicon-icon/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('assets/images/favicon-icon/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('assets/images/favicon-icon/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon-icon/apple-touch-icon-57-precomposed.png') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon-icon/favicon.png') }}">
+    @include('layouts.partials.favicon')
     <!-- Google-Font-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> 
