@@ -21,8 +21,7 @@ class CreateProjectsTable extends Migration
             $table->float('budget', 10);
             $table->unsignedInteger('projectable_id');
             $table->string('projectable_type');
-            $table->string('featured_image')->nullable();
-            $table->string('featured_image_thumb')->nullable();
+            $table->boolean('featured')->default(0);
             $table->timestamps();
         });
     }

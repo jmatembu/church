@@ -38,8 +38,8 @@
                                   placeholder="So what's new at the parish?"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="post-image">Featured Image</label>
-                        <input type="file" class="form-control-file" name="post-image" id="post-image">
+                        <label for="featured-image">Featured Image</label>
+                        <input type="file" class="form-control-file" name="featured_image" id="featured-image">
                     </div>
                     <div class="form-group text-right">
                         <a href="{{ route('parish.admin.news.index', $parish) }}" class="btn

@@ -2,16 +2,21 @@
 
 namespace App;
 
+use App\Traits\PresentsMedia;
 use App\Traits\PresentsPost;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
-    use HasSlug, PresentsPost;
+    use HasSlug, HasMediaTrait, PresentsPost, PresentsMedia;
     
     protected $dates = [
         'start_publishing_at',
@@ -43,6 +48,19 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(160)
+            ->height(160)
+            ->sharpen(10)
+            ->nonQueued();
+
+        $this->addMediaConversion('featured')
+            ->fit(Manipulations::FIT_CONTAIN, 800, 600)
+            ->nonQueued();
+    }
     
     /**
      * Get all the owning postable models
@@ -60,10 +78,5 @@ class Post extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id')->withDefault(['name' => 'Admin']);
-    }
-
-    public function media($key, $default = null)
-    {
-        return Arr::get($this->media, $key, $default);
     }
 }

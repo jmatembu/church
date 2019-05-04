@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\PresentsMedia;
 use Illuminate\Support\Str;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model implements HasMedia
 {
-    use HasSlug, HasMediaTrait;
+    use HasSlug, HasMediaTrait, PresentsMedia;
 
     protected $guarded = [];
 
@@ -71,10 +72,5 @@ class Project extends Model implements HasMedia
     public function getFormattedBudgetAttribute()
     {
         return number_format($this->budget);
-    }
-
-    public function getFeaturedImageAttribute()
-    {
-        return $this->getFirstMediaUrl('default', 'featured');
     }
 }

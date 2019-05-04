@@ -28,7 +28,7 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'post-image' => 'nullable|image|mimes:jpeg,jpg,png'
+            'featured_image' => 'nullable|image|mimes:jpeg,jpg,png'
         ]);
 
         $newsCategory = $parish->newsCategory;
@@ -45,14 +45,6 @@ class NewsController extends Controller
         $newsPost['category_id'] = $newsCategory->id;
         $newsPost['start_publishing_at'] = now()->toDateTimeString();
         $newsPost['author_id'] = $request->user()->id;
-
-        if ($request->hasFile('post-image')) {
-            $newsPostFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
-            $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
-            $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
-
-            $newsPost['featured_image'] = Str::after($filePath, 'public/');
-        }
 
         $parish->posts()->create($newsPost);
 
@@ -75,29 +67,20 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'post-image' => 'nullable|image|mimes:jpeg,jpg,png'
+            'featured_image' => 'nullable|image|mimes:jpeg,jpg,png'
         ]);
 
         $newsPost = $request->only(['title', 'body']);
         $newsPost['start_publishing_at'] = now()->toDateTimeString();
 
-        if ($request->hasFile('post-image')) {
-            $newsPostFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
-            $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/news';
-            $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
-
-            // Delete old news image
-            if (Storage::disk('public')->exists($news->featured_image)) {
-                Storage::disk('public')->delete($news->featured_image);
-            }
-
-            $newsPost['featured_image'] = Str::after($filePath, 'public/');
-        }
-
         $news->update($newsPost);
 
-        return redirect()->route('parish.admin.news.show', ['parish' => $parish, 'news' => $news])
-                         ->with('success', 'News post updated successfully.');
+        return redirect()->route('parish.admin.news.show',
+            [
+                'parish' => $parish,
+                'news' => $news
+            ])
+            ->with('success', 'News post updated successfully.');
     }
 
     public function destroy(Parish $parish, Post $news)

@@ -18,7 +18,7 @@
                         </div>
                         @if($news->featured_image)
                             <div class="mb-4">
-                                <img src="{{ asset('storage/' . $news->featured_image) }}" class="img-fluid">
+                                <img src="{{ asset($news->featured_image) }}" class="img-fluid">
                             </div>
                         @endif
                         <div class="post-body">

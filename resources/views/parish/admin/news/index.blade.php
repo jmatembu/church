@@ -30,7 +30,7 @@
                                                 <div class="row">
                                                     @if($post->featured_image)
                                                     <div class="col-sm-2">
-                                                        <img src="{{ asset('storage/' . $post->featured_image) }}" class="img-fluid mt-2" alt="">
+                                                        <img src="{{ asset($post->featured_image) }}" class="img-fluid mt-2" alt="">
                                                     </div>
                                                     @endif
 

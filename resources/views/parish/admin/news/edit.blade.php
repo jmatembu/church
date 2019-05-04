@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label for="post-image">Featured Image</label>
-                        <input type="file" class="form-control-file" name="post-image" id="post-image">
+                        <input type="file" class="form-control-file" name="featured_image" id="post-image">
                     </div>
                     <div class="form-group text-right">
                         <a href="{{ route('parish.admin.news.index', ['parish' => $parish, 'news' => $news]) }}" class="btn

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Parish $parish)
     {
-        $news = $this->getParish()->news->paginate(10);
+        $news = $parish->news->paginate(10);
 
         return view('parish.news.index', compact('news'));
     }

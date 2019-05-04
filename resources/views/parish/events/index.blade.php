@@ -9,7 +9,7 @@
     <section class="section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     @foreach($parish->events as $event)
                         <div class="events_wrap">
                             <div class="event_date">
@@ -17,12 +17,17 @@
                             </div>
                             @if($event->featured_image)
                                 <div class="event_img">
-                                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"><img src="{{ asset('storage/' . $event->featured_image) }}" alt="image"></a>
+                                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">
+                                        <img src="{{ asset($event->featured_image) }}" alt="{{ $event->title }}"></a>
                                 </div>
                             @endif
                             <div class="event_info" @if(! $event->featured_image) style="width: 97.3%;" @endif>
-                                <h4><a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">{{ title_case($event->title) }}</a></h4>
-                                <p>{{ $event->description }}</p>
+                                <h4>
+                                    <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">
+                                        {{ $event->title }}
+                                    </a>
+                                </h4>
+                                {!!  $event->description !!}
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i> Date:  {{ $event->starts_at->toDayDateTimeString() }}</li>
                                     <li><i class="fa fa-map-marker"></i> Venue: {{ $event->venue }}</li>
@@ -32,7 +37,6 @@
                         </div>
                     @endforeach
                 </div>
-                @include('parish.layout.partials.aside')
             </div>
 
         </div>

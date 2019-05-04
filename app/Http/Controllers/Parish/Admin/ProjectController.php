@@ -51,17 +51,6 @@ class ProjectController extends Controller
 
         $project = $parish->projects()->create($request->only(['title', 'description', 'budget']));
 
-        if ($request->hasFile('featured_image')) {
-            $featuredImageFileName = now()->timestamp
-                . '-featured-image.'
-                . $request->file('featured_image')
-                          ->getClientOriginalExtension();
-
-            $project->addMediaFromRequest('featured_image')
-                ->usingFileName($featuredImageFileName)
-                ->toMediaCollection();
-        }
-
         return redirect()->route('parish.admin.projects.index', $parish)
             ->with('success', 'Project created and published successfully');
     }

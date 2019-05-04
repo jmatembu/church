@@ -53,12 +53,6 @@ class EventController extends Controller
 
         $record = $request->only(['title', 'description', 'venue', 'starts_at', 'ends_at']);
 
-        if ($request->hasFile('featured_image')) {
-            $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishEventsDirectory = 'public/parishes/' . $parish->slug . '/images/events';
-            $record['featured_image'] = $request->file('featured_image')->storeAs($parishEventsDirectory, $featuredImageFileName, 'public');
-        }
-
         $parish->events()->create($record);
 
         return redirect()->route('parish.admin.events.index', $parish)
@@ -110,21 +104,10 @@ class EventController extends Controller
 
         $record = $request->only(['title', 'description', 'venue', 'starts_at', 'ends_at']);
 
-        if ($request->hasFile('featured_image')) {
-            $featuredImageFileName = 'featured_image_' . now()->timestamp . '.' . $request->file('featured_image')->getClientOriginalExtension();
-            $parishEventsDirectory = 'public/parishes/' . $parish->slug . '/images/events';
-            $record['featured_image'] = $request->file('featured_image')->storeAs($parishEventsDirectory, $featuredImageFileName, 'public');
-
-            // Delete old featured image
-            if (Storage::disk('public')->exists($event->featured_image)) {
-                Storage::disk('public')->delete($event->featured_image);
-            }
-        }
-
         $event->fill($record)->save();
 
         return redirect()->route('parish.admin.events.index', $parish)
-            ->with('success', 'Event updated successfully');
+                         ->with('success', 'Event updated successfully');
     }
 
     /**
@@ -138,7 +121,8 @@ class EventController extends Controller
         try {
             $event->delete();
 
-            return redirect()->route('parish.admin.events.index', $parish);
+            return redirect()->route('parish.admin.events.index', $parish)
+                             ->with('success', 'Event deleted successfully.');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

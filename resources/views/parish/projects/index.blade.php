@@ -11,7 +11,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     @foreach($parish->projects as $project)
                         <div class="events_wrap">
                             @if($project->featured_image)
@@ -34,7 +34,6 @@
                         </div>
                     @endforeach
                 </div>
-                @include('parish.layout.partials.aside')
             </div>
 
         </div>

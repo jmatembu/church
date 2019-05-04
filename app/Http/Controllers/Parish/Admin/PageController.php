@@ -24,7 +24,7 @@ class PageController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'post-image' => 'nullable|image|mimes:jpeg,jpg,png'
+            'featured_image' => 'nullable|image|mimes:jpeg,jpg,png'
         ]);
 
         $newsCategory = $parish->pageCategory;
@@ -41,14 +41,6 @@ class PageController extends Controller
         $newsPost['category_id'] = $newsCategory->id;
         $newsPost['start_publishing_at'] = now()->toDateTimeString();
         $newsPost['author_id'] = $request->user()->id;
-
-        if ($request->hasFile('post-image')) {
-            $newsPostFileName = 'featured_image.' . $request->file('post-image')->getClientOriginalExtension();
-            $parishPostsDirectory = 'public/parishes/' . $parish->slug . '/images/pages';
-            $filePath = $request->file('post-image')->storeAs($parishPostsDirectory, $newsPostFileName);
-
-            $newsPost['featured_image'] = Str::after($filePath, 'public/');
-        }
 
         $parish->posts()->create($newsPost);
 
@@ -71,23 +63,13 @@ class PageController extends Controller
         $pagePost = $request->only(['title', 'body']);
         $pagePost['start_publishing_at'] = now()->toDateTimeString();
 
-        if ($request->hasFile('post-image')) {
-            //TODO: Add test for uploading file
-            $fileName = 'featured_image_' . now()->timestamp . '.' . $request->file('post-image')->getClientOriginalExtension();
-            $postDirectory = 'public/parishes/' . $parish->slug . '/images/pages';
-            $filePath = $request->file('post-image')->storeAs($postDirectory, $fileName);
-
-            // Delete old page image
-            if (Storage::disk('public')->exists($page->featured_image)) {
-                Storage::disk('public')->delete($page->featured_image);
-            }
-
-            $pagePost['featured_image'] = Str::after($filePath, 'public/');
-        }
-
         $page->update($pagePost);
 
-        return redirect()->route('parish.admin.pages.show', ['parish' => $parish, 'page' => $page])
+        return redirect()->route('parish.admin.pages.show',
+            [
+                'parish' => $parish,
+                'page' => $page
+            ])
             ->with('success', 'Page updated successfully.');
     }
 

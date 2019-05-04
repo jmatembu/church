@@ -18,7 +18,7 @@ class CreateDiocesesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('country');
-            $table->unsignedInteger('clergy_id');
+            $table->unsignedInteger('clergy_id')->comment('Bishop/Head of the Diocese');
             $table->text('description')->nullable();
             $table->timestamps();
 

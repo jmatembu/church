@@ -23,8 +23,7 @@ class CreateEventsTable extends Migration
             $table->datetime('ends_at');
             $table->unsignedInteger('eventable_id');
             $table->string('eventable_type');
-            $table->string('featured_image')->nullable();
-            $table->string('featured_image_thumb')->nullable();
+            $table->boolean('featured')->default(0);
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@ class UpdatePageRequest extends FormRequest
         $defaultRules = [
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'post-image' => 'nullable|image|mimes:jpeg,jpg,png'
+            'featured_image' => 'nullable|image|mimes:jpeg,jpg,png'
         ];
 
         if ($this->page->isAboutParish()) {
