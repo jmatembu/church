@@ -1,6 +1,9 @@
 @extends('parish.layout.app')
-@section('metaDescription', $parish->meta_description)
-@section('metaKeywords', $parish->name . ', ' . config('app.name') . ', ' . 'online community, mass schedule, schedule, prayer requests')
+@section('meta')
+    <meta name="keywords" content="{{ $parish->name }}">
+    <meta name="description" content="{{ $parish->meta_description }}">
+    <link rel="canonical" href="{{ route('parish.index', $parish) }}">
+@endsection
 @section('title', $parish->name)
 @section('parishName', $parish->name)
 @section('content')

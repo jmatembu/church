@@ -33,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('users/prayer-requests/{prayerRequest}', 'Account\PrayerRequestController@destroy')->name('users.prayerRequests.destroy');
 });
 
-
 Route::name('parish.')->middleware(['parish'])->prefix('parish/{parish}')->group(function () {
     Route::get('/', [\App\Http\Controllers\Parish\PageController::class, 'parish'])->name('show');
     Route::get('/about-the-parish', 'Parish\PageController@about')->name('about');

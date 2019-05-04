@@ -1,4 +1,9 @@
 @extends('parish.layout.app')
+@section('meta')
+    <meta name="keywords" content="{{ $parish->name }}, about parish">
+    <meta name="description" content="{{ $parish->about_page->snippet }}">
+    <link rel="canonical" href="{{ route('parish.about', $parish) }}">
+@endsection
 @section('title', 'About ' . $parish->name)
 @section('parishName', $parish->name)
 @section('content')

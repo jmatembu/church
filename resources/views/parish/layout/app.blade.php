@@ -4,8 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    @section('meta')
     <meta name="keywords" content=@yield('metaKeywords')>
     <meta name="description" content=@yield('metaDescription')>
+    @show
     <title>@yield('title') at {{ config('app.name') }}</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
@@ -42,10 +44,10 @@
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/audio_custome.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('assets/js/isotope.js') }}"></script>
-    <script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>
+{{--    <script src="{{ asset('assets/js/audio_custome.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets/js/isotope.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>--}}
     <script src="https://npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 
     <!--Custome-JS--> 

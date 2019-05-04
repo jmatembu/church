@@ -4,8 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="keywords" content=@yield('metaKeywords', "catholic church, catholic parish, free service, catholic community")>
-    <meta name="description" content=@yield('metaDescription', "My Catholic Parish is a forever free service that connects parishes to their communities. It aims at enabling each Catholic parish running its community online.")>
+    @section('meta')
+        <meta name="keywords" content=@yield('metaKeywords', "catholic parish")>
+        <meta name="description" content=@yield('metaDescription', "My Catholic Parish is a forever free service that connects parishes to their communities. It aims at enabling each Catholic parish run its community online.")>
+        <link rel="canonical" href="{{ route('home') }}">
+    @show
     <title>@yield('title', 'Join your parish today at ' . config('app.name'))</title>
     @section('styles')
     <!--Bootstrap -->

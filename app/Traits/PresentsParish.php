@@ -175,6 +175,6 @@ trait PresentsParish
 
     public function getMetaDescriptionAttribute()
     {
-        return Str::limit($this->description, 80);
+        return Str::limit($this->description, 255);
     }
 }

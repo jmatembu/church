@@ -1,11 +1,9 @@
 @extends('layouts.site')
 
-@section('metaKeywords')
-    "Find Parish, Catholic Parish, Cathedral, near you"
-@endsection
-
-@section('metaDescrition')
-    "Find a Catholic Parish near your. Simply search for available parishes'
+@section('meta')
+    <meta name="keywords" content="find catholic parish">
+    <meta name="description" content="Find a catholic parish from the list of parishes currently available on {{ config('app.name') }}">
+    <link rel="canonical" href="{{ route('parishes.index') }}">
 @endsection
 
 @section('styles')
@@ -33,13 +31,13 @@
         <div class="container pt-5">
             <div class="row pt-5">
                 <div class="col-md-12">
-                    <h1>Find a Parish</h1>
+                    <h1>Find a Catholic Parish</h1>
                 </div>
                 <div class="col-md-12">
                     <nav class="breadcrumb">
                         <ul>
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Parishes</li>
+                            <li class="breadcrumb-item active">Catholic Parishes</li>
                         </ul>
                     </nav>
                 </div>
@@ -48,11 +46,13 @@
     </section>
     <section class="sa-intro-section sa-intro-section-3 pd-default-3">
         <div class="container">
-
+            <p class="text-center">Find a catholic parish from the list of parishes currently available on {{ config('app.name') }}</p>
             <div class="table-responsive mb-5">
                 <table class="datatable">
                     <thead class="d-none">
-                        <th>Parish</th>
+                        <tr>
+                            <th>Parish</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach($parishes as $parish)
@@ -69,10 +69,10 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-8 text-center">
+                <article class="col-10 text-center">
                     <h3>Didn't find the parish you were looking for?</h3>
                     <p>There are thousands of Catholic parishes allover the world, help us add more to the site. Use this <a href="{{ route('home') }}#site-feedback">feedback form</a> to let us know of the parish you want us to add. Please ensure you give us full details of the parish including its contact details. We will contact the parish to verify and request permission to be added onto <a href="{{ route('home') }}">{{ config('app.name') }}</a>.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
