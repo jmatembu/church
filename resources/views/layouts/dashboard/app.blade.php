@@ -31,7 +31,6 @@
             @include('layouts.dashboard.navbars.navbar')
             @yield('content')
         </div>
-
         @guest()
             @include('layouts.dashboard.footers.guest')
         @endguest

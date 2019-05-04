@@ -3,7 +3,7 @@
 @section('content')
     @include('layouts.dashboard.headers.cards.user')
     
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7 mb-7">
         <div class="row mt-5">
             <div class="col-sm-12 mb-5 mb-xl-0">
                 <div class="card shadow">

@@ -20,7 +20,7 @@ class EventCreated
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Event $event
      */
     public function __construct(Event $event)
     {

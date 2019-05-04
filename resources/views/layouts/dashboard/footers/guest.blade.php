@@ -1,5 +1,5 @@
 <footer class="py-5">
     <div class="container">
-        @include('accounts.layouts.footers.nav')
+        @include('layouts.dashboard.footers.nav')
     </div>
 </footer>
