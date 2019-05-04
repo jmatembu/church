@@ -3,9 +3,11 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
+                        @include('shared.errors')
+                        @include('shared.notifications')
                         <div class="row mb-5">
                             <div class="col-md-12">
                                 <h2>{{ $news->title }}</h2>
@@ -18,7 +20,7 @@
                         </div>
                         @if($news->featured_image)
                             <div class="mb-4">
-                                <img src="{{ asset($news->featured_image) }}" class="img-fluid">
+                                <img src="{{ asset($news->featured_image) }}" class="img-fluid" alt="">
                             </div>
                         @endif
                         <div class="post-body">
@@ -28,6 +30,8 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
     <!-- Modal -->
     <div class="modal fade" id="deleteNewsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

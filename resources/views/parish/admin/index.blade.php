@@ -4,7 +4,7 @@
     @include('layouts.dashboard.headers.cards.admin')
 
     <div class="container-fluid mt--7">
-        <div class="row mt-5">
+        <div class="row my-5">
             <div class="col-sm-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
@@ -20,5 +20,7 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
 @endsection

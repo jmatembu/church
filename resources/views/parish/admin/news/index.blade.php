@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
                         @include('shared.notifications')
@@ -30,13 +30,19 @@
                                                 <div class="row">
                                                     @if($post->featured_image)
                                                     <div class="col-sm-2">
-                                                        <img src="{{ asset($post->featured_image) }}" class="img-fluid mt-2" alt="">
+                                                        <img src="{{ asset($post->featured_image_thumb) }}" class="img-fluid mt-2" alt="">
                                                     </div>
                                                     @endif
 
                                                     <div class="col-sm-10">
-                                                        <h3><a class="d-block" href="{{ route('parish.admin.news.show', [$parish, 'news' => $post]) }}">{{ $post->brief_title }}</a></h3>
-                                                        <p class="text-wrap">{{ $post->snippet }}</p>
+                                                        <h3>
+                                                            <a class="d-block"
+                                                               href="{{ route('parish.admin.news.show', [$parish, 'news' => $post]) }}"
+                                                               title="{{ $post->title }}">
+                                                                {{ $post->brief_news_title }}
+                                                            </a>
+                                                        </h3>
+                                                        <p class="text-wrap">{{ $post->brief_snippet }}</p>
                                                         <div class="d-flex justify-content-between">
                                                             <span>Posted on: {{ $post->created_at->format('M d, Y') }}</span>
                                                         </div>
@@ -58,5 +64,7 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
 @endsection

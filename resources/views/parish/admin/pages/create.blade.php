@@ -7,8 +7,8 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-10">
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <h2 class="mb-sm-3">Create Page</h2>
@@ -50,6 +50,8 @@
 
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
 @endsection
 @section('scripts')

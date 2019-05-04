@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
                         @include('shared.notifications')
@@ -37,6 +37,8 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
     <!-- Modal -->
     <div class="modal fade" id="deleteNewsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

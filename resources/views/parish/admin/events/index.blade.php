@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mt--7">
         <div class="row my-5 justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-body">
                         @include('shared.notifications')
@@ -35,7 +35,13 @@
                                                     @endif
 
                                                     <div class="col-sm-10">
-                                                        <h3><a class="d-block" href="{{ route('parish.admin.events.show', ['parish' => $parish, 'eventsPost' => $event]) }}" title="{{ $event->title }}">{{ $event->title }}</a></h3>
+                                                        <h3>
+                                                            <a class="d-block"
+                                                               href="{{ route('parish.admin.events.show', ['parish' => $parish, 'eventsPost' => $event]) }}"
+                                                               title="{{ $event->title }}">
+                                                                {{ $event->title }}
+                                                            </a>
+                                                        </h3>
                                                         <p>{{ $event->snippet }}</p>
                                                         <div class="d-flex justify-content-between">
                                                             <small>Posted on: {{ $event->created_at->format('M d, Y') }}</small>
@@ -57,5 +63,7 @@
                 </div>
             </div>
         </div>
+
+        @include('layouts.dashboard.footers.nav')
     </div>
 @endsection
