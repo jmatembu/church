@@ -68,8 +68,6 @@ class PageController extends Controller
 
         $page->update($pagePost);
 
-        //event(new PostSaved($page));
-
         return redirect()->route('parish.admin.pages.show',
             [
                 'parish' => $parish,

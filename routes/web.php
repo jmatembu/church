@@ -67,10 +67,13 @@ Route::name('parish.')->middleware(['parish'])->prefix('parish/{parish}')->group
     });
 });
 
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function() {
-    \Aschmelyun\Larametrics\Larametrics::routes();
-});
-
 Route::get('/user-guides', [\App\Http\Controllers\PageController::class, 'userGuide'])->name('userGuide');
 
-
+Route::name('admin.')
+    ->prefix('administrator')
+    ->namespace('Administrator')
+    ->middleware(['auth', 'isAdministrator'])
+    ->group(function () {
+        \Aschmelyun\Larametrics\Larametrics::routes();
+        Route::get('/', [\App\Http\Controllers\Administrator\DashboardController::class, 'index'])->name('dashboard');
+    });

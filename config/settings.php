@@ -7,7 +7,8 @@ return [
     'user_groups' => [
         'super_admin' => env('SUPER_USER_EMAIL'),
         'administrators' => [
-            'fmark74@gmail.com'
+            'fmark74@gmail.com',
+            'jmatembu@gmail.com'
         ]
     ],
 
