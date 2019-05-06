@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 col-12">
-                <p class="address">{{ $parish->diocese->name }}</p>
+                <p class="address"><a href="{{ route('dioceses.show', $parish->diocese) }}">{{ $parish->diocese->name }}</a></p>
             </div>
             <div class="col-md-7 col-12">
                 <div class="follow_us sa-follow-us">

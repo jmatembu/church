@@ -17,6 +17,7 @@ Auth::routes(['verify' => true]);
 // Site pages
 Route::view('terms-of-service', 'terms')->name('pages.terms');
 Route::get('parishes', 'Parish\ParishController@index')->name('parishes.index');
+Route::get('dioceses/{diocese}', [\App\Http\Controllers\Site\DioceseController::class, 'show'])->name('dioceses.show');
 Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 
 
