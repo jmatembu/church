@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Community <span class="nav_arrow"></span></a>
+                    <a href="#">Faith &amp; Devotion <span class="nav_arrow"></span></a>
                     <ul class="sub-menu">
                         <li><a href="{{ route('parish.prayerRequests.index', $parish) }}">Prayer Requests</a></li>
                     </ul>
