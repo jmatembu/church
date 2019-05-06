@@ -21,7 +21,7 @@
                                         <img src="{{ asset($event->featured_image) }}" alt="{{ $event->title }}"></a>
                                 </div>
                             @endif
-                            <div class="event_info" @if(! $event->featured_image) style="width: 97.3%;" @endif>
+                            <div class="event_info" @if(! $event->featured_image) style="width: 85%;" @endif>
                                 <h4>
                                     <a href="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}">
                                         {{ $event->title }}
