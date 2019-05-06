@@ -21,8 +21,8 @@ Route::get('dioceses/{diocese}', [\App\Http\Controllers\Site\DioceseController::
 Route::post('feedback', 'ReceiveFeedback')->name('feedback.store');
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('home', 'ParishController@index')->name('parish.index')->middleware('parish');
+Route::middleware(['auth', 'parish', 'verified'])->group(function () {
+    Route::get('home', 'ParishController@index')->name('parish.index');
     Route::get('users/account', 'AccountController@index')->name('users.account');
     Route::get('users/settings', 'Account\SettingController@index')->name('users.settings.index');
     Route::put('users/settings', 'Account\SettingController@update')->name('users.settings.update');
