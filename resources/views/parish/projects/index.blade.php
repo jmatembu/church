@@ -26,7 +26,6 @@
                                     {!! $project->brief_description !!}
                                 </div>
                                 <ul>
-                                    {{--                        <li><i class="fa fa-clock-o"></i> Due Date:  {{ $project->created_at->addMonths(5)->format('M Y') }}</li>--}}
                                     <li><i class="fa fa-dollar"></i> Bugdet: {{ $project->formatted_budget }}</li>
                                 </ul>
                                 <a href="{{ route('parish.projects.show', ['parish' => $parish, 'project' => $project]) }}" class="btn">See Details <i class="fa fa-caret-right"></i> </a>

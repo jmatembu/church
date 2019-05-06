@@ -7,19 +7,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                @if($post->featured_image)
-                <div class="post_img">
-                    <img src="{{ asset($post->featured_image) }}" alt="image">
-                </div>
-                @endif
-                <h2>{{ $post->title }}</h2>
-                <div class="post_meta">
-                    <ul>
-                        <li><i class="fa fa-user"></i> Post by: <a href="#">Parish Admin</a></li>
-                        <li><i class="fa fa-calendar-check-o"></i> {{ $post->start_publishing_at->format('d M, Y') }}</li>
-                    </ul>
-                </div>
-                {!! $post->body !!}
+                <article>
+                    @if($post->featured_image)
+                    <div class="post_img">
+                        <img src="{{ asset($post->featured_image) }}" alt="image">
+                    </div>
+                    @endif
+                    <h2>{{ $post->title }}</h2>
+                    <div class="post_meta">
+                        <ul>
+                            <li><i class="fa fa-user"></i> Post by: <a href="#">Parish Admin</a></li>
+                            <li><i class="fa fa-calendar-check-o"></i> {{ $post->start_publishing_at->format('d M, Y') }}</li>
+                        </ul>
+                    </div>
+                    {!! $post->body !!}
+                </article>
             </div>
             
             @include('parish.layout.partials.aside')

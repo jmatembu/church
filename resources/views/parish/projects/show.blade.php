@@ -7,19 +7,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                @if($project->featured_image)
-                <div class="post_img">
-                    <img src="{{ asset($project->featured_image) }}" alt="Image of {{ $project->title }}">
-                </div>
-                @endif
-                <h2>{{ $project->title }}</h2>
-                <div class="post_meta">
-                    <ul>
-{{--                        <li><i class="fa fa-user"></i> Posted by: <a href="#">Parish Admin</a></li>--}}
-                        <li><i class="fa fa-calendar-check-o"></i>Posted {{ $project->created_at->format('M d, Y') }}</li>
-                    </ul>
-                </div>
-                {!! $project->description !!}
+                <article>
+                    @if($project->featured_image)
+                        <div class="post_img">
+                            <img src="{{ asset($project->featured_image) }}" alt="Image of {{ $project->title }}">
+                        </div>
+                    @endif
+                    <h2>{{ $project->title }}</h2>
+                    <div class="post_meta">
+                        <ul>
+                            {{--                        <li><i class="fa fa-user"></i> Posted by: <a href="#">Parish Admin</a></li>--}}
+                            <li><i class="fa fa-calendar-check-o"></i>Posted {{ $project->created_at->format('M d, Y') }}</li>
+                        </ul>
+                    </div>
+                    {!! $project->description !!}
+                </article>
             </div>
             
             @include('parish.layout.partials.aside')

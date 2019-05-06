@@ -27,7 +27,7 @@
 
     <section class="section-padding">
         <div class="container">
-            <div class="about_us">
+            <article class="about_us">
                 <div class="section-header text-center">
                     <h2><u>{{ $parish->name }}</u></h2>
                 </div>
@@ -35,7 +35,7 @@
                     {!! $page->body !!}
                 </div>
 
-            </div>
+            </article>
         </div>
 
         <div class="container">

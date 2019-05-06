@@ -82,7 +82,6 @@
                         @if($parish->about_page)
                             <a class="btn btn-lg dark-btn" href="{{ route('parish.about', $parish) }}">Read more...</a>
                         @endif
-
                     </div>
                 </div>
             </div>
