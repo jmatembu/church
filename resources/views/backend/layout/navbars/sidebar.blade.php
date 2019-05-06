@@ -85,32 +85,33 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.dioceses.index') }}">
+                        <i class="fas fa-church text-primary"></i> {{ __('Dioceses') }}
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="fas fa-globe text-primary"></i>
-                        <span class="nav-link-text">Website Content</span>
+                        <i class="fas fa-users text-primary"></i>
+                        <span class="nav-link-text">Users</span>
                     </a>
 
                     <div class="collapse" id="navbar-examples" style="">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-paperclip text-primary"></i> Pages
+                                    <i class="fas fa-user-o text-primary"></i> Clergy
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-file text-primary"></i> News
+                                    <i class="fas fa-user-o text-primary"></i> Parishioners
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <i class="fas fa-calendar-alt text-primary"></i> Events
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-project-diagram text-primary"></i> Projects
+                                    <i class="fas fa-user-o text-primary"></i> Administrators
                                 </a>
                             </li>
                         </ul>
