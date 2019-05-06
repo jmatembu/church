@@ -19,15 +19,4 @@ class PostController extends Controller
     {
         return view('parish.news.show', compact('post'));
     }
-
-    protected function getParish()
-    {
-        $parish = request()->parish;
-
-        if (is_string($parish)) {
-            return Parish::where('slug', $parish)->first();
-        }
-
-        return request()->parish;
-    }
 }

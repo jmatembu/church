@@ -21,6 +21,10 @@ class Parish extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $with = [
+        'media',
+    ];
+
     protected $dispatchesEvents = [
         'saved' => \App\Events\Parish\ParishSaved::class,
     ];
@@ -43,6 +47,11 @@ class Parish extends Model implements HasMedia
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('default')->singleFile();
     }
 
     public function registerMediaConversions(Media $media = null)
@@ -138,6 +147,7 @@ class Parish extends Model implements HasMedia
 
     public function news()
     {
+        //return $this->morphMany('App\Post', 'postable')->joinWhere('categories', 'categories.categorable_id', '=', $this->id)->having('categories.name', '=', 'News')->get();
         return $this->posts->filter(function ($post) {
             return strtolower($post->category->name) === 'news';
         })->sortByDesc('created_at')->values();

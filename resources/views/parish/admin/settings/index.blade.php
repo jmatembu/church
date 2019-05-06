@@ -12,7 +12,7 @@
                         @include('shared.errors')
 
                         <h2 class="mb-3 h1">Settings</h2>
-                        <hr class="divider my-4"></hr>
+                        <hr class="divider my-4">
                         <h3>Home Page Banner</h3>
                         <p>The home page banner appears only on the parish home page.</p>
                         <form action="{{ route('parish.admin.settings.banner', $parish) }}" method="post" enctype="multipart/form-data">

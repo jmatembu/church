@@ -25,17 +25,6 @@ trait UploadsMedia
             ->usingFileName($featuredImageFileName)
             ->toMediaCollection();
 
-        /**
-         * We are uploading an image when the model is created for the first time
-         * or updated. When it is being updated, we want to remove the existing
-         * featured image.
-         */
-        $images = $model->getMedia();
-
-        if ($images->count() > 1) {
-            $images->first()->delete();
-        }
-
         return true;
     }
 }

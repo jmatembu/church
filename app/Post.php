@@ -24,11 +24,11 @@ class Post extends Model implements HasMedia
         'stop_publishing_at'
     ];
 
-    protected $casts = [
-        'media' => 'array'
-    ];
-
     protected $guarded = [];
+
+    protected $with = [
+        'media'
+    ];
 
     protected $dispatchesEvents = [
         'saved' => \App\Events\Parish\PostSaved::class,
@@ -52,6 +52,11 @@ class Post extends Model implements HasMedia
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('default')->singleFile();
     }
 
     public function registerMediaConversions(Media $media = null)
@@ -78,6 +83,11 @@ class Post extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function newsCategory()
+    {
+        return $this->belongsTo(Category::class)->where('name', '=', 'News');
     }
 
     public function author()

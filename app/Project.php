@@ -18,6 +18,10 @@ class Project extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $with = [
+        'media'
+    ];
+
     /**
      * Get the options for generating the slug.
      */
@@ -36,6 +40,11 @@ class Project extends Model implements HasMedia
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('default')->singleFile();
     }
 
     public function registerMediaConversions(Media $media = null)

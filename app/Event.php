@@ -23,6 +23,10 @@ class Event extends Model implements HasMedia
         'ends_at'
     ];
 
+    protected $with = [
+        'media'
+    ];
+
     protected $dispatchesEvents = [
         'saved' => \App\Events\Parish\EventSaved::class,
     ];
@@ -45,6 +49,11 @@ class Event extends Model implements HasMedia
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('default')->singleFile();
     }
 
     public function registerMediaConversions(Media $media = null)

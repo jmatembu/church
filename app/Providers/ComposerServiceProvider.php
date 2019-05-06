@@ -22,7 +22,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'accounts.*'
             ],
             function ($view) {
-                $parish = $this->getParish();
+                $parish = request()->parish;
 
                 if (request()->user()) {
                     $parish = request()->user()->parish;
@@ -41,16 +41,5 @@ class ComposerServiceProvider extends ServiceProvider
     public function register()
     {
         //
-    }
-
-    protected function getParish()
-    {
-        $parish = request()->parish;
-
-        if (is_string($parish)) {
-            return Parish::where('slug', $parish)->first();
-        }
-
-        return request()->parish;
     }
 }
