@@ -370,6 +370,7 @@
                     <div class="sa-contact-area">
                         <form class="sa-contact-form" action="{{ route('feedback.store') }}" method="post" id="feedback-form">
                             @csrf
+                            <input type="hidden" name="phone_number">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-group">

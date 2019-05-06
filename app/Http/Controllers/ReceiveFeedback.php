@@ -11,11 +11,23 @@ class ReceiveFeedback extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function __invoke(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'body' => 'required|max:5000',
+        ]);
+
+        if ($request->filled('phone_number')) {
+            return response()->json([
+                'message' => 'Thank you for your feedback.'
+            ], 200);
+        }
+
         try {
             Mail::to(config('settings.feedback.email'))
                 ->send(new FeedbackReceived($request->all()));
