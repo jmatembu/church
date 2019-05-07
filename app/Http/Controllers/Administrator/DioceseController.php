@@ -19,4 +19,9 @@ class DioceseController extends Controller
     {
 
     }
+
+    public function show(Diocese $diocese)
+    {
+        return view('backend.dioceses.show', compact('diocese'));
+    }
 }

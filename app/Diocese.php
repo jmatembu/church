@@ -53,4 +53,9 @@ class Diocese extends Model
     {
         return $this->morphMany('App\Category', 'categorable');
     }
+
+    public function bishop()
+    {
+        return $this->hasOne(Clergy::class, 'id', 'clergy_id');
+    }
 }
