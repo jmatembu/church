@@ -77,4 +77,5 @@ Route::name('admin.')
         \Aschmelyun\Larametrics\Larametrics::routes();
         Route::get('/', [\App\Http\Controllers\Administrator\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('dioceses', 'DioceseController');
+        Route::resource('parishes', 'ParishController');
     });

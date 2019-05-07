@@ -93,9 +93,21 @@ class Parish extends Model implements HasMedia
 
     public function clergies()
     {
-        return $this->belongsToMany(Clergy::class, 'clergy_parish', 'clergy_id', 'parish_id')
+        return $this->belongsToMany(Clergy::class, 'clergy_parish')
                     ->withPivot(['role'])
                     ->withTimestamps();
+    }
+
+    public function parishPriest()
+    {
+        return $this->clergies->filter(function ($clergy) {
+            return $clergy->pivot->role == 'Parish Priest';
+        })->first();
+    }
+
+    public function getParishPriestAttribute()
+    {
+        return $this->parishPriest()->user;
     }
 
     /**
