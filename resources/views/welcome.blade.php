@@ -357,7 +357,21 @@
             </div>
         </div>
     </section>
-
+    <section>
+        <div class="footer_top secondary-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 top_widget pr-5">
+                        <h2 class="text-white font-weight-light h4 text-right">Follow Us on Social Media</h2>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center pl-5">
+                        <a class="mr-5" href="https://facebook.com/mycatholicparish" target="_blank"><i class="fa fa-3x fa-facebook-official"></i></a>
+                        <a href="https://twitter.com/catholic_parish" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="sa-contact-section pd-default-2" id="site-feedback">
         <div class="container">
             <div class="row justify-content-center">

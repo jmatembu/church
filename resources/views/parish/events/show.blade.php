@@ -8,10 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <article>
+                <article itemid="{{ route('parish.events.show', ['parish' => $parish, 'event' => $event]) }}"
+                         itemscope
+                         itemtype="http://schema.org/Event">
                     @if($event->featured_image)
                     <div class="post_img">
                         <img src="{{ asset($event->featured_image) }}" alt="{{ $event->title }}">
+                        <meta itemprop="image" content="{{ asset($event->featured_image) }}">
                         <div class="event_timer">
                             <div class="date">
                                 <span>{{ $event->starts_at->format('d') }}</span>
@@ -27,8 +30,14 @@
                     <div class="post_meta">
                         <ul>
                             <li><i class="fa fa-user"></i> Post by: <a href="#">Parish Admin</a></li>
-                            <li><i class="fa fa-calendar-check-o"></i>Date: {{ $event->starts_at->format('d M, Y') }}</li>
-                            <li><i class="fa fa-location-arrow"></i>Venue: {{ $event->venue }}</li>
+                            <li>
+                                <i class="fa fa-calendar-check-o"></i>
+                                Date: {{ $event->starts_at->format('d M, Y') }}
+                                <meta itemprop="startDate" content="{{ $event->starts_at }}">
+                            </li>
+                            <li itemprop="location" itemscope itemtype="http://schema.org/Place"><i class="fa fa-location-arrow"></i>
+                                Venue: {{ $event->venue }}
+                            </li>
                         </ul>
                     </div>
                     <div class="post-body">

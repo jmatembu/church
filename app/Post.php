@@ -92,6 +92,6 @@ class Post extends Model implements HasMedia
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'author_id')->withDefault(['name' => 'Admin']);
+        return $this->belongsTo(User::class, 'author_id')->withDefault(['full_name' => 'Admin']);
     }
 }

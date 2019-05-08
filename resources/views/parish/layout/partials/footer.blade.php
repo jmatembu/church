@@ -18,10 +18,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 footer_widget">
-                <div class="widget_inner">
+                <div class="widget_inner" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                     <h5>Contact Info</h5>
-                    <p>{{ $parish->main_address }}</p>
-                <p>E:  <a href="mailto:{{ $parish->main_email }}">{{ $parish->main_email }}</a></p>
+                    <p itemprop="streetAddress">{{ $parish->main_address }}</p>
+                <p>E:  <a href="mailto:{{ $parish->main_email }}" itemprop="email">{{ $parish->main_email }}</a></p>
                     <p>P:  {{ $parish->main_phone }}</p>
                 </div>
             </div>
