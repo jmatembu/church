@@ -12,14 +12,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 2)->state('bishop')->create();
+        factory(App\User::class, 1)->state('bishop')->create();
 
-        factory(App\User::class, 10)->state('priest')->create()->each(function ($priest) {
+        factory(App\User::class, 2)->state('priest')->create()->each(function ($priest) {
             $priest->clergy()->save(factory(App\Clergy::class)->state('priest')->make());
         });
 
         // Rest of the laity
-        factory(App\User::class, 100)->state('laity')->create([
+        factory(App\User::class, 5)->state('laity')->create([
             'current_parish' => Arr::random(App\Parish::pluck('id')->all()),
         ]);
         // Known users
