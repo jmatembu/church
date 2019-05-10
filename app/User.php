@@ -63,22 +63,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(PrayerRequest::class);
     }
 
+    public function parish()
+    {
+        return $this->hasOne(Parish::class, 'id', 'current_parish');
+    }
+
     public function scopeLaity($query)
     {
         return $query->whereCategory('Laity');
     }
 
-    /**
-     * The parish of the user
-     */
-    public function getParishAttribute()
-    {
-        return Parish::find($this->current_parish);
-    }
-
     public function isCurrentParish(Parish $parish) : bool
     {
-        return $parish->id === $this->current_parish;
+        return $parish->is($this->parish);
     }
 
     public function getFullNameAttribute()

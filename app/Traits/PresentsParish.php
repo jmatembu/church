@@ -4,18 +4,12 @@
 namespace App\Traits;
 
 
+use App\Post;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 trait PresentsParish
 {
-    public function aboutPage()
-    {
-        return $this->pageCategory->posts->first(function ($post) {
-            return $post->isAboutParish();
-        });
-    }
-
     public function getAboutPageAttribute()
     {
         return $this->aboutPage();

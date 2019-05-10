@@ -21,9 +21,7 @@ class Parish extends Model implements HasMedia
 
     protected $guarded = [];
 
-    protected $with = [
-        'media',
-    ];
+    protected $with = [];
 
     protected $dispatchesEvents = [
         'saved' => \App\Events\Parish\ParishSaved::class,
@@ -134,6 +132,13 @@ class Parish extends Model implements HasMedia
         return $this->morphMany('App\Post', 'postable');
     }
 
+    public function aboutPage()
+    {
+        return $this->posts->first(function ($post) {
+            return $post->isAboutParish();
+        });
+    }
+
     public function prayerRequests()
     {
         return $this->hasMany(PrayerRequest::class)->latest();
@@ -159,10 +164,10 @@ class Parish extends Model implements HasMedia
 
     public function news()
     {
-        //return $this->morphMany('App\Post', 'postable')->joinWhere('categories', 'categories.categorable_id', '=', $this->id)->having('categories.name', '=', 'News')->get();
-        return $this->posts->filter(function ($post) {
-            return strtolower($post->category->name) === 'news';
-        })->sortByDesc('created_at')->values();
+        return $this->hasMany(Post::class, 'postable_id')
+                    ->whereHas('category', $filter = function ($query) {
+                        $query->whereIn('name', ['news', 'News', 'NEWS']);
+                    })->get();
     }
 
     public function getNewsAttribute()
@@ -172,13 +177,14 @@ class Parish extends Model implements HasMedia
 
     public function getLatestAsideNewsAttribute()
     {
-        return $this->news()->take(3);
+        return $this->news->take(3);
     }
 
     public function getLatestAsideEventsAttribute()
     {
         return $this->events->take(3);
     }
+
 
     public function pages()
     {
