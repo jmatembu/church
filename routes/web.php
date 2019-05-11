@@ -44,7 +44,7 @@ Route::name('parish.')->middleware(['parish'])->prefix('parish/{parish}')->group
     Route::get('events', 'EventController@index')->name('events.index');
     Route::get('events/{event}', 'EventController@show')->name('events.show');
 
-    Route::view('/contact-us', 'parish.contact')->name('contact.create');
+    Route::get('/contact-us', [\App\Http\Controllers\Parish\PageController::class, 'showContactPage'])->name('contact.create');
     Route::post('/contact-us', 'Parish\ContactParish')->name('contact.send');
     Route::get('/prayer-requests', 'Parish\PrayerRequestController@index')->name('prayerRequests.index');
 

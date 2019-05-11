@@ -34,4 +34,9 @@ class PageController extends Controller
 
         return view('parish.pages.about', compact('page'));
     }
+
+    public function showContactPage(Parish $parish)
+    {
+        return view('parish.contact');
+    }
 }
