@@ -11,7 +11,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $parishes = Parish::all();
+        $parishes = Parish::with('diocese')->get();
 
         $parishesByDiocese = $parishes->groupBy(function ($parish) {
             return $parish->diocese->name;
