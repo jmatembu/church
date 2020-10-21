@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\FeedbackReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class ReceiveFeedback extends Controller
 {
@@ -22,7 +23,7 @@ class ReceiveFeedback extends Controller
             'body' => 'required|max:5000',
         ]);
 
-        if ($request->filled('phone_number')) {
+        if ($request->filled('phone_number') || $this->isBlocked()) {
             return response()->json([
                 'message' => 'Thank you for your feedback.'
             ], 200);
@@ -42,5 +43,25 @@ class ReceiveFeedback extends Controller
                 'message' => 'Could not send email at this time.'
             ], 500);
         }
+    }
+
+    protected function isBlocked()
+    {
+        return in_array(request('name'), $this->blockedNames()) ||
+            Str::contains(request('body'), $this->blockedContent());
+    }
+
+    protected function blockedNames()
+    {
+        return [
+            'HenryOraby'
+        ];
+    }
+
+    protected function blockedContent()
+    {
+        return [
+            'http://www.google.com/url?q='
+        ];
     }
 }
